@@ -15,6 +15,9 @@ function tablaProveedores()
             <td>' . $f["nombre_empresa"] . '</td>
             <td>' . $f["representante_ventas"] . '</td>
             <td>' . $f["nombre_producto"] . '</td>
+            <td>' . $f["correo_proveedor"] . '</td>
+            <td>' . $f["tel_proveedor"] . '</td>
+            <td>' . $f["direccion_fisica"] . '</td>
 
             <td><a href="" class="btn btn-primary">Ver</a></td>
             <td><a href="editarProveedor.php?idProv=' . $f["id_proveedor"] . '"" class="btn btn-warning">Editar</a></td>

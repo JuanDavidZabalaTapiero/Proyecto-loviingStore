@@ -91,17 +91,20 @@ require_once ('../../Controllers/Administrador/tablaProveedores.php');
               <h5 class="card-title">Gestión de Proveedores</h5>
               <table id="TableSynchronize" class="table datatable">
                 <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Empresa</th>
-                    <th>Representante de ventas</th>
-                    <th>Producto</th>
-                    
-                    <th>Ver</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                  </tr>
-                </thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Empresa</th>
+                      <th>Representante de ventas</th>
+                      <th>Producto</th>
+                      <th>Correo Electronico</th>
+                      <th>Telefono</th>
+                      <th>Dirección</th>
+                      
+                      <th>Ver</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
+                    </tr>
+                  </thead>
                 <tbody>
                   <?php
                   tablaProveedores();
