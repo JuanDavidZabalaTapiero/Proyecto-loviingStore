@@ -1,10 +1,12 @@
 <?php
 
 require_once ('../../Controllers/Administrador/seguridadAcceso.php');
-
 require_once ('../../Controllers/Administrador/mostrarInfoUser.php');
+require_once (__DIR__ . '/../../Controllers/Administrador/mostrarInfoPedidos.php'); // Ajusta la ruta aquí
 
-require_once (__DIR__ . '/../../Controllers/Administrador/mostrarInfoPedidos.php');
+$id_pedido = $_GET["id_pedido"];
+
+formularioEditarPedidos($id_pedido);
 
 ?>
 <!DOCTYPE html>
@@ -22,11 +24,10 @@ require_once (__DIR__ . '/../../Controllers/Administrador/mostrarInfoPedidos.php
   <link href="../Dashboard/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -85,9 +86,13 @@ require_once (__DIR__ . '/../../Controllers/Administrador/mostrarInfoPedidos.php
       <div class="card">
         <div class="card-body">
           <?php
-          $id_pedido = $_GET["id_pedido"];
-
-          formularioEditarPedidos($id_pedido);
+          // Asegúrate de que el id_pedido está siendo pasado correctamente
+          if (isset($_GET["id_pedido"])) {
+              $id_pedido = $_GET["id_pedido"];
+              formularioEditarPedidos($id_pedido);
+          } else {
+              echo "ID de pedido no proporcionado.";
+          }
           ?>
         </div>
       </div>
@@ -117,3 +122,45 @@ require_once (__DIR__ . '/../../Controllers/Administrador/mostrarInfoPedidos.php
 </body>
 
 </html>
+
+<?php
+function formularioEditarPedidos($id_pedido)
+{
+  $objPrepararConsulta = new ConsultasPedidos(new PrepararConsulta());
+
+  $tablaPedido = $objPrepararConsulta->consultarPedidoPorId($id_pedido);
+
+  if ($tablaPedido) {
+    echo '
+      <form action="../../Controllers/Administrador/editarPedido.php" class="form" method="post" enctype="multipart/form-data">
+        <div class="row g-3 formulario">
+          <div class="col-md-12">
+            <label for="id_pedido">ID pedido</label> <br>
+            <input type="text" id="id_pedido" name="id_pedido" class="input" value="' . $tablaPedido["id_pedido"] . '" required readonly> 
+          </div>
+          <div class="col-md-6">
+            <label for="nombre_cliente">Nombre Cliente</label> <br>
+            <input type="text" id="nombre_cliente" name="nombre_cliente" class="input" value="' . $tablaPedido["nombre_cliente"] . '" required>
+          </div>
+          <div class="col-md-6">
+            <label for="Fecha_pedido">Fecha</label> <br>
+            <input type="date" id="Fecha_pedido" name="Fecha_pedido" class="input" value="' . $tablaPedido["fecha_pedido"] . '" required><br>
+          </div>
+          <div class="col-md-12">
+            <label for="total_pedido">Total</label> <br>
+            <input type="number" id="total_pedido" name="total_pedido" class="input" value="' . $tablaPedido["total"] . '" required><br>               
+          </div>
+          <div class="col-md-12">
+            <label for="metodo_pago">Metodo de pago</label> <br>
+            <input type="text" id="metodo_pago" name="metodo_pago" class="input" value="' . $tablaPedido["metodo_pago"] . '" required><br>               
+          </div>
+          <div class="text-center">
+            <button type="submit" class="form-button">Envíar</button>
+          </div>
+        </div>
+      </form>';
+  } else {
+    echo "No se encontró el pedido.";
+  }
+}
+?>
