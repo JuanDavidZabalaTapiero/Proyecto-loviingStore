@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/logo.png">
+    <title>Crear Cuenta</title>
+</head>
+
+<body>
+    <section id="crearCuenta">
+
+        <div class="fondo"></div>
+
+        <div class="contenedor">
+
+            <a href="../../index.php"><img src="img/logo.png" alt="logo candado"></a>
+
+            <h3>Crea tu cuenta</h3>
+
+            <form action="../../Controllers/registrarUserEx.php" method="post">
+
+                <label for="nombreUsuario">Nombre de Usuario *</label><br>
+
+                <input type="text" id="nombreUsuario" class="formato" name="nombreUser"
+                    placeholder="Ingrese su nombre de usuario" required><br>
+
+                <label for="genero">Género *</label>
+                <select name="generoUser" id="genero" class="formato" required>
+                    <option value="" disabled selected hidden>Seleccione su género</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="Otros">Otros</option>
+                    <option value="Elefante Guerrero Psiquico Ansestral">Elefante Guerrero Psiquico Ansestral</option>
+                </select>
+
+                <label for="fechaNacimiento">Fecha de Nacimiento *</label>
+                <input id="fechaNacimiento" class="formato" type="date" name='fechaNacUser'
+                    placeholder='fecha de nacimiento' required><br>
+
+                <label for="tipoDocumento">Tipo de Documento *</label>
+                <select name="tipoDocUser" id="tipoDocumento" class="formato" required>
+                    <option value="" disabled selected hidden>Tipo de ducumento</option>
+                    <option value="C.C">C.C</option>
+                    <option value="T.I">T.I</option>
+                    <option value="DNI">DNI</option>
+                    <option value="NIE">NIE</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                </select>
+
+                <label for="numeroIdentificacion">Número de Documento *</label>
+                <input id="numeroIdentificacion" class="formato" type="text" name="numDocUser"
+                    placeholder="ingrese su numero de identificación" required>
+
+                <label for="correoElectronico">Correo Electrónico *</label>
+                <input id="correoElectronico" class="formato" type="email" name="emailUser"
+                    placeholder="ingrese su correo electronico" required>
+
+                <label for="contraseña">Contraseña *</label><br>
+                <input type="password" id="contraseña" class="formato" name="claveUser"
+                    placeholder="Ingrese su contraseña" required><br>
+
+                <label for="contraseña">Confirmación de contraseña *</label><br>
+                <input type="password" id="contraseña" class="formato" name="confirmarClaveUser"
+                    placeholder="Confirme su contraseña" required><br>
+
+                <input type="checkbox" id="check" class="check" required>
+                <label for="check" class="checklabel">Acepto los términos y condiciones</label><br>
+
+                <button type="submit">Crear Cuenta</button><br>
+
+                <a id="cancelar" href="iniciarSesion.php">¡Ya tengo una cuenta!</a>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

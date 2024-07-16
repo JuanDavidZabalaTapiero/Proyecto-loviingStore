@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --colorPrimario: #ca5d1e;
+    --colorSecundario:  #c8cc21;
+    --colorSecundarioHover: #555707;
+    --colorTerciario: #fff;
+    --fontFamily: "Open Sans", sans-serif;
+}
+
+body{
+    font-family: var(--fontFamily);
+}
+
+.fondo{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background: #f0f8ff;
+}
+
+.contenedor{
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    top: 90px;
+    background: var(--colorTerciario);
+    width: 490px;
+    height: 510px;
+    padding: 90px 50px;
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+    font-family: var(--fontFamily);
+    border-radius: 40px;
+    box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.412);
+    z-index: 1;
+}
+
+
+#iniciosesion .contenedor h3{
+    color: var(--colorSecundario);
+    font-family: var(--fontFamily);
+    font-size: 25px;
+    margin: 0 70px 25px;
+    font-weight: bolder;
+}
+
+
+#iniciosesion .contenedor  img{
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border: 6px #ffffff solid;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.412);
+    transition: 1s;
+}
+
+#iniciosesion .contenedor  img:hover{
+    transform: scale(1.3);
+}
+
+.formato{
+    margin: 10px;
+    margin-bottom: 10px;
+    width: 95%;
+    height: 55px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(128, 128, 128, 0.24);
+    padding: 20px;
+}
+
+#iniciosesion .contenedor button{
+    margin: 10px 10px 20px 10px;
+    width: 95%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    background: var(--colorSecundario);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    transition: .3s;
+}
+
+#iniciosesion .contenedor button:hover{
+    background: #c3c546;
+    color: #fff;
+    cursor: pointer;
+    transform: scale(1.1);
+} 
+
+#iniciosesion .contenedor label{
+    color: rgb(128, 128, 128);
+    font-size: 15px;
+}
+
+#iniciosesion .contenedor a{
+    font-size: 15px;
+    color: var(--colorSecundario);
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+#iniciosesion .contenedor a:hover{
+    text-decoration:underline;
+    color: var(--colorSecundarioHover)
+}
+
+.check{
+    margin: 18px 0 5px 0;
+    cursor: pointer;
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.628);
+} 
+
+#crearCuenta select{
+    appearance: none;
+}
+
+
+#crearCuenta .fondo{
+    position: fixed;
+    height: 100vh;
+}
+
+#crearCuenta .contenedor{
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    top: 80px;
+    width: 490px;
+    height: 1080px;
+    padding: 90px 50px;
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+    font-family: var(--fontFamily);
+    border-radius: 40px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.412);
+    z-index: 1;
+    margin-bottom: 150px;
+}
+
+#crearCuenta .contenedor h3{
+    color: var(--colorSecundario);
+    font-family: var(--fontFamily);
+    font-size: 25px;
+    margin: 0 100px 25px;
+}
+
+#crearCuenta .contenedor  img{
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border: 6px var(--colorTerciario) solid;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.412);
+    transition: 1s;
+}
+
+#crearCuenta .contenedor  img:hover{
+    transform: scale(1.3);
+}
+
+#crearCuenta option{
+    background: #fffdfdaf;
+}
+
+#crearCuenta .contenedor button{
+    margin: 10px 10px 20px 10px;
+    width: 95%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    background: var(--colorSecundario);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    transition: .3s;
+}
+
+#crearCuenta .contenedor button:hover{
+    background: #c3c546;
+    color: var(--colorTerciario);
+    cursor: pointer;
+    transform: scale(1.1);
+} 
+
+#crearCuenta .contenedor label{
+    color: rgb(128, 128, 128);
+    font-size: 15px;
+}
+
+#crearCuenta .contenedor a{
+    font-size: 15px;
+    color: var(--colorSecundario);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+#crearCuenta .contenedor a:hover{
+    text-decoration:underline;
+    color: var(--colorSecundarioHover)
+}
+
+.check{
+    margin: 18px 0 5px 0;
+    cursor: pointer;
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.628);
+} 
+
+/* Responsive del formulario */
+@media(max-width: 507px) {
+   #iniciosesion .contenedor, #crearCuenta .contenedor{
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        top: 80px;
+        background: #fff;
+        width: 90%;
+        height: auto;
+        padding: 70px 8px;
+        margin: 0 auto;
+        display: block;
+        justify-content: center;
+        font-family: var(--fontFamily);
+        border-radius: 40px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.412);
+        margin-bottom: 100px;
+    }
+
+    #iniciosesion .contenedor a{
+        display: block;
+        align-items: center;
+        justify-content: center;
+        margin: 0 20%;
+        font-size: 1em;
+        text-align: center;
+    }
+
+    #iniciosesion .contenedor label{
+        color: rgb(128, 128, 128);
+        font-size: 15px;
+        margin: 20px 20px;
+    }
+
+    .check{
+        margin: 20px -18px 10px 10px;
+        cursor: pointer;
+        background-color: #fff;
+        width: 15px;
+        height: 15px;
+        border: 1px solid rgba(128, 128, 128, 0.628);
+    }
+    
+    label.checklabel{
+        color: rgba(128, 128, 128, 0.628);
+        font-size: 15px;
+        margin: 0px;
+    } 
+
+    #iniciosesion .contenedor h3, #crearCuenta .contenedor h3{
+        font-size: 1rem;
+        position: relative;
+        margin: 0 15%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .formato{
+        margin: 15px 10px;
+        width: 95%;
+        height: 55px;
+        border-radius: 20px;
+        border: none;
+        background: rgba(128, 128, 128, 0.24);
+    }
+
+    #crearCuenta .contenedor label{
+        color: rgb(128, 128, 128);
+        font-size: 13px;
+        margin: 20px 20px;
+    }
+}

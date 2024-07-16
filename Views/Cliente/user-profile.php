@@ -1,0 +1,89 @@
+<?php
+session_start();
+
+require_once ('../../Controllers/Cliente/mostrarContenido.php');
+
+require_once ('../../Models/consultasAdmin.php');
+
+require_once ('../../Models/consultasCliente.php');
+?>
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="en">
+
+<head>
+
+	<!-- ** Basic Page Needs ** -->
+	<meta charset="utf-8">
+	<title>Classimax | Classified Marketplace Template</title>
+
+	<!-- ** Mobile Specific Metas ** -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Agency HTML Template">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+	<meta name="author" content="Themefisher">
+	<meta name="generator" content="Themefisher Classified Marketplace Template v1.0">
+
+	<!-- favicon -->
+	<link href="../Website_externo/images/favicon.png" rel="shortcut icon">
+
+	<!-- Essential stylesheets
+	  =====================================-->
+	<link href="../Website_externo/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<link href="../Website_externo/plugins/bootstrap/bootstrap-slider.css" rel="stylesheet">
+	<link href="../Website_externo/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../Website_externo/plugins/slick/slick.css" rel="stylesheet">
+	<link href="../Website_externo/plugins/slick/slick-theme.css" rel="stylesheet">
+	<link href="../Website_externo/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+
+	<link href="../Website_externo/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="body-wrapper">
+	<?php
+	mostrarHeaderCliente();
+	?>
+	<!--==================================
+	=            User Profile            =
+	===================================-->
+
+	<?php
+	mostrarPerfilCliente();
+	?>
+
+	<!--============================
+	=            Footer            =
+	=============================-->
+
+	<!-- Footer Bottom -->
+	<?php
+	mostrarFooterCliente();
+	?>
+
+	<!-- Essential Scripts
+	=====================================-->
+	<script src="../Website_externo/plugins/jquery/jquery.min.js"></script>
+	<script src="../Website_externo/plugins/bootstrap/popper.min.js"></script>
+	<script src="../Website_externo/plugins/bootstrap/bootstrap.min.js"></script>
+	<script src="../Website_externo/plugins/bootstrap/bootstrap-slider.js"></script>
+	<script src="../Website_externo/plugins/tether/js/tether.min.js"></script>
+	<script src="../Website_externo/plugins/raty/jquery.raty-fa.js"></script>
+	<script src="../Website_externo/plugins/slick/slick.min.js"></script>
+	<script src="../Website_externo/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+	<!-- google map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+	<script src="../Website_externo/plugins/google-map/map.js" defer></script>
+
+	<script src="../Website_externo/js/script.js"></script>
+
+</body>
+
+</html>

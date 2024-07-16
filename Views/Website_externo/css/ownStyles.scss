@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Nunito";
+}
+
+body {
+    div.contenedor {
+        max-width: 1140px;
+        width: 90%;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        border-radius: 10px;
+        background: white;
+
+
+        div {
+            margin: 0 auto;
+        }
+
+        div.img {
+            width: 100%;
+            padding: 20px;
+            margin: auto;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        div.info {
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 20px;
+
+            h2 {
+                margin-bottom: 20px;
+                font-size: 30px;
+            }
+
+            div.estrellas {
+                margin-bottom: 20px;
+
+                i {
+                    font-size: 20px;
+                    color: #ca5d1e;
+                }
+
+                ul {
+                    li.no {
+                        i {
+                            color: grey;
+                        }
+                    }
+                }
+            }
+
+            div.cantidad {
+                margin-bottom: 10px;
+
+                button {
+                    padding: 5px 10px;
+                    border: none;
+                    border-radius: 4px;
+                    background: darkgray;
+                    color: white;
+                    font-size: 15px;
+                }
+
+                .menos {
+                    margin-right: 10px;
+                }
+
+                .mas {
+                    margin-left: 10px;
+                }
+
+                .menos:hover, .mas:hover {
+                    background: gray;
+                    cursor: pointer;
+                }
+            }
+
+            button.agregarCarrito {
+                display: block;
+                width: 350px;
+                margin: 40px 0 20px 0;
+                padding: 10px 20px;
+                font-size: 20px;
+                border-radius: 5px;
+                border: none;
+                background: #ca5d1e;
+                color: white;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                cursor: pointer;
+            }
+
+            button.comprarAhora {
+                display: block;
+                width: 350px;
+                padding: 10px 20px;
+                font-size: 20px;
+                border-radius: 5px;
+                border: none;
+                background: #ca5d1e;
+                color: white;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                cursor: pointer;
+            }
+
+            button.agregarCarrito:hover, button.comprarAhora:hover {
+                background: #c8cc21;
+            }
+
+            @media (width < 768px) {
+                button.agregarCarrito, button.comprarAhora {
+                    width: 100%;
+                }
+            }
+        }
+
+        div.desc {
+            width: 100%;
+            padding: 20px;
+
+            h2 {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    @media (width > 768px) {
+        div.contenedor {
+            grid-template-columns: repeat(2, 1fr);
+
+            div.desc {
+                grid-column: span 2;
+            }
+        }
+    }
+
+    @media (width < 430px) {
+        div.contenedor {
+            overflow: scroll;
+        }
+    }
+}

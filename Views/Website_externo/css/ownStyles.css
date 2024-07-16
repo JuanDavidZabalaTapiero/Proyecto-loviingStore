@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito";
+}
+body div.contenedor {
+  max-width: 1140px;
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  row-gap: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  background: white;
+}
+body div.contenedor div {
+  margin: 0 auto;
+}
+body div.contenedor div.img {
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+}
+body div.contenedor div.img img {
+  width: 100%;
+}
+body div.contenedor div.info {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 20px;
+}
+body div.contenedor div.info h2 {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+body div.contenedor div.info div.estrellas {
+  margin-bottom: 20px;
+}
+body div.contenedor div.info div.estrellas i {
+  font-size: 20px;
+  color: #ca5d1e;
+}
+body div.contenedor div.info div.estrellas ul li.no i {
+  color: grey;
+}
+body div.contenedor div.info div.cantidad {
+  margin-bottom: 10px;
+}
+body div.contenedor div.info div.cantidad button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background: darkgray;
+  color: white;
+  font-size: 15px;
+}
+body div.contenedor div.info div.cantidad .menos {
+  margin-right: 10px;
+}
+body div.contenedor div.info div.cantidad .mas {
+  margin-left: 10px;
+}
+body div.contenedor div.info div.cantidad .menos:hover, body div.contenedor div.info div.cantidad .mas:hover {
+  background: gray;
+  cursor: pointer;
+}
+body div.contenedor div.info button.agregarCarrito {
+  display: block;
+  width: 350px;
+  margin: 40px 0 20px 0;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background: #ca5d1e;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
+body div.contenedor div.info button.comprarAhora {
+  display: block;
+  width: 350px;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background: #ca5d1e;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
+body div.contenedor div.info button.agregarCarrito:hover, body div.contenedor div.info button.comprarAhora:hover {
+  background: #c8cc21;
+}
+@media (width < 768px) {
+  body div.contenedor div.info button.agregarCarrito, body div.contenedor div.info button.comprarAhora {
+    width: 100%;
+  }
+}
+body div.contenedor div.desc {
+  width: 100%;
+  padding: 20px;
+}
+body div.contenedor div.desc h2 {
+  margin-bottom: 20px;
+}
+@media (width > 768px) {
+  body div.contenedor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  body div.contenedor div.desc {
+    grid-column: span 2;
+  }
+}
+@media (width < 430px) {
+  body div.contenedor {
+    overflow: scroll;
+  }
+}/*# sourceMappingURL=ownStyles.css.map */
