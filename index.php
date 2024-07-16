@@ -58,6 +58,8 @@ $objContenidoCliente = new ContenidoCliente();
 </head>
 
 <body class="body-wrapper">
+
+<!-- HEADER -->
 	<header>
 		<div class="container">
 			<div class="row">
