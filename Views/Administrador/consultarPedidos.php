@@ -92,7 +92,7 @@ $objTablaPedidos = new TablaPedidos();
               <table id="TableSynchronize" class="table datatable">
                 <thead>
                   <tr>
-                    <th>ID_Pedido</th>
+                    <th>Id_Pedido</th>
                     <th>Nombre Cliente</th>
                     <th>Fecha Pedido</th>
                     <th>Total</th>

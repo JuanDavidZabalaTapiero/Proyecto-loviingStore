@@ -36,6 +36,34 @@ class ConsultasPedidos
         return $fPedidos;
     }
 
+    public function consultarPedidoPorId($id_pedido)
+    {
+        $consulta = "SELECT 
+        p.id_pedido,
+        u.nombre_usuario AS nombre_cliente,
+        p.fecha_pedido,
+        p.total,
+        m.nombre_metodo AS metodo_pago
+        FROM 
+        tbl_pedidos p
+        JOIN 
+        tbl_usuarios u ON p.cod_cliente = u.id_usuario
+        JOIN 
+        tbl_metodo_pago m ON p.cod_metodo_pago = m.id_metodo
+        WHERE p.id_pedido = :id_pedido";
+    
+        $bindValues = [':id_pedido' => $id_pedido];
+    
+        $result = $this->objPrepararConsulta->prepararConsulta($consulta, $bindValues);
+    
+        return $result->fetch();
+    }
+    
+    
+
+
+    
+
     // UPDATE
     public function actualizarPedido($id_pedido, $nuevo_cod_cliente, $nueva_fecha_pedido, $nuevo_total, $nuevo_cod_metodo_pago) {
         $objConexionBd = new ConexionBd();
