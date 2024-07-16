@@ -8,6 +8,7 @@ require_once('Models/consultasAdmin.php');
 
 require_once('Models/consultasCliente.php');
 
+// CONTENIDO DEL CLIENTE
 require_once(__DIR__ . '/Controllers/Cliente/contenidoCliente.php');
 $objContenidoCliente = new ContenidoCliente();
 
