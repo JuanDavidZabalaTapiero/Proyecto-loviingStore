@@ -473,6 +473,26 @@ function cargarMenuAdmin(){
         </ul>
       </li><!-- End Icons Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#formacion-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa-solid fa-user-minus"></i>
+          <span>Gestión de Pedidos</span><i class="fa-solid fa-chevron-down ms-auto"></i>
+        </a>
+        <ul id="formacion-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="consultarPedidos.php">
+              <i class="fa-solid fa-circle"></i><span>Consultar</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="../Dashboard/reporte_Pedidos.php">
+              <i class="fa-solid fa-circle"></i><span>Reporte</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End programas de formacion Nav -->
+
   </aside><!-- End Sidebar-->
   ';
 }
