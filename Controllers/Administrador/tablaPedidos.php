@@ -17,7 +17,7 @@ class TablaPedidos
 
         if (!isset($tabla)) {
             echo '
-            <h2>No hay productos registrados</h2>
+            <h2>No hay pedidos registrados</h2>
             ';
         } else {
             foreach ($tabla as $f) {
@@ -30,9 +30,8 @@ class TablaPedidos
                     <td><?php echo $f["metodo_pago"] ?></td>
 
                     <td><a href="" class="btn btn-primary">Ver</a></td>
-                    <td><a href="editarProducto.php?idProd=<?php echo $f["id_pedido"] ?>'" class="btn btn-warning">Editar</a></td>
-                    <td><a href="../../Controllers/Administrador/eliminarProducto.php?idProd=<?php echo $f["id_pedido"] ?>"
-                            class="btn btn-danger">Eliminar</a></td>
+                    <td><a href="editarPedidos.php?idProd=<?php echo $f["id_pedido"] ?>'" class="btn btn-warning">Editar</a></td>
+                   
                 </tr>
                 <?php
 

@@ -350,11 +350,11 @@ function cargarMenuAdmin(){
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#trimestral-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#GestionProductos-nav" data-bs-toggle="collapse" href="#">
           <i class="fa-solid fa-bag-shopping"></i>
           <span>Gestión de Productos</span><i class=" fa-solid fa-chevron-down ms-auto"></i>
         </a>
-        <ul id="trimestral-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="GestionProductos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="consultarProductos.php">
               <i class="fa-solid fa-circle"></i><span>Consultar</span>
@@ -402,11 +402,11 @@ function cargarMenuAdmin(){
       </li><!-- End programas de formacion Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#fichas-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#GestionCategorias-nav" data-bs-toggle="collapse" href="#">
           <i class="fa-solid fa-file-pen"></i>
           <span>Gestión de Categorías</span><i class="fa-solid fa-chevron-down ms-auto"></i>
         </a>
-        <ul id="fichas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="GestionCategorias-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="consultarCategorias.php">
               <i class="fa-solid fa-circle"></i><span>Consultar</span>
@@ -428,11 +428,11 @@ function cargarMenuAdmin(){
       </li><!-- End fichas Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#instructores-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#GestionUsuarios-nav" data-bs-toggle="collapse" href="#">
           <i class="fa-solid fa-users"></i>
           <span>Gestión de Usuarios</span><i class="fa-solid fa-chevron-down ms-auto"></i>
         </a>
-        <ul id="instructores-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="GestionUsuarios-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="../Administrador/consultarUsers.php">
               <i class="fa-solid fa-circle"></i><span>Consultar</span>
@@ -454,11 +454,11 @@ function cargarMenuAdmin(){
       </li><!-- End instructores Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#ambientes-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#GestionVentas-nav" data-bs-toggle="collapse" href="#">
           <i class="fa-solid fa-boxes-stacked"></i>
           <span>Gestión de Ventas</span><i class="fa-solid fa-chevron-down ms-auto"></i>
         </a>
-        <ul id="ambientes-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="GestionVentas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="consultarVentas.php">
               <i class="fa-solid fa-circle"></i><span>Consultar</span>
@@ -474,22 +474,17 @@ function cargarMenuAdmin(){
       </li><!-- End Icons Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#formacion-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#Pedidos-nav" data-bs-toggle="collapse" href="#">
           <i class="fa-solid fa-user-minus"></i>
           <span>Gestión de Pedidos</span><i class="fa-solid fa-chevron-down ms-auto"></i>
         </a>
-        <ul id="formacion-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="Pedidos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="consultarPedidos.php">
               <i class="fa-solid fa-circle"></i><span>Consultar</span>
             </a>
           </li>
 
-          <li>
-            <a href="../Dashboard/reporte_Pedidos.php">
-              <i class="fa-solid fa-circle"></i><span>Reporte</span>
-            </a>
-          </li>
         </ul>
       </li><!-- End programas de formacion Nav -->
 

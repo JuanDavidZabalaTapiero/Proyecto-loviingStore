@@ -99,7 +99,6 @@ $objTablaPedidos = new TablaPedidos();
                     <th>Metodo Pago</th>
                     <th>Ver</th>
                     <th>Editar</th>
-                    <th>Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
