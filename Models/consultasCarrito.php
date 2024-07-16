@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__ . '/prepararConsulta.php');
+require_once(__DIR__ . '/prepararConsulta.php');
 
 class ConsultasCarrito
 {
@@ -14,12 +14,15 @@ class ConsultasCarrito
     // CREATE
     public function insertCarrito($cod_cliente)
     {
-        $insertCarrito = "INSERT INTO tbl_carrito(cod_cliente, compra_realizada) VALUES (:cod_cliente, :compra_realizada)";
+        $insertCarrito = "INSERT INTO tbl_carrito(cod_cliente, fecha_creacion, compra_realizada) VALUES (:cod_cliente, :fecha_creacion, :compra_realizada)";
 
         $compra_realizada = "No";
 
+        $fecha_creacion = date("Y-m-d");
+
         $bindValues = [
             ':cod_cliente' => $cod_cliente,
+            ':fecha_creacion' => $fecha_creacion,
             ':compra_realizada' => $compra_realizada
         ];
 

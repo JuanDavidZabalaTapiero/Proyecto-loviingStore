@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2024 a las 14:25:51
+-- Tiempo de generación: 16-07-2024 a las 14:59:09
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -57,13 +57,6 @@ CREATE TABLE `tbl_carrito` (
   `fecha_creacion` date DEFAULT NULL,
   `compra_realizada` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `tbl_carrito`
---
-
-INSERT INTO `tbl_carrito` (`id_carrito`, `cod_cliente`, `fecha_creacion`, `compra_realizada`) VALUES
-(3, 5, NULL, 'Si');
 
 -- --------------------------------------------------------
 
@@ -430,7 +423,7 @@ ALTER TABLE `rating_productos`
 -- AUTO_INCREMENT de la tabla `tbl_carrito`
 --
 ALTER TABLE `tbl_carrito`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_categorias`
@@ -454,7 +447,7 @@ ALTER TABLE `tbl_detalle_pedidos`
 -- AUTO_INCREMENT de la tabla `tbl_elementos_carrito`
 --
 ALTER TABLE `tbl_elementos_carrito`
-  MODIFY `id_elemento_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_elemento_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_facturas`
