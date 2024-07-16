@@ -109,49 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <!-- Recently Favorited -->
           <div class="widget dashboard-container">
             <h1 class="text-center">Mi carrito</h1>
-            <table class="table table-responsive product-dashboard-table tbl_carrito w-100">
-              <thead class="">
-                <tr>
-                  <th class="p-2">Imagen</th>
-                  <th class="w-50">Producto</th>
-                  <th class="p-2 text-center">Precio</th>
-                  <th class="p-2 text-center">Cantidad</th>
-                  <th class="p-2 text-center">Categoría</th>
-                  <th class="p-2 text-center">Botones</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                $objContenidoCliente->showCarrito($id_cliente);
-                ?>
-              </tbody>
-
-            </table>
+            <?php
+            $objContenidoCliente->showCarrito($id_cliente);
+            ?>
           </div>
-
-          <!-- pagination -->
-          <div class="pagination justify-content-center">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="dashboard.html" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="dashboard.html">1</a></li>
-                <li class="page-item"><a class="page-link" href="dashboard.html">2</a></li>
-                <li class="page-item"><a class="page-link" href="dashboard.html">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="dashboard.html" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <!-- pagination -->
 
         </div>
       </div>

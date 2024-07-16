@@ -1,5 +1,7 @@
 <?php
 
+$id_producto = $_GET["idProd"];
+
 require_once ('../../Controllers/Cliente/mostrarInfoProducto.php');
 
 require_once ('../../Models/consultasAdmin.php');
@@ -7,6 +9,15 @@ require_once ('../../Models/consultasAdmin.php');
 require_once ('../../Models/consultasCliente.php');
 
 require_once ('../../Controllers/Cliente/mostrarContenido.php');
+
+// CONTENIDO CLIENTE (PARA LA INFO DEL PRODUCTO)
+require_once (__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
+$objContenidoCliente = new ContenidoCliente();
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+	header("location: ../Extras/iniciarSesion.php");
+}
 
 ?>
 <!DOCTYPE html>
@@ -96,9 +107,7 @@ require_once ('../../Controllers/Cliente/mostrarContenido.php');
 				<!-- Left sidebar -->
 				<?php
 
-				$id_producto = $_GET["idProd"];
-
-				mostrarProductoSingle($id_producto);
+				$objContenidoCliente->showProducto($id_producto);
 
 				?>
 

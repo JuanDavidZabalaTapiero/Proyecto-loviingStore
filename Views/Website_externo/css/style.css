@@ -760,7 +760,7 @@ ul.pagination .active a {
 }
 
 .add-button {
-  background: var(--color-secundario);
+  background: #28a745;
   color: #fff;
   padding: 8px 20px !important;
   display: inline-block;
