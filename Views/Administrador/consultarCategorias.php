@@ -15,7 +15,7 @@ require_once ('../../Controllers/Administrador/tablaCategorias.php');
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Home de Dashboard</title>
+  <title>Tabla de Categorias</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -135,25 +135,87 @@ require_once ('../../Controllers/Administrador/tablaCategorias.php');
     <script src="../Dashboard/assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="../Dashboard/assets/vendor/php-email-form/validate.js"></script>
 
+<!-- Generacion de informes -->
+    <!-- <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script> -->
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.print.min.js"></script>
+
 
     <script>
-      $(document).ready(function () {
-        // Inicializa DataTables con la configuración necesaria
-        $('#TableSynchronize').DataTable({
-          buttons: [
-            //'copy','excel','pdf','print' 
-            // Define los botones de descarga
-          ],
-          lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "Todo"]], // Define las opciones de cantidad de entradas por página
-          pageLength: 10, // Establece la cantidad de entradas por página predeterminada
-          dom: '<"top"fBlS>rt<"bottom"ip>', // Define la disposición de los elementos de DataTables (botones)
-          language: {
-            lengthMenu: 'Mostrar _MENU_ registros', // Cambia el texto del filtro de cantidad de entradas por página
-            search: 'Buscar:', // Cambia el texto del buscador
-            info: 'Mostrando _START_ a _END_ de _TOTAL_ entradas', // Cambia el texto de información sobre la paginación
-          }
-        });
-      });
+    $(document).ready(function () {
+    $('#TableSynchronize').DataTable({
+    dom: 'Btip',
+    buttons: [
+      {
+        extend: 'pdf',
+        exportOptions: {
+          columns: [0, 1] // Especifica las columnas que deseas incluir en el PDF
+        },
+        customize: function (doc) {
+          // Personalización del documento PDF
+          doc.content.splice(0, 1, {
+            text: 'Informe de Categorias', // Cambia el título del documento PDF
+            style: 'title'
+          });
+          
+          // Agregar contenido original de la tabla después del título
+          var dataTableContent = {
+            table: {
+              headerRows: 1,
+              body: []
+            },
+            layout: 'lightHorizontalLines'
+          };
+
+          var tableRows = $('#TableSynchronize').DataTable().rows().data();
+          tableRows.each(function (index, rowData) {
+            var dataRow = [];
+            $(rowData).each(function () {
+              dataRow.push({ text: this });
+            });
+            dataTableContent.table.body.push(dataRow);
+          });
+
+          doc.content.push(dataTableContent);
+
+          // Puedes realizar otras personalizaciones aquí si es necesario
+        }
+      },
+      {
+        extend: 'excel',
+        exportOptions: {
+          columns: [0, 1] // Especifica las columnas que deseas incluir en el PDF
+        }
+      },
+
+      {
+        extend: 'print',
+        exportOptions: {
+          columns: [0, 1] // Especifica las columnas que deseas incluir en el PDF
+        }
+      },
+      {
+        extend: 'copy',
+        exportOptions: {
+          columns: [0, 1] // Especifica las columnas que deseas incluir en el PDF
+        }
+      }
+    ],
+    lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "Todo"]],
+    pageLength: 10,
+    dom: '<"top"fBlS>rt<"bottom"ip>',
+    language: {
+      lengthMenu: 'Mostrar _MENU_ registros',
+      search: 'Buscar:',
+      info: 'Mostrando _START_ a _END_ de _TOTAL_ entradas',
+    }
+    }).buttons().container().appendTo('#TableSynchronize_wrapper .col-md-6:eq(0)');
+  });
     </script>
 
     <!-- Biblioteca jsPDF -->
