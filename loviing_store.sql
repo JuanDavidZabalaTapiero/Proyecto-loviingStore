@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2024 a las 14:59:09
+-- Tiempo de generación: 16-07-2024 a las 16:00:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -57,6 +57,13 @@ CREATE TABLE `tbl_carrito` (
   `fecha_creacion` date DEFAULT NULL,
   `compra_realizada` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_carrito`
+--
+
+INSERT INTO `tbl_carrito` (`id_carrito`, `cod_cliente`, `fecha_creacion`, `compra_realizada`) VALUES
+(3, 5, NULL, 'Si');
 
 -- --------------------------------------------------------
 
@@ -251,8 +258,28 @@ CREATE TABLE `tbl_proveedor` (
   `id_proveedor` int(11) NOT NULL,
   `nombre_empresa` varchar(100) NOT NULL,
   `representante_ventas` varchar(100) NOT NULL,
-  `cod_producto` int(11) NOT NULL
+  `cod_producto` int(11) NOT NULL,
+  `direccion_fisica` varchar(20) DEFAULT NULL,
+  `correo_proveedor` varchar(40) DEFAULT NULL,
+  `tel_proveedor` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_proveedor`
+--
+
+INSERT INTO `tbl_proveedor` (`id_proveedor`, `nombre_empresa`, `representante_ventas`, `cod_producto`, `direccion_fisica`, `correo_proveedor`, `tel_proveedor`) VALUES
+(1, 'Electrónica del Sur', 'Juan Martínez', 1, 'Av. Principal #123, ', 'ventas@electronicaelsur.com', 595),
+(2, 'Importadora Gómez S.A.', 'María Fernández', 2, 'Calle Principal #456', 'contacto@importadoragomez.com.mx', 52),
+(3, 'Ferretería La Herradura', 'Pedro Ramírez', 3, 'Carrera 10 #789, Bog', 'ventas@laherraduraferreteria.co', 57),
+(4, 'Tecnología Avanzada Ltda.', 'Ana Silva', 4, 'Rua Principal #321, ', 'info@tecnologiaavanzada.com.br', 55),
+(5, 'Distribuidora El Faro', 'Luis Pérez', 1, 'Avenida Central #567', 'contacto@distribuidorafaro.co.cr', 506),
+(6, 'Muebles y Decoración Castillo', 'Laura Gutiérrez', 2, 'Calle Mayor #234, Ma', 'ventas@mueblescastillo.es', 34),
+(7, 'Automotriz Veloz EIRL', 'Carlos López', 3, 'Av. Libertad #890, L', 'contacto@automotrizveloz.com.pe', 51),
+(8, 'Textiles del Norte S.A.', 'Patricia Torres', 4, 'Calle Norteña #789, ', 'info@textilesnorte.ec', 593),
+(9, 'Equipos Industriales del Sur', 'Martín Sánchez', 1, 'Ave. Industrial #456', 'ventas@equiposindustrialesdelsur.cl', 56),
+(10, 'Alimentos Frescos S.A.', 'Julia Martínez', 2, 'Carrera Fresca #123,', 'contacto@alimentosfrescos.com.ar', 54),
+(11, 'purina si', 'señor coso', 1, 'coso 231', 'coso@coso.com', 132545656);
 
 -- --------------------------------------------------------
 
@@ -423,7 +450,7 @@ ALTER TABLE `rating_productos`
 -- AUTO_INCREMENT de la tabla `tbl_carrito`
 --
 ALTER TABLE `tbl_carrito`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_categorias`
@@ -447,7 +474,7 @@ ALTER TABLE `tbl_detalle_pedidos`
 -- AUTO_INCREMENT de la tabla `tbl_elementos_carrito`
 --
 ALTER TABLE `tbl_elementos_carrito`
-  MODIFY `id_elemento_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_elemento_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_facturas`
@@ -483,7 +510,7 @@ ALTER TABLE `tbl_productos`
 -- AUTO_INCREMENT de la tabla `tbl_proveedor`
 --
 ALTER TABLE `tbl_proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
