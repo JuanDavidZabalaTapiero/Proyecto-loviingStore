@@ -8,6 +8,6 @@ $total = $_POST["total_pedido"];
 $metodoPago = $_POST["metodo_pago"];
 
 
-$objConsultasPedidos = new ConsultasPedidos$objConsultasPedidos();
+$objConsultasPedidos = new ConsultasPedidos();
 
 $move = $objConsultasPedidos->actualizarPedido($id_pedido,$nombre_cliente,$fecha_Pedido,$total,$metodoPago);
