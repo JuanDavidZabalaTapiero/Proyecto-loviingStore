@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2024 a las 13:40:54
+-- Tiempo de generación: 16-07-2024 a las 14:25:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -103,6 +103,32 @@ CREATE TABLE `tbl_detalle_facturas` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_detalle_pedidos`
+--
+
+CREATE TABLE `tbl_detalle_pedidos` (
+  `id_detalle_pedido` int(11) NOT NULL,
+  `cod_pedido` int(11) NOT NULL,
+  `cod_producto` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `precio` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_detalle_pedidos`
+--
+
+INSERT INTO `tbl_detalle_pedidos` (`id_detalle_pedido`, `cod_pedido`, `cod_producto`, `cantidad`, `precio`) VALUES
+(1, 1, 1, 2, 24990),
+(2, 1, 2, 1, 39900),
+(3, 2, 2, 1, 39900),
+(4, 3, 3, 1, 51900),
+(5, 4, 4, 1, 16900),
+(6, 5, 2, 1, 39900);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_elementos_carrito`
 --
 
@@ -161,6 +187,40 @@ CREATE TABLE `tbl_metodo_pago` (
   `id_metodo` int(11) NOT NULL,
   `nombre_metodo` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_metodo_pago`
+--
+
+INSERT INTO `tbl_metodo_pago` (`id_metodo`, `nombre_metodo`) VALUES
+(1, 'Tarjeta de Crédito'),
+(2, 'PayPal'),
+(3, 'Transferencia Bancaria');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_pedidos`
+--
+
+CREATE TABLE `tbl_pedidos` (
+  `id_pedido` int(11) NOT NULL,
+  `cod_cliente` int(11) NOT NULL,
+  `fecha_pedido` date NOT NULL,
+  `total` float NOT NULL,
+  `cod_metodo_pago` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_pedidos`
+--
+
+INSERT INTO `tbl_pedidos` (`id_pedido`, `cod_cliente`, `fecha_pedido`, `total`, `cod_metodo_pago`) VALUES
+(1, 1, '2024-07-01', 66990, 1),
+(2, 2, '2024-07-02', 39900, 2),
+(3, 4, '2024-07-03', 51900, 1),
+(4, 5, '2024-07-04', 16900, 3),
+(5, 1, '2024-07-05', 39900, 2);
 
 -- --------------------------------------------------------
 
@@ -283,6 +343,14 @@ ALTER TABLE `tbl_detalle_facturas`
   ADD KEY `cod_producto` (`cod_producto`);
 
 --
+-- Indices de la tabla `tbl_detalle_pedidos`
+--
+ALTER TABLE `tbl_detalle_pedidos`
+  ADD PRIMARY KEY (`id_detalle_pedido`),
+  ADD KEY `cod_pedido` (`cod_pedido`),
+  ADD KEY `cod_producto` (`cod_producto`);
+
+--
 -- Indices de la tabla `tbl_elementos_carrito`
 --
 ALTER TABLE `tbl_elementos_carrito`
@@ -310,6 +378,14 @@ ALTER TABLE `tbl_inventario`
 --
 ALTER TABLE `tbl_metodo_pago`
   ADD PRIMARY KEY (`id_metodo`);
+
+--
+-- Indices de la tabla `tbl_pedidos`
+--
+ALTER TABLE `tbl_pedidos`
+  ADD PRIMARY KEY (`id_pedido`),
+  ADD KEY `cod_cliente` (`cod_cliente`),
+  ADD KEY `cod_metodo_pago` (`cod_metodo_pago`);
 
 --
 -- Indices de la tabla `tbl_productos`
@@ -369,6 +445,12 @@ ALTER TABLE `tbl_detalle_facturas`
   MODIFY `id_detalle_factura` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_detalle_pedidos`
+--
+ALTER TABLE `tbl_detalle_pedidos`
+  MODIFY `id_detalle_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `tbl_elementos_carrito`
 --
 ALTER TABLE `tbl_elementos_carrito`
@@ -390,7 +472,13 @@ ALTER TABLE `tbl_inventario`
 -- AUTO_INCREMENT de la tabla `tbl_metodo_pago`
 --
 ALTER TABLE `tbl_metodo_pago`
-  MODIFY `id_metodo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_metodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_pedidos`
+--
+ALTER TABLE `tbl_pedidos`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_productos`
@@ -441,6 +529,13 @@ ALTER TABLE `tbl_detalle_facturas`
   ADD CONSTRAINT `tbl_detalle_facturas_ibfk_2` FOREIGN KEY (`cod_producto`) REFERENCES `tbl_productos` (`id_producto`);
 
 --
+-- Filtros para la tabla `tbl_detalle_pedidos`
+--
+ALTER TABLE `tbl_detalle_pedidos`
+  ADD CONSTRAINT `tbl_detalle_pedidos_ibfk_1` FOREIGN KEY (`cod_pedido`) REFERENCES `tbl_pedidos` (`id_pedido`),
+  ADD CONSTRAINT `tbl_detalle_pedidos_ibfk_2` FOREIGN KEY (`cod_producto`) REFERENCES `tbl_productos` (`id_producto`);
+
+--
 -- Filtros para la tabla `tbl_elementos_carrito`
 --
 ALTER TABLE `tbl_elementos_carrito`
@@ -459,6 +554,13 @@ ALTER TABLE `tbl_facturas`
 --
 ALTER TABLE `tbl_inventario`
   ADD CONSTRAINT `tbl_inventario_ibfk_1` FOREIGN KEY (`cod_producto`) REFERENCES `tbl_productos` (`id_producto`);
+
+--
+-- Filtros para la tabla `tbl_pedidos`
+--
+ALTER TABLE `tbl_pedidos`
+  ADD CONSTRAINT `tbl_pedidos_ibfk_1` FOREIGN KEY (`cod_cliente`) REFERENCES `tbl_usuarios` (`id_usuario`),
+  ADD CONSTRAINT `tbl_pedidos_ibfk_2` FOREIGN KEY (`cod_metodo_pago`) REFERENCES `tbl_metodo_pago` (`id_metodo`);
 
 --
 -- Filtros para la tabla `tbl_productos`
