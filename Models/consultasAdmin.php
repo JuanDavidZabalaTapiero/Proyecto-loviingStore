@@ -280,18 +280,13 @@ class ConsultasAdmin
     // PRODUCTOS E INVENTARIO
     public function consultarProductos()
     {
-<<<<<<< HEAD
-        $sql = "SELECT *, nombre_categoria, precio_producto, entradas, salidas, p.stock
-        FROM tbl_productos p 
-        INNER JOIN tbl_categorias c ON p.cod_categoria = c.id_categoria
-        INNER JOIN tbl_inventario i ON p.id_producto = i.cod_producto";
-=======
         $sql = "SELECT *, nombre_categoria, precio_producto, entradas, salidas, tbl_inventario.stock AS stock
         FROM tbl_productos 
         INNER JOIN tbl_categorias ON tbl_productos.cod_categoria = tbl_categorias.id_categoria
         INNER JOIN tbl_inventario ON tbl_productos.id_producto = tbl_inventario.cod_producto;
 ";
->>>>>>> a714e86ec5bee24389eaccb30438253a1bf30a37
+
+
 
         $objConexionBd = new ConexionBd();
 
