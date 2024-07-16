@@ -280,10 +280,18 @@ class ConsultasAdmin
     // PRODUCTOS E INVENTARIO
     public function consultarProductos()
     {
+<<<<<<< HEAD
         $sql = "SELECT *, nombre_categoria, precio_producto, entradas, salidas, p.stock
         FROM tbl_productos p 
         INNER JOIN tbl_categorias c ON p.cod_categoria = c.id_categoria
         INNER JOIN tbl_inventario i ON p.id_producto = i.cod_producto";
+=======
+        $sql = "SELECT *, nombre_categoria, precio_producto, entradas, salidas, tbl_inventario.stock AS stock
+        FROM tbl_productos 
+        INNER JOIN tbl_categorias ON tbl_productos.cod_categoria = tbl_categorias.id_categoria
+        INNER JOIN tbl_inventario ON tbl_productos.id_producto = tbl_inventario.cod_producto;
+";
+>>>>>>> a714e86ec5bee24389eaccb30438253a1bf30a37
 
         $objConexionBd = new ConexionBd();
 
@@ -486,7 +494,7 @@ class ConsultasAdmin
     // PROVEEDORES
     public function consultarProveedores()
     {
-        $sql = "SELECT id_proveedor, nombre_empresa, representante_ventas, nombre_producto 
+        $sql = "SELECT id_proveedor, nombre_empresa, representante_ventas, nombre_producto, correo_proveedor, tel_proveedor, direccion_fisica
         FROM tbl_proveedor 
         INNER JOIN tbl_productos ON cod_producto = id_producto";
 
@@ -503,17 +511,23 @@ class ConsultasAdmin
         return $f;
     }
 
-    public function registrarProveedor($nombre_empresa, $representante_ventas, $cod_producto)
+    public function registrarProveedor($nombre_empresa, $representante_ventas, $cod_producto, $direccion_proveedor, $correo_proveedor, $tel_proveedor)
     {
 
-        $sql = "INSERT INTO tbl_proveedor
-        (nombre_empresa, 
+        $sql = "INSERT INTO tbl_proveedor (
+        nombre_empresa, 
         representante_ventas, 
-        cod_producto) 
+        cod_producto, 
+        direccion_fisica, 
+        correo_proveedor, 
+        tel_proveedor) 
         VALUES 
         (:nombre_empresa,
         :representante_ventas,
-        :cod_producto
+        :cod_producto,
+        :direccion_fisica, 
+        :correo_proveedor, 
+        :tel_proveedor
         )";
 
         $objConexionBd = new ConexionBd();
@@ -525,6 +539,9 @@ class ConsultasAdmin
         $result->bindParam(":nombre_empresa", $nombre_empresa);
         $result->bindParam(":representante_ventas", $representante_ventas);
         $result->bindParam(":cod_producto", $cod_producto);
+        $result->bindParam(":direccion_fisica", $direccion_proveedor);
+        $result->bindParam(":correo_proveedor", $correo_proveedor);
+        $result->bindParam(":tel_proveedor", $tel_proveedor);
 
         $result->execute();
 
@@ -536,14 +553,17 @@ class ConsultasAdmin
         ';
     }
 
-    public function editarProveedor($nombre_empresa, $representante_ventas, $cod_producto, $id_proveedor)
+    public function editarProveedor($nombre_empresa, $representante_ventas, $cod_producto, $direccion_proveedor, $correo_proveedor, $tel_proveedor, $id_proveedor)
     {
 
-        $sql = "UPDATE tbl_proveedor 
-        SET nombre_empresa = :nombre_empresa,
-        representante_ventas = :representante_ventas,
-        cod_producto = :cod_producto
-        WHERE id_proveedor = :id_proveedor";
+        $sql = "UPDATE tbl_proveedor SET 
+                nombre_empresa= :nombre_empresa,
+                representante_ventas= :representante_ventas,
+                cod_producto= :cod_producto, 
+                direccion_fisica= :direccion_proveedor, 
+                correo_proveedor= :correo_proveedor, 
+                tel_proveedor= :tel_proveedor 
+                WHERE id_proveedor = :id_proveedor";
 
         $objConexionBd = new ConexionBd();
 
@@ -554,6 +574,9 @@ class ConsultasAdmin
         $result->bindParam(":nombre_empresa", $nombre_empresa);
         $result->bindParam(":representante_ventas", $representante_ventas);
         $result->bindParam(":cod_producto", $cod_producto);
+        $result->bindParam(":direccion_proveedor", $direccion_proveedor);
+        $result->bindParam(":correo_proveedor", $correo_proveedor);
+        $result->bindParam(":tel_proveedor", $tel_proveedor);
         $result->bindParam(":id_proveedor", $id_proveedor);
 
         $result->execute();
