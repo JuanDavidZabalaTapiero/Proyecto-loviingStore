@@ -30,8 +30,6 @@ class ConsultasCarrito
 
         $id_carrito_creado = $this->objPrepararConsulta->conexion->lastInsertId();
 
-        echo 'Carrito creado <br>';
-
         return $id_carrito_creado;
     }
 
@@ -62,8 +60,6 @@ class ConsultasCarrito
         ];
 
         $this->objPrepararConsulta->prepararConsulta($updateCarrito, $bindValues);
-
-        echo 'Carrito actualizado <br>';
     }
 
     // DELETE

@@ -31,7 +31,11 @@ class ConsultasItemsCarrito
 
         $this->objPrepararConsulta->prepararConsulta($insertItemCarrito, $bindValues);
 
-        echo 'Se inserto el item en el carrito <br>';
+        ?>
+        <script>
+            alert('Producto agregado al carrito');
+        </script>
+        <?php
     }
 
     // READ
@@ -95,9 +99,6 @@ class ConsultasItemsCarrito
         ];
 
         $this->objPrepararConsulta->prepararConsulta($updateItemCarrito, $bindValues);
-
-        echo 'Se actualizo la cantidad del producto en el carrito <br>';
-
     }
 
     // DELETE
@@ -120,6 +121,10 @@ class ConsultasItemsCarrito
 
         $this->objPrepararConsulta->prepararConsulta($deleteItemCarrito, $bindValues);
 
-        echo 'Se eliminó el producto del carrito';
+        ?>
+        <script>
+            alert("Se eliminó el producto del carrito");
+        </script>
+        <?php
     }
 }

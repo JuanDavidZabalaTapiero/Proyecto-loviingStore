@@ -66,8 +66,6 @@ class ConsultasProductos
         ];
 
         $this->objPrepararConsulta->prepararConsulta($updateProducto, $bindValues);
-
-        echo 'Stock del producto actualizado <br>';
     }
 
     // DELETE
