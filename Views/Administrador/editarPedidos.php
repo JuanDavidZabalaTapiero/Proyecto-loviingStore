@@ -6,7 +6,7 @@ require_once (__DIR__ . '/../../Controllers/Administrador/mostrarInfoPedidos.php
 
 $id_pedido = $_GET["id_pedido"];
 
-formularioEditarPedidos($id_pedido);
+// formularioEditarPedidos($id_pedido);
 
 ?>
 <!DOCTYPE html>
@@ -73,7 +73,7 @@ formularioEditarPedidos($id_pedido);
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Editar Pepidos</h1>
+      <h1>Editar Pedidos</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home.php">Home</a></li>

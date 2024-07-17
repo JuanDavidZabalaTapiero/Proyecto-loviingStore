@@ -30,7 +30,7 @@ class TablaPedidos
                     <td><?php echo $f["metodo_pago"] ?></td>
 
                     <td><a href="" class="btn btn-primary">Ver</a></td>
-                    <td><a href="editarPedidos.php?idProd=<?php echo $f["id_pedido"] ?>'" class="btn btn-warning">Editar</a></td>
+                    <td><a href="editarPedidos.php?id_pedido=<?php echo $f["id_pedido"] ?>" class="btn btn-warning">Editar</a></td>
                    
                 </tr>
                 <?php
