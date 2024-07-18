@@ -30,7 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$cantidad = $_POST["cantidad"];
 
 	if ($form == "comprar") {
-		$objCompraController->comprarProducto($id_cliente, $id_producto, $cantidad);
+		// $objCompraController->comprarProducto($id_cliente, $id_producto, $cantidad);
+
+		header('location: red.php');
 	}
 
 	if ($form == "carrito") {

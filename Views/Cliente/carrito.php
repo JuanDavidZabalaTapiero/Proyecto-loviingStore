@@ -3,32 +3,34 @@ session_start();
 
 $id_cliente = $_SESSION["idUser"];
 
-require_once ('../../Controllers/Cliente/mostrarContenido.php');
+require_once('../../Controllers/Cliente/mostrarContenido.php');
 
-require_once ('../../Models/consultasAdmin.php');
+require_once('../../Models/consultasAdmin.php');
 
-require_once ('../../Models/consultasCliente.php');
+require_once('../../Models/consultasCliente.php');
 
-require_once (__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
+require_once(__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
 $objContenidoCliente = new ContenidoCliente();
 
 // COMPRAR CARRITO CONTROLLER
-require_once (__DIR__ . '/../../Controllers/Cliente/comprarCarritoController.php');
+require_once(__DIR__ . '/../../Controllers/Cliente/comprarCarritoController.php');
 $objComprarCarritoController = new ComprarCarritoController();
 
 // UPDATE CANTIDAD DEL ITEM EN EL CARRITO CONTROLLER
-require_once (__DIR__ . '/../../Controllers/Cliente/updateCantidadItemController.php');
+require_once(__DIR__ . '/../../Controllers/Cliente/updateCantidadItemController.php');
 $objUpdateCantidadItemController = new UpdateCantidadItemController();
 
 // DELTE ITEM DEL CARRITO CONTROLLER
-require_once (__DIR__ . '/../../Controllers/Cliente/deleteItemCarritoController.php');
+require_once(__DIR__ . '/../../Controllers/Cliente/deleteItemCarritoController.php');
 $objDeleteItemCarritoController = new DeleteItemCarritoController();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $form = $_POST["form"];
 
   if ($form == "comprar_carrito") {
-    $objComprarCarritoController->comprarCarrito($id_cliente);
+    // $objComprarCarritoController->comprarCarrito($id_cliente);
+
+    header('location: red.php');
   }
 
   if ($form == "cantidad_carrito") {
