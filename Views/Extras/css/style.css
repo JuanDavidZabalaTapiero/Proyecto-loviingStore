@@ -146,7 +146,7 @@ body{
     flex-wrap: nowrap;
     top: 80px;
     width: 490px;
-    height: 1080px;
+    height: 1200px;
     padding: 90px 50px;
     margin: 0 auto;
     display: block;
@@ -235,6 +235,12 @@ body{
     height: 15px;
     border: 1px solid rgba(128, 128, 128, 0.628);
 } 
+
+
+.diseño-captcha{
+    display: flex;
+    justify-content: center;
+}
 
 /* Responsive del formulario */
 @media(max-width: 507px) {

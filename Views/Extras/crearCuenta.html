@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.0-canary.13/tailwind.min.css">
     <title>Crear Cuenta</title>
 </head>
 
@@ -42,7 +43,7 @@
 
                 <label for="tipoDocumento">Tipo de Documento *</label>
                 <select name="tipoDocUser" id="tipoDocumento" class="formato" required>
-                    <option value="" disabled selected hidden>Tipo de ducumento</option>
+                    <option value="" disabled selected hidden>Tipo de documento</option>
                     <option value="C.C">C.C</option>
                     <option value="T.I">T.I</option>
                     <option value="DNI">DNI</option>
@@ -66,6 +67,9 @@
                 <input type="password" id="contraseña" class="formato" name="confirmarClaveUser"
                     placeholder="Confirme su contraseña" required><br>
 
+                    <div class="md-4 mx-auto">
+                        <div class="h-captcha diseño-captcha" data-sitekey="73eee0be-3188-483e-8106-cbce94d83e02"></div>
+                    </div>
                 <input type="checkbox" id="check" class="check" required>
                 <label for="check" class="checklabel">Acepto los términos y condiciones</label><br>
 
@@ -76,5 +80,6 @@
         </div>
     </section>
 </body>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
 </html>
