@@ -5,24 +5,28 @@ $id_cliente = $_SESSION["idUser"];
 
 $id_producto = $_GET["idProd"];
 
-require_once ('../../Controllers/Cliente/mostrarContenido.php');
+require_once('../../Controllers/Cliente/mostrarContenido.php');
 
-require_once ('../../Controllers/Cliente/mostrarInfoProducto.php');
+require_once('../../Controllers/Cliente/mostrarInfoProducto.php');
 
-require_once ('../../Models/consultasAdmin.php');
+require_once('../../Models/consultasAdmin.php');
 
-require_once ('../../Models/consultasCliente.php');
+require_once('../../Models/consultasCliente.php');
 
-require_once (__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
+require_once(__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
 $objContenidoCliente = new ContenidoCliente();
 
 // COMPRA
-require_once (__DIR__ . '/../../Controllers/Cliente/compraController.php');
+require_once(__DIR__ . '/../../Controllers/Cliente/compraController.php');
 $objCompraController = new CompraController();
 
 // AGREGAR ITEM AL CARRITO
-require_once (__DIR__ . '/../../Controllers/Cliente/agregarItemCarritoController.php');
+require_once(__DIR__ . '/../../Controllers/Cliente/agregarItemCarritoController.php');
 $objAgregarItemCarritoController = new AgregarItemCarritoController();
+
+// CREAR PREFERENCIA MERCADO PAGO
+require_once(__DIR__ . '/../../Controllers/Cliente/makePreference.php');
+$objCreatePreferenceMercadoPago = new CreatePreferenceMercadoPago();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$form = $_POST["form"];
@@ -32,7 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	if ($form == "comprar") {
 		// $objCompraController->comprarProducto($id_cliente, $id_producto, $cantidad);
 
-		header('location: red.php');
+		// header('location: red.php');
+
+		$objCreatePreferenceMercadoPago->makePreference($id_producto, $cantidad);
 	}
 
 	if ($form == "carrito") {
@@ -100,8 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<form>
 							<div class="form-row align-items-center">
 								<div class="form-group col-xl-6 col-lg-6 col-md-6">
-									<input type="text" class="form-control my-2 my-lg-0" id="inputtext4"
-										placeholder="¿Qué quieres buscar?">
+									<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="¿Qué quieres buscar?">
 								</div>
 								<div class="form-group col-xl-4 col-lg-4 col-md-6">
 									<select class="w-100 form-control my-2 my-lg-0">
