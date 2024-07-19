@@ -139,8 +139,8 @@ function formularioEditarPedidos($id_pedido)
             <input type="text" id="id_pedido" name="id_pedido" class="input" value="' . $tablaPedido["id_pedido"] . '" required readonly> 
           </div>
           <div class="col-md-6">
-            <label for="nombre_cliente">Nombre Cliente</label> <br>
-            <input type="text" id="nombre_cliente" name="nombre_cliente" class="input" value="' . $tablaPedido["nombre_cliente"] . '" required>
+            <label for="nombre_usuario">Nombre Cliente</label> <br>
+            <input type="text" id="nombre_usuario" name="nombre_usuario" class="input" value="' . $tablaPedido["nombre_cliente"] . '" required>
           </div>
           <div class="col-md-6">
             <label for="Fecha_pedido">Fecha</label> <br>

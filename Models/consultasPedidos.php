@@ -65,7 +65,7 @@ class ConsultasPedidos
     
 
     // UPDATE
-    public function actualizarPedido($id_pedido, $nuevo_cod_cliente, $nueva_fecha_pedido, $nuevo_total, $nuevo_cod_metodo_pago) {
+    public function actualizarPedido($id_pedido, $fecha_pedido, $total, $cod_metodo_pago, $nombre_usuario = null, $nombre_metodo = null) {
         $objConexionBd = new ConexionBd();
         $conexion = $objConexionBd->getConexion();
     
@@ -73,15 +73,28 @@ class ConsultasPedidos
             // Inicia una transacción
             $conexion->beginTransaction();
     
-            // Actualiza el pedido en tbl_pedidos
-            $sqlPedido = "UPDATE tbl_pedidos SET cod_cliente = :cod_cliente, fecha_pedido = :fecha_pedido, total = :total, cod_metodo_pago = :cod_metodo_pago WHERE id_pedido = :id_pedido";
-            $resultPedido = $conexion->prepare($sqlPedido);
-            $resultPedido->bindParam(":id_pedido", $id_pedido);
-            $resultPedido->bindParam(":cod_cliente", $nuevo_cod_cliente);
-            $resultPedido->bindParam(":fecha_pedido", $nueva_fecha_pedido);
-            $resultPedido->bindParam(":total", $nuevo_total);
-            $resultPedido->bindParam(":cod_metodo_pago", $nuevo_cod_metodo_pago);
-            $resultPedido->execute();
+    
+            // Actualiza el pedido, el usuario y el método de pago
+            $sqlActualizacion = "UPDATE tbl_pedidos p
+                                 JOIN tbl_usuarios u ON p.cod_cliente = u.id_usuario
+                                 JOIN tbl_metodo_pago m ON p.cod_metodo_pago = m.id_metodo
+                                 SET u.nombre_usuario = :nombre_usuario,
+                                     p.fecha_pedido = :fecha_pedido,
+                                     p.total = :total,
+                                     m.nombre_metodo = :nombre_metodo
+                                 WHERE p.id_pedido = :id_pedido;";
+    
+            $resultActualizacion = $conexion->prepare($sqlActualizacion);
+    
+            // Asigna valores a los parámetros de la consulta
+            $resultActualizacion->bindParam(":id_pedido", $id_pedido);
+            $resultActualizacion->bindParam(":nombre_usuario", $nombre_usuario);
+            $resultActualizacion->bindParam(":fecha_pedido", $fecha_pedido);
+            $resultActualizacion->bindParam(":total", $total);
+            $resultActualizacion->bindParam(":nombre_metodo", $nombre_metodo);
+               
+            // Ejecuta la consulta de actualización
+            $resultActualizacion->execute();
     
             // Confirma la transacción
             $conexion->commit();
@@ -89,7 +102,7 @@ class ConsultasPedidos
             echo '
             <script>
                 alert("Pedido actualizado correctamente.");
-                location.href="../../Views/Administrador/consultarProductos.php";
+                location.href="../../Views/Administrador/consultarPedidos.php";
             </script>
             ';
         } catch (Exception $e) {
@@ -98,7 +111,7 @@ class ConsultasPedidos
             echo '
             <script>
                 alert("Error al actualizar el pedido: ' . $e->getMessage() . '");
-                location.href="../../Views/Administrador/consultarProductos.php";
+                location.href="../../Views/Administrador/consultarPedidos.php";
             </script>
             ';
         }

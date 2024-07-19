@@ -15,23 +15,28 @@ if (!function_exists('formularioEditarPedidos')) {
                     <div class="row g-3 formulario">
                         <div class="col-md-12">
                             <label for="id_pedido">ID pedido</label> <br>
-                            <input type="text" id="id_pedido" name="id_pedido" class="input" value="' . $tablaPedido["id_pedido"] . '" required readonly> 
+                            <input type="text" id="id_pedido" name="id_pedido" class="input" value="' . htmlspecialchars($tablaPedido["id_pedido"], ENT_QUOTES, 'UTF-8') . '" required readonly> 
                         </div>
                         <div class="col-md-6">
-                            <label for="nombre_cliente">Nombre Cliente</label> <br>
-                            <input type="text" id="nombre_cliente" name="nombre_cliente" class="input" value="' . $tablaPedido["nombre_cliente"] . '" required>
+                            <label for="nombre_usuario">Nombre Cliente</label> <br>
+                            <input type="text" id="nombre_usuario" name="nombre_usuario" class="input" value="' . htmlspecialchars($tablaPedido["nombre_cliente"], ENT_QUOTES, 'UTF-8') . '" required>
                         </div>
                         <div class="col-md-6">
                             <label for="Fecha_pedido">Fecha</label> <br>
-                            <input type="date" id="Fecha_pedido" name="Fecha_pedido" class="input" value="' . $tablaPedido["fecha_pedido"] . '" required><br>
+                            <input type="date" id="Fecha_pedido" name="Fecha_pedido" class="input" value="' . htmlspecialchars($tablaPedido["fecha_pedido"], ENT_QUOTES, 'UTF-8') . '" required><br>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="total_pedido">Total</label> <br>
-                            <input type="number" id="total_pedido" name="total_pedido" class="input" value="' . $tablaPedido["total"] . '" required><br>               
+                            <input type="number" id="total_pedido" name="total_pedido" class="input" value="' . htmlspecialchars($tablaPedido["total"], ENT_QUOTES, 'UTF-8') . '" required><br>               
                         </div>
-                        <div class="col-md-12">
-                            <label for="metodo_pago">Metodo de pago</label> <br>
-                            <input type="text" id="metodo_pago" name="metodo_pago" class="input" value="' . $tablaPedido["metodo_pago"] . '" required><br>               
+                        <div class="col-md-6">
+                            <label for="metodo_pago">Metodo de Pago</label> <br>
+                            <select name="tipoDocUser" id="metodo_pago" class="input" required>
+                                <option value="' . $f["metodo_pago"] . '">' . $f["metodo_pago"] . '</option>
+                                <option value="PayPal">PayPal</option>
+                                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                                <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                            </select>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="form-button">Enviar</button>
@@ -44,3 +49,6 @@ if (!function_exists('formularioEditarPedidos')) {
     }
 }
 ?>
+
+<!-- Consulta sql usada para actualizar -->
+<!-- UPDATE tbl_pedidos p JOIN tbl_usuarios u ON p.cod_cliente = u.id_usuario JOIN tbl_metodo_pago m ON p.cod_metodo_pago = m.id_metodo SET u.nombre_usuario = 'Karen', p.fecha_pedido = '2024-07-19', p.total = 796259, m.nombre_metodo = 'Tarjeta de Crédito' WHERE p.id_pedido = 3;  -->
