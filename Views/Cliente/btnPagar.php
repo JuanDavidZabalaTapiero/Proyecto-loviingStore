@@ -23,6 +23,7 @@
         mp.bricks().create("wallet", "wallet_container", {
             initialization: {
                 preferenceId: preferenceId,
+                redirectMode: 'modal',
             },
         });
     </script>
