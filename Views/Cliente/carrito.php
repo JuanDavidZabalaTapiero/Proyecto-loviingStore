@@ -24,13 +24,19 @@ $objUpdateCantidadItemController = new UpdateCantidadItemController();
 require_once(__DIR__ . '/../../Controllers/Cliente/deleteItemCarritoController.php');
 $objDeleteItemCarritoController = new DeleteItemCarritoController();
 
+// CREAR PREFERENCIA MERCADO PAGO
+require_once(__DIR__ . '/../../Controllers/Cliente/makePreference.php');
+$objCreatePreferenceMercadoPago = new CreatePreferenceMercadoPago();
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $form = $_POST["form"];
 
   if ($form == "comprar_carrito") {
     // $objComprarCarritoController->comprarCarrito($id_cliente);
 
-    header('location: red.php');
+    // header('location: red.php');
+
+    $objCreatePreferenceMercadoPago->makePreferenceCarrito($id_cliente);
   }
 
   if ($form == "cantidad_carrito") {
