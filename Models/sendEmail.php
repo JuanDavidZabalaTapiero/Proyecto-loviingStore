@@ -1,10 +1,12 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
 
-require '../PHPMailer/Exception.php';
-require '../PHPMailer/PHPMailer.php';
-require '../PHPMailer/SMTP.php';
+// require '../PHPMailer/Exception.php';
+// require '../PHPMailer/PHPMailer.php';
+// require '../PHPMailer/SMTP.php';
+
+require_once ('conexionBd.php');
 
 class GenerarClave
 {
@@ -115,8 +117,85 @@ class GenerarClave
             <script>
                 alert("El usuario no se encuentra en el sistema")
                 location.href="../Views/Extras/iniciarSesion.php"
-            </>
+            </script>
             ';
         }
+    }
+
+    public function cambiarClave($numDoc, $claveActualHash, $claveNuevaHash, $claveNuevaVerificarHash){
+
+        $consulta = "SELECT clave_usuario FROM tbl_usuarios WHERE num_documento = :numDoc";
+
+        $objConexionBd = new ConexionBd();
+
+        $conexion = $objConexionBd->getConexion();
+
+        $result = $conexion->prepare($consulta);
+
+        $result->bindParam(":numDoc", $numDoc);
+
+        $result->execute();
+
+        $f = $result->fetch();
+
+        if($f['clave_usuario'] == $claveActualHash){
+            if($claveActualHash == $claveNuevaHash){
+                echo '
+                <script>
+                    alert("La contraseña ingresada ya esta registrada")
+                    location.href="../../Views/Cliente/user-profile.php"
+                </script>
+                ';
+            } elseif ($claveNuevaHash != $claveNuevaVerificarHash) {
+                echo '
+                <script>
+                    alert("Las contraseñas ingresadas no coinciden")
+                    location.href="../../Views/Cliente/user-profile.php"
+                </script>
+                ';
+            } else{
+                $sql = "UPDATE tbl_usuarios SET clave_usuario = :claveNueva WHERE num_documento = :numDoc";
+
+                $result = $conexion->prepare($sql);
+                $result->bindParam(":claveNueva", $claveNuevaHash);
+                $result->bindParam(":numDoc", $numDoc);
+
+                $result->execute();
+
+                echo '
+                <script>
+                    alert("Contraseña actualizada correctamente :D")
+                    location.href="../../Views/Cliente/user-profile.php"
+                </script>
+                ';
+            }
+        } else{
+            echo '
+            <script>
+                alert("La contraseña actual ingresada es erronea")
+                location.href="../../Views/Cliente/user-profile.php"
+            </script>
+            ';
+        }
+
+        // if ($contrasenaNueva != $contrasenaNuevaVerificar){
+        //     echo '
+        //     <script>
+        //         alert("Las contraseñas no coinciden")
+        //         location.href="../Views/Extras/iniciarSesi.php"
+        //     </>
+        //     ';
+        // } elif($contrasenaActual == ){
+
+        // }
+
+
+
+        // $sql = "UPDATE tbl_usuarios SET clave_usuario = :contrasenaNuevaHash WHERE num_documento = :numDoc";
+
+
+
+
+
     }
 }

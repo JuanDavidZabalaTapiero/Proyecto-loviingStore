@@ -427,21 +427,25 @@ function mostrarPerfilCliente()
 							<!-- Change Password -->
 							<div class="widget change-password">
 								<h3 class="widget-header user">Editar Contraseña</h3>
-								<form action="#">
+								<form action="../../Controllers/Cliente/cambiarContrasena.php">
+									<div class="form-group" style= "display: none;">
+										<label for="first-name">Número de documento</label>
+										<input type="number" class="form-control" id="first-name" value="' . $tblUser["num_documento"] . '"  name="numDoc" readonly>
+									</div>
 									<!-- Current Password -->
 									<div class="form-group">
-										<label for="current-password">Contraseña actual</label>
-										<input type="password" class="form-control" id="current-password">
+										<label for="current-password">Ingrese su contraseña actual</label>
+										<input type="password" class="form-control" id="current-password" name="contrasenaActual" required>
 									</div>
 									<!-- New Password -->
 									<div class="form-group">
 										<label for="new-password">Nueva contraseña</label>
-										<input type="password" class="form-control" id="new-password">
+										<input type="password" class="form-control" id="new-password" name="contrasenaNueva" required>
 									</div>
 									<!-- Confirm New Password -->
 									<div class="form-group">
 										<label for="confirm-password">Confirmar nueva contraseña</label>
-										<input type="password" class="form-control" id="confirm-password">
+										<input type="password" class="form-control" id="confirm-password" name="contrasenaNuevaVerificar" required>
 									</div>
 									<!-- Submit Button -->
 									<button class="btn btn-transparent">Cambiar contraseña</button>
