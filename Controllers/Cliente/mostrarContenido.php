@@ -343,7 +343,7 @@ function mostrarPerfilCliente()
 
 	$tblUser = $objConsultasAdmin->consultarUser($idUser);
 
-	echo '
+	?>
 	<section class="user-profile section">
 		<div class="container">
 			<div class="row">
@@ -353,10 +353,11 @@ function mostrarPerfilCliente()
 						<div class="widget user">
 							<!-- User Image -->
 							<div class="image d-flex justify-content-center">
-								<img src="../../Uploads/Usuarios/' . $tblUser["foto_usuario"] . '" alt="" class="w-100 h-100 rounded">
+								<img src="../../Uploads/Usuarios/<?php echo $tblUser["foto_usuario"] ?>" alt=""
+									class="w-100 h-100 rounded">
 							</div>
 							<!-- User Name -->
-							<h5 class="text-center">' . $tblUser["nombre_usuario"] . '</h5>
+							<h5 class="text-center"><?php echo $tblUser["nombre_usuario"] ?></h5>
 						</div>
 					</div>
 				</div>
@@ -365,40 +366,51 @@ function mostrarPerfilCliente()
 					<!-- Edit Profile Welcome Text -->
 					<div class="widget welcome-message">
 						<h2>Editar Perfil</h2>
-						<p>En este apartado puedes cambiar tu información personal, contraseña, email y foto de perfil sin ningún problema. 😊</p>
+						<p>En este apartado puedes cambiar tu información personal, contraseña, email y foto de perfil sin
+							ningún problema. 😊</p>
 					</div>
 					<!-- Edit Personal Info -->
 					<div class="row">
 						<div class="col-lg-6 col-md-6">
 							<div class="widget personal-info">
+
+								<!-- INFO PERSONAL -->
 								<h3 class="widget-header user">Información Personal</h3>
-								<form action="#">
+								<form action="" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="form" value="personal-info-client">
+
 									<!-- First Name -->
 									<div class="form-group">
 										<label for="first-name">Nombre de usuario</label>
-										<input type="text" class="form-control" id="first-name" value="' . $tblUser["nombre_usuario"] . '">
+										<input type="text" name="nombre_cliente" class="form-control" id="first-name"
+											value="<?php echo $tblUser["nombre_usuario"] ?>">
 									</div>
 
 									<!-- Last Name -->
 									<div class="form-group">
 										<label for="last-name">Género</label>
-										<select class="w-100">
-											<option value="' . $tblUser["genero"] . '">' . $tblUser["genero"] . '</option>
+										<select class="w-100" name="genero_cliente">
+											<option value="<?php echo $tblUser["genero"] ?>">
+												<?php echo $tblUser["genero"] ?>
+											</option>
 											<option value="Masculino">Masculino</option>
-                    						<option value="Femenino">Femenino</option>
-                    						<option value="Otro">Otro</option>
+											<option value="Femenino">Femenino</option>
+											<option value="Otro">Otro</option>
 										</select>
 									</div>
 
 									<div class="form-group">
 										<label for="first-name">Fecha de nacimiento</label>
-										<input type="date" class="form-control" id="first-name" value="' . $tblUser["fecha_nacimiento"] . '">
+										<input type="date" name="fecha_nacimiento_cliente" class="form-control" id="first-name"
+											value="<?php echo $tblUser["fecha_nacimiento"] ?>">
 									</div>
 
 									<div class="form-group">
 										<label for="first-name" class="d-block">Tipo de documento</label>
-										<select class="w-100">
-											<option>' . $tblUser["tipo_documento"] . '</option>
+										<select class="w-100" name="tipo_doc_cliente">
+											<option value="<?php echo $tblUser["tipo_documento"] ?>">
+												<?php echo $tblUser["tipo_documento"] ?>
+											</option>
 											<option value="C.C">C.C</option>
 											<option value="T.I">T.I</option>
 											<option value="DNI">DNI</option>
@@ -409,13 +421,14 @@ function mostrarPerfilCliente()
 
 									<div class="form-group">
 										<label for="first-name">Número de documento</label>
-										<input type="number" class="form-control" id="first-name" value="' . $tblUser["num_documento"] . '" readonly>
+										<input type="number" name="num_documento" class="form-control" id="first-name"
+											value="<?php echo $tblUser["num_documento"] ?>" readonly>
 									</div>
 
 									<!-- File chooser -->
 									<div class="form-group choose-file d-inline-flex">
 										<i class="fa fa-user text-center px-3"></i>
-										<input type="file" class="form-control-file mt-2 pt-1" id="input-file">
+										<input type="file" name="img_perfil_cliente" class="form-control-file mt-2 pt-1" id="input-file" accept=".jpg, .jpeg, .png, .gif, .webp">
 									</div>
 
 									<!-- Submit button -->
@@ -428,24 +441,28 @@ function mostrarPerfilCliente()
 							<div class="widget change-password">
 								<h3 class="widget-header user">Editar Contraseña</h3>
 								<form action="../../Controllers/Cliente/cambiarContrasena.php">
-									<div class="form-group" style= "display: none;">
+									<div class="form-group" style="display: none;">
 										<label for="first-name">Número de documento</label>
-										<input type="number" class="form-control" id="first-name" value="' . $tblUser["num_documento"] . '"  name="numDoc" readonly>
+										<input type="number" class="form-control" id="first-name"
+											value="<?php echo $tblUser["num_documento"] ?>" name="numDoc" readonly>
 									</div>
 									<!-- Current Password -->
 									<div class="form-group">
 										<label for="current-password">Ingrese su contraseña actual</label>
-										<input type="password" class="form-control" id="current-password" name="contrasenaActual" required>
+										<input type="password" class="form-control" id="current-password"
+											name="contrasenaActual" required>
 									</div>
 									<!-- New Password -->
 									<div class="form-group">
 										<label for="new-password">Nueva contraseña</label>
-										<input type="password" class="form-control" id="new-password" name="contrasenaNueva" required>
+										<input type="password" class="form-control" id="new-password" name="contrasenaNueva"
+											required>
 									</div>
 									<!-- Confirm New Password -->
 									<div class="form-group">
 										<label for="confirm-password">Confirmar nueva contraseña</label>
-										<input type="password" class="form-control" id="confirm-password" name="contrasenaNuevaVerificar" required>
+										<input type="password" class="form-control" id="confirm-password"
+											name="contrasenaNuevaVerificar" required>
 									</div>
 									<!-- Submit Button -->
 									<button class="btn btn-transparent">Cambiar contraseña</button>
@@ -460,7 +477,8 @@ function mostrarPerfilCliente()
 									<!-- Current Password -->
 									<div class="form-group">
 										<label for="current-email">Email actual</label>
-										<input type="email" class="form-control" id="current-email" value="' . $tblUser["email_usuario"] . '" readonly>
+										<input type="email" class="form-control" id="current-email"
+											value="<?php echo $tblUser["email_usuario"] ?>" readonly>
 									</div>
 									<!-- New email -->
 									<div class="form-group">
@@ -477,7 +495,7 @@ function mostrarPerfilCliente()
 			</div>
 		</div>
 	</section>
-	';
+	<?php
 }
 
 function mostrarCarritoCliente()

@@ -2,8 +2,54 @@
 
 require_once ('conexionBd.php');
 
+require_once (__DIR__ . '/prepararConsulta.php');
+
 class ConsultasCliente
 {
+    public $objPrepararConsulta;
+
+    public function __construct()
+    {
+        $this->objPrepararConsulta = new PrepararConsulta();
+    }
+
+    // CREATE
+
+    // READ
+
+    // UPDATE
+    public function updateCliente($num_documento, $nombre_usuario, $genero_cliente, $fecha_nacimiento_cliente, $tipo_doc_cliente, $img_perfil_cliente = null)
+    {
+        // Construye la consulta SQL
+        $updateCliente = "UPDATE tbl_usuarios SET nombre_usuario = :nombre_usuario, genero = :genero, fecha_nacimiento = :fecha_nacimiento, tipo_documento = :tipo_documento";
+
+        if ($img_perfil_cliente) {
+            // Si hay imagen, añade el campo de imagen a la consulta
+            $updateCliente .= ", foto_usuario = :img_perfil_cliente";
+        }
+
+        $updateCliente .= " WHERE num_documento = :num_documento";
+
+        // Prepara los valores para enlazar
+        $bindValues = [
+            ':nombre_usuario' => $nombre_usuario,
+            ':num_documento' => $num_documento,
+            ':genero' => $genero_cliente,
+            ':fecha_nacimiento' => $fecha_nacimiento_cliente,
+            ':tipo_documento' => $tipo_doc_cliente
+        ];
+
+        if ($img_perfil_cliente) {
+            // Si hay imagen, añade el valor del archivo a los valores de enlace
+            $bindValues[':img_perfil_cliente'] = $img_perfil_cliente;
+        }
+
+        // Ejecuta la consulta con los valores preparados
+        $this->objPrepararConsulta->prepararConsulta($updateCliente, $bindValues);
+    }
+
+    // DELETE
+
     // CARRITO
     public function agregarProductoCarrito($cod_cliente, $fecha_creacion, $cod_producto, $cantidad)
     {
