@@ -157,7 +157,7 @@ function mostrarHeaderCliente()
                                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="user-profile.php"
                                         data-bs-toggle="dropdown">
                                         <img src="../../Uploads/Usuarios/' . $tablaIndUsuario["foto_usuario"] . '" alt="Profile" class="rounded border mr-2"
-                                            width="70px">
+                                            width="70px" style="max-height: 50px; object-fit: contain; object-position: center;">
                                         <span class="d-none d-md-block dropdown-toggle ps-2">' .
 			$tablaIndUsuario["nombre_usuario"] . '</span>
                                     </a><!-- End Profile Iamge Icon -->
@@ -401,8 +401,8 @@ function mostrarPerfilCliente()
 
 									<div class="form-group">
 										<label for="first-name">Fecha de nacimiento</label>
-										<input type="date" name="fecha_nacimiento_cliente" class="form-control" id="first-name"
-											value="<?php echo $tblUser["fecha_nacimiento"] ?>">
+										<input type="date" name="fecha_nacimiento_cliente" class="form-control"
+											id="first-name" value="<?php echo $tblUser["fecha_nacimiento"] ?>">
 									</div>
 
 									<div class="form-group">
@@ -428,7 +428,8 @@ function mostrarPerfilCliente()
 									<!-- File chooser -->
 									<div class="form-group choose-file d-inline-flex">
 										<i class="fa fa-user text-center px-3"></i>
-										<input type="file" name="img_perfil_cliente" class="form-control-file mt-2 pt-1" id="input-file" accept=".jpg, .jpeg, .png, .gif, .webp">
+										<input type="file" name="img_perfil_cliente" class="form-control-file mt-2 pt-1"
+											id="input-file" accept=".jpg, .jpeg, .png, .gif, .webp">
 									</div>
 
 									<!-- Submit button -->
