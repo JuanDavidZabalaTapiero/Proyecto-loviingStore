@@ -45,4 +45,19 @@ class ConsultasInventario
     // UPDATE
 
     // DELETE
+    public function deleteInv($id_inv){
+        $deleteInv = "DELETE FROM tbl_inventario WHERE id_inv = :id_inv";
+
+        $bindValues = [
+            ':id_inv' => $id_inv
+        ];
+
+        $this->objPrepararConsulta->prepararConsulta($deleteInv, $bindValues);
+
+        ?>
+        <script>
+            alert('Registro del inventario eliminado');
+        </script>
+        <?php
+    }
 }

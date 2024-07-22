@@ -10,6 +10,16 @@ $objContenidoAdmin = new ContenidoAdmin();
 require_once (__DIR__ . '/../../Controllers/Administrador/tblInventarioController.php');
 $objTblInventarioController = new TblInventarioController();
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $form = $_POST["form"];
+
+    $id_inv = $_POST["id_inv"];
+
+    if ($form == "del_inv") {
+        $objTblInventarioController->deleteInv($id_inv);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
