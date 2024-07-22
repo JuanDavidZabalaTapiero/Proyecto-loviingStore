@@ -9,74 +9,72 @@ function formularioRegistrarProducto()
 
   $tablaCat = $objConsultasAdmin->consultarCategorias();
 
-  echo '
-        <form action="../../Controllers/Administrador/registrarProducto.php" class="form" method="post"
-            enctype="multipart/form-data">
+  ?>
+  <form action="../../Controllers/Administrador/registrarProducto.php" class="form" method="post"
+    enctype="multipart/form-data">
 
-            <div class="row g-3 formulario">
-              <div class="col-md-6">
-                <label for="nombreProd">Nombre del Producto</label> <br>
-                <input type="text" id="nombreProd" name="nombreProd" class="input"
-                  required>
-              </div>
+    <div class="row g-3 formulario">
+      <div class="col-md-3">
+        <label for="nombreProd">Nombre del Producto</label> <br>
+        <input type="text" id="nombreProd" name="nombreProd" class="input" required>
+      </div>
 
-              <div class="col-md-6">
-                <label for="catProd">Categoría</label> <br>
-                <select name="catProd" id="catProd" class="input" required>
+      <div class="col-md-3">
+        <label for="catProd">Categoría</label> <br>
+        <select name="catProd" id="catProd" class="input" required>
 
-                  <option>Elegir Categoría</option>
-                  ';
-                  foreach ($tablaCat as $f) {
-                    echo '
-                    <option value="' . $f["id_categoria"] . '">' . $f["nombre_categoria"] . '</option>
-                    ';
-                  }
-                  echo '
-                </select>
-              </div>
+          <option>Elegir Categoría</option>
+          <?php
+          foreach ($tablaCat as $f) {
 
-              <div class="col-md-6">
-                <label for="precioProd">Precio</label> <br>
-                <input type="number" id="precioProd" name="precioProd" class="input"
-                  required><br>
-              </div>
+            ?>
+            <option value="<?php echo $f["id_categoria"] ?>"><?php echo $f["nombre_categoria"] ?></option>
+            <?php
+          }
+          ?>
+        </select>
+      </div>
 
-              <div class="col-md-2">
-                <label for="entradasProd">Entradas</label> <br>
-                <input type="number" id="entradasProd" name="entradasProd" class="input"
-                  required>
-              </div>
+      <div class="col-md-3">
+        <label for="precioProd">Precio</label> <br>
+        <input type="number" id="precioProd" name="precioProd" class="input" required><br>
+      </div>
 
-              <div class="col-md-2">
-                <label for="salidasProd">Salidas</label> <br>
-                <input type="number" id="salidasProd" name="salidasProd" class="input"
-                  required>
-              </div>
+      <div class="col-md-3">
+        <label for="stockProd">Stock del Producto</label> <br>
+        <input type="number" id="stockProd" name="stockProd" class="input" required>
+      </div>
 
-              <div class="col-md-2">
-                <label for="stockProd">Stock del Producto</label> <br>
-                <input type="number" id="stockProd" name="stockProd" class="input"
-                  required>
-              </div>
+      <div class="col-md-12">
+        <label for="descProd">Descripción del Producto</label> <br>
+        <textarea name="descProd" class="input" required></textarea>
+      </div>
 
-              <div class="col-md-12">
-                <label for="descProd">Descripción del Producto</label> <br>
-                <textarea name="descProd" class="input" required></textarea>
-              </div>
+      <div class="col-md-4">
+        <label for="foto1_producto">Foto 1 del Producto</label>
+        <input class="form-control input" type="file" id="foto1_producto" name="foto1_producto"
+          accept=".png, .jpg, .jpeg, .gif, .webp">
+      </div>
 
-              <div class="col-md-12">
-                <label for="foto1_producto">Foto 1 del Producto</label>
-                <input class="form-control input" type="file" id="foto1_producto" name="foto1_producto"
-                  accept=".png, .jpg, .jpeg, .gif, .webp">
-              </div>
+      <div class="col-md-4">
+        <label for="foto2_producto">Foto 2 del Producto</label>
+        <input class="form-control input" type="file" id="foto2_producto" name="foto2_producto"
+          accept=".png, .jpg, .jpeg, .gif, .webp">
+      </div>
 
-              <div class="text-center">
-                <button type="submit" class="form-button">Envíar</button>
-              </div>
+      <div class="col-md-4">
+        <label for="foto3_producto">Foto 3 del Producto</label>
+        <input class="form-control input" type="file" id="foto3_producto" name="foto3_producto"
+          accept=".png, .jpg, .jpeg, .gif, .webp">
+      </div>
 
-            </div>
-          </form>
-    ';
+      <div class="text-center">
+        <button type="submit" class="form-button">Envíar</button>
+      </div>
+
+    </div>
+  </form>
+  <?php
 }
 
 function formularioEditarProducto($id_producto)
@@ -117,12 +115,12 @@ function formularioEditarProducto($id_producto)
 
                   <option value="' . $tablaIndCat["id_categoria"] . '">' . $tablaIndCat["nombre_categoria"] . '</option>
                   ';
-                  foreach ($tablaCat as $f) {
-                    echo '
+  foreach ($tablaCat as $f) {
+    echo '
                     <option value="' . $f["id_categoria"] . '">' . $f["nombre_categoria"] . '</option>
                     ';
-                  }
-                  echo '
+  }
+  echo '
                 </select>
               </div>
 

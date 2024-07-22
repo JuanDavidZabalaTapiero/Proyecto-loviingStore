@@ -303,7 +303,7 @@ class ConsultasAdmin
         }
     }
 
-    public function registrarProducto($codCat, $nombre, $desc, $precio, $entradas, $salidas, $stock, $fecha, $foto1_producto)
+    public function registrarProducto($codCat, $nombre, $desc, $precio, $stock, $fecha, $foto1_producto, $foto2_producto, $foto3_producto)
     {
         // tbl_productos
         $sql = "INSERT INTO tbl_productos
@@ -311,13 +311,19 @@ class ConsultasAdmin
         nombre_producto, 
         descripcion_producto, 
         precio_producto,
-        foto1_producto) 
+        foto1_producto,
+        foto2_producto,
+        foto3_producto,
+        stock) 
         VALUES 
         (:codCat,
         :nombre,
         :desc,
         :precio,
-        :foto1_producto)";
+        :foto1_producto,
+        :foto2_producto,
+        :foto3_producto,
+        :stock)";
 
         $objConexionBd = new ConexionBd();
 
@@ -330,6 +336,9 @@ class ConsultasAdmin
         $result->bindParam(":desc", $desc);
         $result->bindParam(":precio", $precio);
         $result->bindParam(":foto1_producto", $foto1_producto);
+        $result->bindParam(":foto2_producto", $foto2_producto);
+        $result->bindParam(":foto3_producto", $foto3_producto);
+        $result->bindParam(":stock", $stock);
 
         $result->execute(); 
 
@@ -337,22 +346,25 @@ class ConsultasAdmin
 
         // tbl_inventario
         $sql2 = "INSERT INTO tbl_inventario
-        (cod_producto, 
-        entradas, 
-        salidas, 
+        (cod_producto,
+        entradas,
+        salidas,  
         stock, 
         fecha) 
         VALUES 
         (:cod_producto, 
-        :entradas, 
+        :entradas,
         :salidas, 
         :stock, 
         :fecha)";
 
         $result2 = $conexion->prepare($sql2);
 
+        // VALOR POR DEFAULT
+        $salidas = 0;
+
         $result2->bindParam(":cod_producto", $cod_producto);
-        $result2->bindParam(":entradas", $entradas);
+        $result2->bindParam(":entradas", $stock);
         $result2->bindParam(":salidas", $salidas);
         $result2->bindParam(":stock", $stock);
         $result2->bindParam(":fecha", $fecha);

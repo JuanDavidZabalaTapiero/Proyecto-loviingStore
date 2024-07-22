@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2024 a las 16:00:04
+-- Tiempo de generación: 22-07-2024 a las 21:12:55
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,7 +63,8 @@ CREATE TABLE `tbl_carrito` (
 --
 
 INSERT INTO `tbl_carrito` (`id_carrito`, `cod_cliente`, `fecha_creacion`, `compra_realizada`) VALUES
-(3, 5, NULL, 'Si');
+(3, 5, NULL, 'Si'),
+(4, 5, '2024-07-20', 'No');
 
 -- --------------------------------------------------------
 
@@ -139,6 +140,14 @@ CREATE TABLE `tbl_elementos_carrito` (
   `cantidad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `tbl_elementos_carrito`
+--
+
+INSERT INTO `tbl_elementos_carrito` (`id_elemento_carrito`, `cod_carrito`, `cod_producto`, `cantidad`) VALUES
+(7, 4, 3, 2),
+(8, 4, 1, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -172,10 +181,9 @@ CREATE TABLE `tbl_inventario` (
 --
 
 INSERT INTO `tbl_inventario` (`id_inv`, `cod_producto`, `entradas`, `salidas`, `stock`, `fecha`) VALUES
-(1, 1, 0, 0, 7, '2024-06-20'),
+(1, 1, 7, 0, 7, '2024-06-20'),
 (2, 2, 10, 0, 10, '2024-06-20'),
-(3, 3, 5, 0, 5, '2024-06-20'),
-(4, 4, 21, 0, 21, '2024-06-20');
+(3, 3, 5, 0, 5, '2024-06-20');
 
 -- --------------------------------------------------------
 
@@ -193,7 +201,7 @@ CREATE TABLE `tbl_metodo_pago` (
 --
 
 INSERT INTO `tbl_metodo_pago` (`id_metodo`, `nombre_metodo`) VALUES
-(1, 'Tarjeta de Crédito'),
+(1, NULL),
 (2, 'PayPal'),
 (3, 'Transferencia Bancaria');
 
@@ -216,7 +224,7 @@ CREATE TABLE `tbl_pedidos` (
 --
 
 INSERT INTO `tbl_pedidos` (`id_pedido`, `cod_cliente`, `fecha_pedido`, `total`, `cod_metodo_pago`) VALUES
-(1, 1, '2024-07-01', 66990, 1),
+(1, 1, '0000-00-00', 2024, 1),
 (2, 2, '2024-07-02', 39900, 2),
 (3, 4, '2024-07-03', 51900, 1),
 (4, 5, '2024-07-04', 16900, 3),
@@ -235,6 +243,8 @@ CREATE TABLE `tbl_productos` (
   `descripcion_producto` varchar(250) DEFAULT NULL,
   `precio_producto` float NOT NULL,
   `foto1_producto` varchar(200) NOT NULL,
+  `foto2_producto` varchar(255) NOT NULL,
+  `foto3_producto` varchar(255) NOT NULL,
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -242,11 +252,11 @@ CREATE TABLE `tbl_productos` (
 -- Volcado de datos para la tabla `tbl_productos`
 --
 
-INSERT INTO `tbl_productos` (`id_producto`, `cod_categoria`, `nombre_producto`, `descripcion_producto`, `precio_producto`, `foto1_producto`, `stock`) VALUES
-(1, 3, 'Cepillo Quita Nudos Deslanador Para Pelo Raza Grande', 'Cepillo deslanador ideal para perros, gatos y conejos de pelo medio a largo. Ayuda a quitar los nudos que se forman en el pelo y a eliminar el pelo muerto evitando que este se acumule, es ideal para las etapas de muda.', 24990, 'Cepillo-Quita-Nudos-Deslanador-Para-Pelo-Raza-Grande.webp', 6),
-(2, 2, 'Juguete Para Gatos, Pista De Tres Niveles, Mascotas', 'En Loviing Store, tus mascotas siempre serán importantes. Los especialistas recomiendan al menos dos sesiones de juego al día con tu gato, ya que esto es muy beneficioso para su salud debido a que lo anima a estar activo, a permanecer ágil y a manten', 39900, 'Juguete Para Gatos, Pista De Tres Niveles, Mascotas.webp', 45),
-(3, 4, 'Camión Cisterna De Impulsó Regalo Niños', 'Diviértete jugando con tus amigos con este Camión Cisterna modelo a escala de 1:50, el camión está hecho de aleación de alta calidad, seguro, duradero y resistente a caídas.', 51900, 'Camión Cisterna De Impulsó Regalo Niños.webp', 30),
-(4, 5, 'Limador Eléctrico De Uñas Para Mascota Perros Gatos', '- Limador Eléctrico.\r\n- Funciona con 2 pilas AA.\r\n- Redondea y Alisa las uñas de su mascota.\r\n- Incluye 3 limas.\r\n\r\nMEDIDAS:\r\nAncho: 2cm\r\nAlto: 17cm\r\nLimador Eléctrico de uñas ideal para tu Mascota.', 16900, 'Limador Eléctrico De Uñas Para Mascota Perros Gatos.webp', 40);
+INSERT INTO `tbl_productos` (`id_producto`, `cod_categoria`, `nombre_producto`, `descripcion_producto`, `precio_producto`, `foto1_producto`, `foto2_producto`, `foto3_producto`, `stock`) VALUES
+(1, 3, 'Cepillo Quita Nudos Deslanador Para Pelo Raza Grande', 'Cepillo deslanador ideal para perros, gatos y conejos de pelo medio a largo. Ayuda a quitar los nudos que se forman en el pelo y a eliminar el pelo muerto evitando que este se acumule, es ideal para las etapas de muda.', 24990, 'Cepillo-Quita-Nudos-Deslanador-Para-Pelo-Raza-Grande.webp', '', '', 6),
+(2, 2, 'Juguete Para Gatos, Pista De Tres Niveles, Mascotas', 'En Loviing Store, tus mascotas siempre serán importantes. Los especialistas recomiendan al menos dos sesiones de juego al día con tu gato, ya que esto es muy beneficioso para su salud debido a que lo anima a estar activo, a permanecer ágil y a manten', 39900, 'Juguete Para Gatos, Pista De Tres Niveles, Mascotas.webp', '', '', 45),
+(3, 4, 'Camión Cisterna De Impulsó Regalo Niños', 'Diviértete jugando con tus amigos con este Camión Cisterna modelo a escala de 1:50, el camión está hecho de aleación de alta calidad, seguro, duradero y resistente a caídas.', 51900, 'Camión Cisterna De Impulsó Regalo Niños.webp', '', '', 30),
+(4, 5, 'Limador Eléctrico De Uñas Para Mascota Perros Gatos', '- Limador Eléctrico.\r\n- Funciona con 2 pilas AA.\r\n- Redondea y Alisa las uñas de su mascota.\r\n- Incluye 3 limas.\r\n\r\nMEDIDAS:\r\nAncho: 2cm\r\nAlto: 17cm\r\nLimador Eléctrico de uñas ideal para tu Mascota.', 16900, 'Limador Eléctrico De Uñas Para Mascota Perros Gatos.webp', '', '', 40);
 
 -- --------------------------------------------------------
 
@@ -307,7 +317,7 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `genero`, `fecha_nacimiento`, `tipo_documento`, `num_documento`, `email_usuario`, `clave_usuario`, `rol_usuario`, `estado_usuario`, `foto_usuario`, `fecha_creacion`) VALUES
-(1, 'Juan', 'Masculino', '2024-05-27', 'C.C', '123', 'juandavidzabalatapiero@gmail.com', '202cb962ac59075b964b07152d234b70', 'Cliente', 'Activo', 'goku.jpg', '2024-05-28'),
+(1, 'Tarjeta de Crédito', 'Masculino', '2024-05-27', 'C.C', '123', 'juandavidzabalatapiero@gmail.com', '202cb962ac59075b964b07152d234b70', 'Cliente', 'Activo', 'goku.jpg', '2024-05-28'),
 (2, 'Jean Carlos', 'Masculino', '2024-05-27', 'C.C', '321', 'b@b', '202cb962ac59075b964b07152d234b70', 'Administrador', 'Activo', 'humungosaurio.png', '2024-05-28'),
 (4, 'Karen', 'Femenino', '2024-05-27', 'C.C', '1234', 'kardanielabustospi@gmail.com', '334a25d552ebfd7c012ab097d745e703', 'Cliente', 'Activo', 'eco eco.jpg', '2024-05-28'),
 (5, 'Joseph', 'Masculino', '2024-06-04', 'C.C', '312', 'j@j', '950a4152c2b4aa3ad78bdd6b366cc179', 'Cliente', 'Activo', 'goat.jpg', '2024-06-05');
@@ -450,7 +460,7 @@ ALTER TABLE `rating_productos`
 -- AUTO_INCREMENT de la tabla `tbl_carrito`
 --
 ALTER TABLE `tbl_carrito`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_categorias`
@@ -474,7 +484,7 @@ ALTER TABLE `tbl_detalle_pedidos`
 -- AUTO_INCREMENT de la tabla `tbl_elementos_carrito`
 --
 ALTER TABLE `tbl_elementos_carrito`
-  MODIFY `id_elemento_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_elemento_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_facturas`
@@ -486,7 +496,7 @@ ALTER TABLE `tbl_facturas`
 -- AUTO_INCREMENT de la tabla `tbl_inventario`
 --
 ALTER TABLE `tbl_inventario`
-  MODIFY `id_inv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_inv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_metodo_pago`
@@ -504,7 +514,7 @@ ALTER TABLE `tbl_pedidos`
 -- AUTO_INCREMENT de la tabla `tbl_productos`
 --
 ALTER TABLE `tbl_productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_proveedor`

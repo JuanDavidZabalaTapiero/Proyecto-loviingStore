@@ -426,6 +426,7 @@ function mostrarPerfilCliente()
 									</div>
 
 									<!-- File chooser -->
+									<label for="input-file">Foto de perfil</label>
 									<div class="form-group choose-file d-inline-flex">
 										<i class="fa fa-user text-center px-3"></i>
 										<input type="file" name="img_perfil_cliente" class="form-control-file mt-2 pt-1"
