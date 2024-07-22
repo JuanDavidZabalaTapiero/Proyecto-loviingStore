@@ -90,7 +90,8 @@ function cargarUser($idUser)
 }
 
 // HOME DEL ADMIN
-function cargarHeaderAdmin(){
+function cargarHeaderAdmin()
+{
   echo '
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
@@ -259,9 +260,9 @@ function cargarHeaderAdmin(){
         </li><!-- End Messages Nav -->
         ';
 
-        cargarPerfilAdmin();
-        
-        echo '
+  cargarPerfilAdmin();
+
+  echo '
       </ul>
     </nav><!-- End Icons Navigation -->
 
@@ -335,9 +336,10 @@ function cargarPerfilAdmin()
     ';
 }
 
-function cargarMenuAdmin(){
+function cargarMenuAdmin()
+{
 
-  echo '
+  ?>
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -366,18 +368,12 @@ function cargarMenuAdmin(){
               <i class="fa-solid fa-circle"></i><span>Registrar</span>
             </a>
           </li>
-
-          <li>
-            <a href="../Dashboard/reporte_productos.php">
-              <i class="fa-solid fa-circle"></i><span>Reporte</span>
-            </a>
-          </li>
         </ul>
       </li><!-- End programacion trimestral Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#formacion-nav" data-bs-toggle="collapse" href="#">
-          <i class="fa-solid fa-user-minus"></i>
+          <i class="fa-solid fa-user"></i>
           <span>Gestión de Proveedores</span><i class="fa-solid fa-chevron-down ms-auto"></i>
         </a>
         <ul id="formacion-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -390,12 +386,6 @@ function cargarMenuAdmin(){
           <li>
             <a href="registrarProveedor.php">
               <i class="fa-solid fa-circle"></i><span>Registrar</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="../Dashboard/reporte_proveedores.php">
-              <i class="fa-solid fa-circle"></i><span>Reporte</span>
             </a>
           </li>
         </ul>
@@ -418,12 +408,6 @@ function cargarMenuAdmin(){
               <i class="fa-solid fa-circle"></i><span>Registrar</span>
             </a>
           </li>
-
-          <li>
-            <a href="../Dashboard/reporte_categoría.php">
-              <i class="fa-solid fa-circle"></i><span>Reporte</span>
-            </a>
-          </li>
         </ul>
       </li><!-- End fichas Nav -->
 
@@ -444,12 +428,6 @@ function cargarMenuAdmin(){
               <i class="fa-solid fa-circle"></i><span>Registrar</span>
             </a>
           </li>
-
-          <li>
-            <a href="../Dashboard/reporte_usuarios.php">
-              <i class="fa-solid fa-circle"></i><span>Reporte</span>
-            </a>
-          </li>
         </ul>
       </li><!-- End instructores Nav -->
 
@@ -464,18 +442,12 @@ function cargarMenuAdmin(){
               <i class="fa-solid fa-circle"></i><span>Consultar</span>
             </a>
           </li>
-
-          <li>
-            <a href="../Dashboard/reporte_pedidos.php">
-              <i class="fa-solid fa-circle"></i><span>Reporte</span>
-            </a>
-          </li>
         </ul>
       </li><!-- End Icons Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#Pedidos-nav" data-bs-toggle="collapse" href="#">
-          <i class="fa-solid fa-user-minus"></i>
+          <i class="fa-solid fa-truck"></i>
           <span>Gestión de Pedidos</span><i class="fa-solid fa-chevron-down ms-auto"></i>
         </a>
         <ul id="Pedidos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -488,11 +460,27 @@ function cargarMenuAdmin(){
         </ul>
       </li><!-- End programas de formacion Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#Inventario-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa-solid fa-receipt"></i>
+          <span>Gestión de Inventario</span><i class="fa-solid fa-chevron-down ms-auto"></i>
+        </a>
+        <ul id="Inventario-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="consultarInventario.php">
+              <i class="fa-solid fa-circle"></i><span>Consultar</span>
+            </a>
+          </li>
+
+        </ul>
+      </li><!-- End programas de formacion Nav -->
+
   </aside><!-- End Sidebar-->
-  ';
+  <?php
 }
 
-function cargarFooterAdmin(){
+function cargarFooterAdmin()
+{
   echo '
   <footer id="footer" class="footer">
     <div class="copyright">
@@ -509,20 +497,21 @@ function cargarFooterAdmin(){
 }
 
 // PERFIL DEL ADMIN
-function cargarCardPerfilAdmin(){
+function cargarCardPerfilAdmin()
+{
 
   $idUser = $_SESSION["idUser"];
 
   $objConsultasAdmin = new ConsultasAdmin();
 
   $f = $objConsultasAdmin->consultarUser($idUser);
-  
+
   echo '
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="../../Uploads/Usuarios/'.$f["foto_usuario"].'" alt="Profile" class="rounded-circle">
-              <h2>'.$f["nombre_usuario"].'</h2>
-              <h3>'.$f["rol_usuario"].'</h3>
+              <img src="../../Uploads/Usuarios/' . $f["foto_usuario"] . '" alt="Profile" class="rounded-circle">
+              <h2>' . $f["nombre_usuario"] . '</h2>
+              <h3>' . $f["rol_usuario"] . '</h3>
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -533,7 +522,8 @@ function cargarCardPerfilAdmin(){
   ';
 }
 
-function cargarOverviewAdmin(){
+function cargarOverviewAdmin()
+{
 
   $idUser = $_SESSION["idUser"];
 
@@ -548,47 +538,48 @@ function cargarOverviewAdmin(){
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nombre</div>
-                    <div class="col-lg-9 col-md-8">'.$tablaUsuario["nombre_usuario"].'</div>
+                    <div class="col-lg-9 col-md-8">' . $tablaUsuario["nombre_usuario"] . '</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Genero</div>
-                    <div class="col-lg-9 col-md-8">'.$tablaUsuario["genero"].'</div>
+                    <div class="col-lg-9 col-md-8">' . $tablaUsuario["genero"] . '</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Fecha de Nacimiento</div>
-                    <div class="col-lg-9 col-md-8">'.$tablaUsuario["fecha_nacimiento"].'</div>
+                    <div class="col-lg-9 col-md-8">' . $tablaUsuario["fecha_nacimiento"] . '</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Tipo de Doc</div>
-                    <div class="col-lg-9 col-md-8">'.$tablaUsuario["tipo_documento"].'</div>
+                    <div class="col-lg-9 col-md-8">' . $tablaUsuario["tipo_documento"] . '</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Número de Doc</div>
-                    <div class="col-lg-9 col-md-8">'.$tablaUsuario["num_documento"].'</div>
+                    <div class="col-lg-9 col-md-8">' . $tablaUsuario["num_documento"] . '</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">'.$tablaUsuario["email_usuario"].'</div>
+                    <div class="col-lg-9 col-md-8">' . $tablaUsuario["email_usuario"] . '</div>
                   </div>
 
                 </div>
   ';
 }
 
-function cargarEditarPerfilAdmin(){
-  
+function cargarEditarPerfilAdmin()
+{
+
   $idUser = $_SESSION["idUser"];
 
   $objConsultasAdmin = new ConsultasAdmin();
 
   // TBL USUARIOS
   $tablaUsuario = $objConsultasAdmin->consultarUser($idUser);
-  
+
   $tablaUsuarios = $objConsultasAdmin->consultarUsers();
 
   echo '
@@ -596,7 +587,7 @@ function cargarEditarPerfilAdmin(){
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Imagen de Perfil</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="../../Uploads/Usuarios/'.$tablaUsuario["foto_usuario"].'" alt="Profile">
+                        <img src="../../Uploads/Usuarios/' . $tablaUsuario["foto_usuario"] . '" alt="Profile">
                         <div class="pt-2">
                           <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                           <a href="../../Controllers/Administrador/eliminarUser.php?idUser=' . $tablaUsuario["id_usuario"] . '" class="btn btn-danger btn-sm" title="Remove my profile image"><i
@@ -608,21 +599,21 @@ function cargarEditarPerfilAdmin(){
                     <div class="row mb-3">
                       <label for="nombre_usuario" class="col-md-4 col-lg-3 col-form-label">Nombre</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="nombre_usuario" type="text" class="form-control" id="nombre_usuario" value="'.$tablaUsuario["nombre_usuario"].'">
+                        <input name="nombre_usuario" type="text" class="form-control" id="nombre_usuario" value="' . $tablaUsuario["nombre_usuario"] . '">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="genero" class="col-md-4 col-lg-3 col-form-label">Genero</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="genero" type="text" class="form-control" id="genero" value="'.$tablaUsuario["genero"].'">
+                        <input name="genero" type="text" class="form-control" id="genero" value="' . $tablaUsuario["genero"] . '">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="fecha_nacimiento" class="col-md-4 col-lg-3 col-form-label">Fecha de Nacimiento</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento" value="'.$tablaUsuario["fecha_nacimiento"].'">
+                        <input name="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento" value="' . $tablaUsuario["fecha_nacimiento"] . '">
                       </div>
                     </div>
 
@@ -631,7 +622,7 @@ function cargarEditarPerfilAdmin(){
                       
                       <div class="col-md-8 col-lg-9">
                         <select class="form-control" name="tipo_documento">
-                          <option value="'.$tablaUsuario["tipo_documento"].'">'.$tablaUsuario["tipo_documento"].'</option>
+                          <option value="' . $tablaUsuario["tipo_documento"] . '">' . $tablaUsuario["tipo_documento"] . '</option>
 
                           <option value="C.C">C.C</option>
                           <option value="T.I">T.I</option>
@@ -645,14 +636,14 @@ function cargarEditarPerfilAdmin(){
                     <div class="row mb-3">
                       <label for="num_documento" class="col-md-4 col-lg-3 col-form-label">Número de Doc</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="num_documento" type="number" class="form-control" id="num_documento" value="'.$tablaUsuario["num_documento"].'" readonly>
+                        <input name="num_documento" type="number" class="form-control" id="num_documento" value="' . $tablaUsuario["num_documento"] . '" readonly>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="email_usuario" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email_usuario" type="email" class="form-control" id="email_usuario" value="'.$tablaUsuario["email_usuario"].'">
+                        <input name="email_usuario" type="email" class="form-control" id="email_usuario" value="' . $tablaUsuario["email_usuario"] . '">
                       </div>
                     </div>
 
