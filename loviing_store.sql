@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-07-2024 a las 21:12:55
+-- Tiempo de generación: 24-07-2024 a las 16:51:17
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -181,9 +181,9 @@ CREATE TABLE `tbl_inventario` (
 --
 
 INSERT INTO `tbl_inventario` (`id_inv`, `cod_producto`, `entradas`, `salidas`, `stock`, `fecha`) VALUES
-(1, 1, 7, 0, 7, '2024-06-20'),
-(2, 2, 10, 0, 10, '2024-06-20'),
-(3, 3, 5, 0, 5, '2024-06-20');
+(1, 1, 15, 0, 15, '2024-06-20'),
+(2, 2, 12, 0, 12, '2024-06-20'),
+(3, 3, 6, 0, 6, '2024-06-20');
 
 -- --------------------------------------------------------
 
@@ -253,9 +253,9 @@ CREATE TABLE `tbl_productos` (
 --
 
 INSERT INTO `tbl_productos` (`id_producto`, `cod_categoria`, `nombre_producto`, `descripcion_producto`, `precio_producto`, `foto1_producto`, `foto2_producto`, `foto3_producto`, `stock`) VALUES
-(1, 3, 'Cepillo Quita Nudos Deslanador Para Pelo Raza Grande', 'Cepillo deslanador ideal para perros, gatos y conejos de pelo medio a largo. Ayuda a quitar los nudos que se forman en el pelo y a eliminar el pelo muerto evitando que este se acumule, es ideal para las etapas de muda.', 24990, 'Cepillo-Quita-Nudos-Deslanador-Para-Pelo-Raza-Grande.webp', '', '', 6),
-(2, 2, 'Juguete Para Gatos, Pista De Tres Niveles, Mascotas', 'En Loviing Store, tus mascotas siempre serán importantes. Los especialistas recomiendan al menos dos sesiones de juego al día con tu gato, ya que esto es muy beneficioso para su salud debido a que lo anima a estar activo, a permanecer ágil y a manten', 39900, 'Juguete Para Gatos, Pista De Tres Niveles, Mascotas.webp', '', '', 45),
-(3, 4, 'Camión Cisterna De Impulsó Regalo Niños', 'Diviértete jugando con tus amigos con este Camión Cisterna modelo a escala de 1:50, el camión está hecho de aleación de alta calidad, seguro, duradero y resistente a caídas.', 51900, 'Camión Cisterna De Impulsó Regalo Niños.webp', '', '', 30),
+(1, 3, 'Cepillo Quita Nudos Deslanador Para Pelo Raza Grande', 'Cepillo deslanador ideal para perros, gatos y conejos de pelo medio a largo. Ayuda a quitar los nudos que se forman en el pelo y a eliminar el pelo muerto evitando que este se acumule, es ideal para las etapas de muda.', 24990, 'Cepillo-Quita-Nudos-Deslanador-Para-Pelo-Raza-Grande.webp', '', '', 15),
+(2, 2, 'Juguete Para Gatos, Pista De Tres Niveles, Mascotas', 'En Loviing Store, tus mascotas siempre serán importantes. Los especialistas recomiendan al menos dos sesiones de juego al día con tu gato, ya que esto es muy beneficioso para su salud debido a que lo anima a estar activo, a permanecer ágil y a manten', 39900, 'Juguete Para Gatos, Pista De Tres Niveles, Mascotas.webp', '', '', 12),
+(3, 4, 'Camión Cisterna De Impulsó Regalo Niños', 'Diviértete jugando con tus amigos con este Camión Cisterna modelo a escala de 1:50, el camión está hecho de aleación de alta calidad, seguro, duradero y resistente a caídas.', 51900, 'Camión Cisterna De Impulsó Regalo Niños.webp', '', '', 6),
 (4, 5, 'Limador Eléctrico De Uñas Para Mascota Perros Gatos', '- Limador Eléctrico.\r\n- Funciona con 2 pilas AA.\r\n- Redondea y Alisa las uñas de su mascota.\r\n- Incluye 3 limas.\r\n\r\nMEDIDAS:\r\nAncho: 2cm\r\nAlto: 17cm\r\nLimador Eléctrico de uñas ideal para tu Mascota.', 16900, 'Limador Eléctrico De Uñas Para Mascota Perros Gatos.webp', '', '', 40);
 
 -- --------------------------------------------------------
