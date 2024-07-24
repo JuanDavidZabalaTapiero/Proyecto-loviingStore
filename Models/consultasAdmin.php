@@ -402,20 +402,20 @@ class ConsultasAdmin
 
         $result->execute();
 
-        $sql2 = "UPDATE tbl_inventario 
-        SET entradas = :entradas,
-        salidas = :salidas,
-        stock = :stock
-        WHERE cod_producto = :id_producto";
+        // $sql2 = "UPDATE tbl_inventario 
+        // SET entradas = :entradas,
+        // salidas = :salidas,
+        // stock = :stock
+        // WHERE cod_producto = :id_producto";
 
-        $result2 = $conexion->prepare($sql2);
+        // $result2 = $conexion->prepare($sql2);
 
-        $result2->bindParam(":entradas", $entradas);
-        $result2->bindParam(":salidas", $salidas);
-        $result2->bindParam(":stock", $stock);
-        $result2->bindParam(":id_producto", $id_producto);
+        // $result2->bindParam(":entradas", $entradas);
+        // $result2->bindParam(":salidas", $salidas);
+        // $result2->bindParam(":stock", $stock);
+        // $result2->bindParam(":id_producto", $id_producto);
 
-        $result2->execute();
+        // $result2->execute();
 
         echo '
         <script>

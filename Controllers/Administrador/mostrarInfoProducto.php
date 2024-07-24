@@ -97,7 +97,7 @@ function formularioEditarProducto($id_producto)
             enctype="multipart/form-data">
 
             <div class="row g-3 formulario">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <label for="idProd">ID del Producto</label> <br>
                 <input type="text" id="idProd" name="idProd" class="input" value="' . $tablaProd["id_producto"] . '"
                   required readonly> 
@@ -129,24 +129,7 @@ function formularioEditarProducto($id_producto)
                 <input type="number" id="precioProd" name="precioProd" class="input" value="' . $tablaProd["precio_producto"] . '"
                   required><br>
               </div>
-
-              <div class="col-md-2">
-                <label for="entradasProd">Entradas</label> <br>
-                <input type="number" id="entradasProd" name="entradasProd" class="input" value="' . $tablaInv["entradas"] . '"
-                  required>
-              </div>
-
-              <div class="col-md-2">
-                <label for="salidasProd">Salidas</label> <br>
-                <input type="number" id="salidasProd" name="salidasProd" class="input" value="' . $tablaInv["salidas"] . '"
-                  required>
-              </div>
-
-              <div class="col-md-2">
-                <label for="stockProd">Stock del Producto</label> <br>
-                <input type="number" id="stockProd" name="stockProd" class="input" value="' . $tablaInv["stock"] . '"
-                  required>
-              </div>
+            
 
               <div class="col-md-12">
                 <label for="descProd">Descripción del Producto</label> <br>

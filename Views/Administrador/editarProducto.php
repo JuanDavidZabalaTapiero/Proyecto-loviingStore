@@ -72,7 +72,7 @@ require_once ('../../Controllers/Administrador/mostrarInfoProducto.php');
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Editar Usuario</h1>
+      <h1>Editar Producto</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home.php">Home</a></li>
