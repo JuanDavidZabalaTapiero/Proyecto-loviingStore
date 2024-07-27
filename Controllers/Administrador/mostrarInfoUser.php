@@ -656,3 +656,49 @@ function cargarEditarPerfilAdmin()
 
 
 
+function cargarEditarPerfilAdminContraseña(){
+  $idUser = $_SESSION["idUser"];
+
+  $objConsultasAdmin = new ConsultasAdmin();
+
+  // TBL USUARIOS
+  $tablaUsuario = $objConsultasAdmin->consultarUser($idUser);
+
+  ?>
+
+  <!-- Change Password Form -->
+  <form action="../../Controllers/Administrador/cambiarContrasena.php">
+
+    <div class="form-group" style="display: none;">
+      <label for="first-name">Número de documento</label>
+      <input type="number" class="form-control" id="first-name"
+        value="<?php echo $tablaUsuario["num_documento"] ?>" name="numDoc" readonly>
+    </div>
+    <div class="row mb-3">
+      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Clave actual</label>
+      <div class="col-md-8 col-lg-9">
+        <input name="contrasenaActual" type="password" class="form-control" id="currentPassword" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Clave nueva</label>
+      <div class="col-md-8 col-lg-9">
+        <input name="contrasenaNueva" type="password" class="form-control" id="newPassword" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Vuelve a ingresarla</label>
+      <div class="col-md-8 col-lg-9">
+        <input name="contrasenaNuevaVerificar" type="password" class="form-control" id="renewPassword" required>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Change Password</button>
+    </div>
+  </form><!-- End Change Password Form -->
+
+  <?php
+}

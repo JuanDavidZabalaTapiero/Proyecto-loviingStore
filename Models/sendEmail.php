@@ -198,4 +198,122 @@ class GenerarClave
 
 
     }
+
+
+    public function cambiarClaveAdmin($numDoc, $claveActualHash, $claveNuevaHash, $claveNuevaVerificarHash){
+
+        $consulta = "SELECT clave_usuario FROM tbl_usuarios WHERE num_documento = :numDoc";
+
+        $objConexionBd = new ConexionBd();
+
+        $conexion = $objConexionBd->getConexion();
+
+        $result = $conexion->prepare($consulta);
+
+        $result->bindParam(":numDoc", $numDoc);
+
+        $result->execute();
+
+        $f = $result->fetch();
+
+        if($f['clave_usuario'] == $claveActualHash){
+            if($claveActualHash == $claveNuevaHash){
+                echo '
+                <script>
+                    alert("La contraseña ingresada ya esta registrada")
+                    location.href="../../Views/Administrador/userProfileAdmin.php"
+                </script>
+                ';
+            } elseif ($claveNuevaHash != $claveNuevaVerificarHash) {
+                echo '
+                <script>
+                    alert("Las contraseñas ingresadas no coinciden")
+                    location.href="../../Views/Administrador/userProfileAdmin.php"
+                </script>
+                ';
+            } else{
+                $sql = "UPDATE tbl_usuarios SET clave_usuario = :claveNueva WHERE num_documento = :numDoc";
+
+                $result = $conexion->prepare($sql);
+                $result->bindParam(":claveNueva", $claveNuevaHash);
+                $result->bindParam(":numDoc", $numDoc);
+
+                $result->execute();
+
+                echo '
+                <script>
+                    alert("Contraseña actualizada correctamente :D")
+                    location.href="../../Views/Administrador/userProfileAdmin.php"
+                </script>
+                ';
+            }
+        } else{
+            echo '
+            <script>
+                alert("La contraseña actual ingresada es erronea")
+                location.href="../../Views/Administrador/userProfileAdmin.php"
+            </script>
+            ';
+        }
+
+    }
+
+    public function cambiarCorreo($numDoc, $correoActual, $correoNuevo){
+
+
+        $sql = "SELECT * FROM tbl_usuarios WHERE email_usuario = :correoNuevo";
+        
+        $objConexionBd = new ConexionBd();
+
+        $conexion = $objConexionBd->getConexion();
+
+        $result = $conexion->prepare($sql);
+
+        $result->bindParam(":correoNuevo", $correoNuevo);
+
+        $result->execute();
+
+        $f = $result->fetch();
+
+        if ($f) {
+            echo '
+            <script>
+                alert("El email ingresado ya se encuentra registrado");
+                location.href="../../Views/Cliente/user-profile.php";
+            </script>
+            ';
+        }else {
+            $sql = "UPDATE tbl_usuarios SET email_usuario = :correoNuevo WHERE num_documento = :numDoc";
+
+                $result = $conexion->prepare($sql);
+                $result->bindParam(":correoNuevo", $correoNuevo);
+                $result->bindParam(":numDoc", $numDoc);
+    
+                $result->execute();
+    
+                echo '
+                <script>
+                    alert("Email actualizado correctamente :D")
+                    location.href="../../Views/Cliente/user-profile.php"
+                </script>
+                ';
+        }
+        
+    }
 }
+
+/*
+⠑⡄⠀⠀⠀⠀⠀⠀ ⠀ ⣀⣀⣤⣤⣤⣀⡀
+⠸⠿⡀⠀ ⠀ ⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀
+⠀⠀⠀⠀⠑⢄⣠⠾⠁⣀⣄⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣆
+⠀⠀⠀ ⢀⡀⠁⠀⠀⠈⠙⠛⠂⠈⣿⣿⣿⣿⣿⠿⡿⢿⣆
+⠀⠀⠀⢀⡾⣁⣀⠀⠴⠂⠙⣗⡀⠀⢻⣿⣿⠭⢤⣴⣦⣤⣹⠀⠀⠀⢀⢴⣶⣆
+⠀⠀⢀⣾⣿⣿⣷⣮⣽⣾⣿⣥⣴⣿⣿⡿⢂⠔⢚⡿⢿⣿⣦⣴⣾⠸⣼⡿
+⠀⢀⡞⠁⠙⠻⠿⠟⠉⠀⠛⢹⣿⣿⣿⣿⣿⣌⢤⣼⣿⣾⣿⡟⠉
+⠀⣾⣷⣶⠇⠀⠀⣤⣄⣀⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+⠀⠉⠈⠉⠀⠀⢦⡈⢻⣿⣿⣿⣶⣶⣶⣶⣤⣽⡹⣿⣿⣿⣿⡇
+⠀⠀⠀⠀⠀⠀⠀⠉⠲⣽⡻⢿⣿⣿⣿⣿⣿⣿⣷⣜⣿⣿⣿⡇
+⠀⠀ ⠀⠀⠀⠀⠀⢸⣿⣿⣷⣶⣮⣭⣽⣿⣿⣿⣿⣿⣿⣿⠇
+⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇
+⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠑⡄
+*/

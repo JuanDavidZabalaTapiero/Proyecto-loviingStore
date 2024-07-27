@@ -475,17 +475,22 @@ function mostrarPerfilCliente()
 							<!-- Change Email Address -->
 							<div class="widget change-email mb-0">
 								<h3 class="widget-header user">Editar Email</h3>
-								<form action="#">
-									<!-- Current Password -->
+								<form action="../../Controllers/Cliente/cambiarCorreo.php">
+									<div class="form-group" style="display: none;">
+										<label for="first-name">Número de documento</label>
+										<input type="number" class="form-control" id="first-name"
+											value="<?php echo $tblUser["num_documento"] ?>" name="numDoc" readonly>
+									</div>
+									<!-- Current Email -->
 									<div class="form-group">
 										<label for="current-email">Email actual</label>
 										<input type="email" class="form-control" id="current-email"
-											value="<?php echo $tblUser["email_usuario"] ?>" readonly>
+											value="<?php echo $tblUser["email_usuario"] ?>" name="correoActual" readonly>
 									</div>
 									<!-- New email -->
 									<div class="form-group">
 										<label for="new-email">Nuevo email</label>
-										<input type="email" class="form-control" id="new-email">
+										<input type="email" class="form-control" id="new-email" name="correoNuevo" required>
 									</div>
 									<!-- Submit Button -->
 									<button class="btn btn-transparent">Cambiar email</button>
