@@ -692,7 +692,7 @@ ul.pagination .active a {
 }
 
 .bg-1 {
-  background: url("https://raw.githubusercontent.com/JuanDavidZabalaTapiero/ImagenesLoviingStore/main/Home/hero.webp");
+  background: url("../images/home/hero.webp");
   background-size: cover;
   background-repeat: no-repeat;
 }
