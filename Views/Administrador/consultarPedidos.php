@@ -97,8 +97,8 @@ $objTablaPedidos = new TablaPedidos();
                     <th>Fecha Pedido</th>
                     <th>Total</th>
                     <th>Metodo Pago</th>
-                    <th>Ver</th>
                     <th>Editar</th>
+                    <th>Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>

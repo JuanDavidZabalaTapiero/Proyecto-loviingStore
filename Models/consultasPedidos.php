@@ -65,7 +65,7 @@ class ConsultasPedidos
     
 
     // UPDATE
-    public function actualizarPedido($id_pedido, $fecha_pedido, $total, $cod_metodo_pago, $nombre_usuario = null, $nombre_metodo = null) {
+    public function actualizarPedido($nombre_usuario, $fecha_pedido, $total, $metodo_pago, $id_pedido) {
         $objConexionBd = new ConexionBd();
         $conexion = $objConexionBd->getConexion();
     
@@ -82,7 +82,7 @@ class ConsultasPedidos
                                      p.fecha_pedido = :fecha_pedido,
                                      p.total = :total,
                                      m.nombre_metodo = :nombre_metodo
-                                 WHERE p.id_pedido = :id_pedido;";
+                                 WHERE p.id_pedido = :id_pedido";
     
             $resultActualizacion = $conexion->prepare($sqlActualizacion);
     
@@ -91,7 +91,7 @@ class ConsultasPedidos
             $resultActualizacion->bindParam(":nombre_usuario", $nombre_usuario);
             $resultActualizacion->bindParam(":fecha_pedido", $fecha_pedido);
             $resultActualizacion->bindParam(":total", $total);
-            $resultActualizacion->bindParam(":nombre_metodo", $nombre_metodo);
+            $resultActualizacion->bindParam(":nombre_metodo", $metodo_pago);
                
             // Ejecuta la consulta de actualización
             $resultActualizacion->execute();
