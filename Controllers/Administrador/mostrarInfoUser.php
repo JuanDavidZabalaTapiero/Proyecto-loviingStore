@@ -1,6 +1,6 @@
 <?php
 
-require_once ('../../Models/consultasAdmin.php');
+require_once('../../Models/consultasAdmin.php');
 
 function cargarUser($idUser)
 {
@@ -339,7 +339,7 @@ function cargarPerfilAdmin()
 function cargarMenuAdmin()
 {
 
-  ?>
+?>
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -451,6 +451,13 @@ function cargarMenuAdmin()
           <span>Gestión de Pedidos</span><i class="fa-solid fa-chevron-down ms-auto"></i>
         </a>
         <ul id="Pedidos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+          <li>
+            <a href="registrarPedido.php">
+              <i class="fa-solid fa-circle"></i><span>Registrar</span>
+            </a>
+          </li>
+
           <li>
             <a href="consultarPedidos.php">
               <i class="fa-solid fa-circle"></i><span>Consultar</span>
@@ -476,7 +483,7 @@ function cargarMenuAdmin()
       </li><!-- End programas de formacion Nav -->
 
   </aside><!-- End Sidebar-->
-  <?php
+<?php
 }
 
 function cargarFooterAdmin()
@@ -656,7 +663,8 @@ function cargarEditarPerfilAdmin()
 
 
 
-function cargarEditarPerfilAdminContraseña(){
+function cargarEditarPerfilAdminContraseña()
+{
   $idUser = $_SESSION["idUser"];
 
   $objConsultasAdmin = new ConsultasAdmin();
@@ -664,15 +672,14 @@ function cargarEditarPerfilAdminContraseña(){
   // TBL USUARIOS
   $tablaUsuario = $objConsultasAdmin->consultarUser($idUser);
 
-  ?>
+?>
 
   <!-- Change Password Form -->
   <form action="../../Controllers/Administrador/cambiarContrasena.php">
 
     <div class="form-group" style="display: none;">
       <label for="first-name">Número de documento</label>
-      <input type="number" class="form-control" id="first-name"
-        value="<?php echo $tablaUsuario["num_documento"] ?>" name="numDoc" readonly>
+      <input type="number" class="form-control" id="first-name" value="<?php echo $tablaUsuario["num_documento"] ?>" name="numDoc" readonly>
     </div>
     <div class="row mb-3">
       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Clave actual</label>
@@ -700,5 +707,5 @@ function cargarEditarPerfilAdminContraseña(){
     </div>
   </form><!-- End Change Password Form -->
 
-  <?php
+<?php
 }
