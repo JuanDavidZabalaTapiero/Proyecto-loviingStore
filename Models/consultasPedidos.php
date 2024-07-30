@@ -133,6 +133,22 @@ class ConsultasPedidos
         }
     }
 
-
     // DELETE
+    public function deletePedido($id_pedido)
+    {
+        $deletePedido = "DELETE FROM tbl_pedidos WHERE id_pedido = :id_pedido";
+
+        $bindValues = [
+            ':id_pedido' => $id_pedido
+        ];
+
+        $this->objPrepararConsulta->prepararConsulta($deletePedido, $bindValues);
+
+        ?>
+        <script>
+            alert("Pedido eliminado");
+            location.href = "../../Views/Administrador/consultarPedidos.php";
+        </script>
+        <?php
+    }
 }
