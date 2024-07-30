@@ -4,7 +4,7 @@
 function mostrarHeader()
 {
 
-	?>
+?>
 	<header>
 		<div class="container">
 			<div class="row">
@@ -14,9 +14,7 @@ function mostrarHeader()
 							<h2>Loviing Store</h2>
 						</a>
 
-						<button class="navbar-toggler" type="button" data-toggle="collapse"
-							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-							aria-expanded="false" aria-label="Toggle navigation">
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -26,8 +24,7 @@ function mostrarHeader()
 								</li>
 
 								<li class="nav-item dropdown dropdown-slide @@pages">
-									<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
+									<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										Contenido <span><i class="fa fa-angle-down"></i></span>
 									</a>
 									<!-- Dropdown list -->
@@ -43,10 +40,8 @@ function mostrarHeader()
 
 								<li>
 									<a href="../Extras/iniciarSesion.php">
-										<svg xmlns="http://www.w3.org/2000/svg" height="32" width="36"
-											viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-											<path fill="#ca5d1e"
-												d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+										<svg xmlns="http://www.w3.org/2000/svg" height="32" width="36" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+											<path fill="#ca5d1e" d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
 										</svg>
 									</a>
 								</li>
@@ -57,8 +52,7 @@ function mostrarHeader()
 									<a class="nav-link login-button" href="../Extras/iniciarSesion.php">Login</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link text-white add-button"
-										href="../Extras/crearCuenta.html">Registrarse</a>
+									<a class="nav-link text-white add-button" href="../Extras/crearCuenta.html">Registrarse</a>
 								</li>
 							</ul>
 						</div>
@@ -78,16 +72,16 @@ function mostrarCategorias()
 	$tblCategorias = $objConsultasAdmin->consultarCategorias();
 
 	foreach ($tblCategorias as $categoria) {
-		echo '
-						<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
-							<div class="category-block">
-								<div class="header">
-									<img src="' . $categoria["icono"] . '" width="40px">
-									<h4>' . $categoria["nombre_categoria"] . '</h4>
-								</div>
-							</div>
-						</div>
-		';
+	?>
+		<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
+			<div class="category-block">
+				<div class="header">
+					<img src="Uploads/Categorias/<?php echo $categoria["icono"] ?>" width="80px">
+					<h4><?php echo $categoria["nombre_categoria"] ?></h4>
+				</div>
+			</div>
+		</div>
+	<?php
 	}
 }
 
@@ -224,7 +218,6 @@ function mostrarHeaderCliente()
 
     </header>
 		';
-
 	} else {
 		$numElementosCarrito = 0;
 		echo '
@@ -353,8 +346,7 @@ function mostrarPerfilCliente()
 						<div class="widget user">
 							<!-- User Image -->
 							<div class="image d-flex justify-content-center">
-								<img src="../../Uploads/Usuarios/<?php echo $tblUser["foto_usuario"] ?>" alt=""
-									class="w-100 h-100 rounded">
+								<img src="../../Uploads/Usuarios/<?php echo $tblUser["foto_usuario"] ?>" alt="" class="w-100 h-100 rounded">
 							</div>
 							<!-- User Name -->
 							<h5 class="text-center"><?php echo $tblUser["nombre_usuario"] ?></h5>
@@ -382,8 +374,7 @@ function mostrarPerfilCliente()
 									<!-- First Name -->
 									<div class="form-group">
 										<label for="first-name">Nombre de usuario</label>
-										<input type="text" name="nombre_cliente" class="form-control" id="first-name"
-											value="<?php echo $tblUser["nombre_usuario"] ?>">
+										<input type="text" name="nombre_cliente" class="form-control" id="first-name" value="<?php echo $tblUser["nombre_usuario"] ?>">
 									</div>
 
 									<!-- Last Name -->
@@ -401,8 +392,7 @@ function mostrarPerfilCliente()
 
 									<div class="form-group">
 										<label for="first-name">Fecha de nacimiento</label>
-										<input type="date" name="fecha_nacimiento_cliente" class="form-control"
-											id="first-name" value="<?php echo $tblUser["fecha_nacimiento"] ?>">
+										<input type="date" name="fecha_nacimiento_cliente" class="form-control" id="first-name" value="<?php echo $tblUser["fecha_nacimiento"] ?>">
 									</div>
 
 									<div class="form-group">
@@ -421,16 +411,14 @@ function mostrarPerfilCliente()
 
 									<div class="form-group">
 										<label for="first-name">Número de documento</label>
-										<input type="number" name="num_documento" class="form-control" id="first-name"
-											value="<?php echo $tblUser["num_documento"] ?>" readonly>
+										<input type="number" name="num_documento" class="form-control" id="first-name" value="<?php echo $tblUser["num_documento"] ?>" readonly>
 									</div>
 
 									<!-- File chooser -->
 									<label for="input-file">Foto de perfil</label>
 									<div class="form-group choose-file d-inline-flex">
 										<i class="fa fa-user text-center px-3"></i>
-										<input type="file" name="img_perfil_cliente" class="form-control-file mt-2 pt-1"
-											id="input-file" accept=".jpg, .jpeg, .png, .gif, .webp">
+										<input type="file" name="img_perfil_cliente" class="form-control-file mt-2 pt-1" id="input-file" accept=".jpg, .jpeg, .png, .gif, .webp">
 									</div>
 
 									<!-- Submit button -->
@@ -445,26 +433,22 @@ function mostrarPerfilCliente()
 								<form action="../../Controllers/Cliente/cambiarContrasena.php">
 									<div class="form-group" style="display: none;">
 										<label for="first-name">Número de documento</label>
-										<input type="number" class="form-control" id="first-name"
-											value="<?php echo $tblUser["num_documento"] ?>" name="numDoc" readonly>
+										<input type="number" class="form-control" id="first-name" value="<?php echo $tblUser["num_documento"] ?>" name="numDoc" readonly>
 									</div>
 									<!-- Current Password -->
 									<div class="form-group">
 										<label for="current-password">Ingrese su contraseña actual</label>
-										<input type="password" class="form-control" id="current-password"
-											name="contrasenaActual" required>
+										<input type="password" class="form-control" id="current-password" name="contrasenaActual" required>
 									</div>
 									<!-- New Password -->
 									<div class="form-group">
 										<label for="new-password">Nueva contraseña</label>
-										<input type="password" class="form-control" id="new-password" name="contrasenaNueva"
-											required>
+										<input type="password" class="form-control" id="new-password" name="contrasenaNueva" required>
 									</div>
 									<!-- Confirm New Password -->
 									<div class="form-group">
 										<label for="confirm-password">Confirmar nueva contraseña</label>
-										<input type="password" class="form-control" id="confirm-password"
-											name="contrasenaNuevaVerificar" required>
+										<input type="password" class="form-control" id="confirm-password" name="contrasenaNuevaVerificar" required>
 									</div>
 									<!-- Submit Button -->
 									<button class="btn btn-transparent">Cambiar contraseña</button>
@@ -478,14 +462,12 @@ function mostrarPerfilCliente()
 								<form action="../../Controllers/Cliente/cambiarCorreo.php">
 									<div class="form-group" style="display: none;">
 										<label for="first-name">Número de documento</label>
-										<input type="number" class="form-control" id="first-name"
-											value="<?php echo $tblUser["num_documento"] ?>" name="numDoc" readonly>
+										<input type="number" class="form-control" id="first-name" value="<?php echo $tblUser["num_documento"] ?>" name="numDoc" readonly>
 									</div>
 									<!-- Current Email -->
 									<div class="form-group">
 										<label for="current-email">Email actual</label>
-										<input type="email" class="form-control" id="current-email"
-											value="<?php echo $tblUser["email_usuario"] ?>" name="correoActual" readonly>
+										<input type="email" class="form-control" id="current-email" value="<?php echo $tblUser["email_usuario"] ?>" name="correoActual" readonly>
 									</div>
 									<!-- New email -->
 									<div class="form-group">
@@ -502,7 +484,7 @@ function mostrarPerfilCliente()
 			</div>
 		</div>
 	</section>
-	<?php
+<?php
 }
 
 function mostrarCarritoCliente()
@@ -635,7 +617,6 @@ function mostrarCarritoCliente()
 						  </td>
 						</tr>
 				';
-
 			}
 		} else {
 			echo '<h2>No hay productos en tu carrito</h2>';
@@ -643,7 +624,6 @@ function mostrarCarritoCliente()
 	} else {
 		echo '<h2>No hay productos en tu carrito</h2>';
 	}
-
 }
 
 // GENERAL
@@ -690,4 +670,3 @@ function mostrarFooterCliente()
 	</footer>
 	';
 }
-

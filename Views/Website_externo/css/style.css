@@ -760,14 +760,15 @@ ul.pagination .active a {
 }
 
 .add-button {
-  background: #28a745;
+  background: #ca5d1edb;
   color: #fff;
   padding: 8px 20px !important;
   display: inline-block;
+  transition: .5s;
 }
 
 .add-button:hover {
-  color: #fff;
+  background: #a2450f;
 }
 
 .main-nav .nav-item .nav-link {
