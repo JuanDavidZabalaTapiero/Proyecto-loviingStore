@@ -1,8 +1,8 @@
 <?php
 
-require_once ('conexionBd.php');
+require_once('conexionBd.php');
 
-require_once (__DIR__ . '/prepararConsulta.php');
+require_once(__DIR__ . '/prepararConsulta.php');
 
 class ConsultasCliente
 {
@@ -16,6 +16,28 @@ class ConsultasCliente
     // CREATE
 
     // READ
+    public function selectAllUsuarios()
+    {
+        $selectAllUsuarios = "SELECT * FROM tbl_usuarios";
+
+        $result = $this->objPrepararConsulta->prepararConsulta($selectAllUsuarios, 0);
+
+        if ($result->rowCount() == 0) {
+            return;
+        }
+
+        if ($result->rowCount() == 1) {
+            return [
+                'resultado' => $result->fetch(),
+                'filas' => 1
+            ];
+        } else {
+            return [
+                'resultados' => $result->fetchAll(),
+                'filas' => 2
+            ];
+        }
+    }
 
     // UPDATE
     public function updateCliente($num_documento, $nombre_usuario, $genero_cliente, $fecha_nacimiento_cliente, $tipo_doc_cliente, $img_perfil_cliente = null)
@@ -103,7 +125,6 @@ class ConsultasCliente
                     location.href="../../Views/Cliente/single.php?idProd=' . $cod_producto . '";
                 </script>
                 ';
-
             } else {
                 $sqlIns = "INSERT INTO tbl_elementos_carrito
                 (cod_carrito, 
@@ -129,7 +150,6 @@ class ConsultasCliente
                 </script>
                 ';
             }
-
         } else {
             // Creación del carrito
             $sql = "INSERT INTO tbl_carrito
@@ -266,7 +286,6 @@ class ConsultasCliente
                 'resultado' => $result->fetch(),
                 'filas' => 1
             ];
-
         } else {
 
             return [

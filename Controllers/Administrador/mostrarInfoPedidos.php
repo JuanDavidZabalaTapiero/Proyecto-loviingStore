@@ -1,6 +1,8 @@
 <?php
 require_once(__DIR__ . '/../../Models/consultasPedidos.php');
 
+require_once(__DIR__ . '/../../Models/consultasCliente.php');
+
 if (!function_exists('formularioEditarPedidos')) {
     function formularioEditarPedidos($id_pedido)
     {
@@ -42,11 +44,81 @@ if (!function_exists('formularioEditarPedidos')) {
                     </div>
                 </div>
             </form>
-<?php
+    <?php
         } else {
             echo "No se encontró el pedido.";
         }
     }
+}
+
+function registrarPedido()
+{
+    ?>
+    <form action="../../Controllers/Administrador/registrarPedido.php" class="form" method="post" enctype="multipart/form-data">
+        <div class="row g-3 formulario">
+            <div class="col-md-6">
+                <label for="nombre_usuario">Cliente</label> <br>
+                <select name="cliente" id="" class="input">
+                    <?php
+                    // CONSULTO A TODOS LOS CLIENTES
+                    $objConsultasCliente = new ConsultasCliente();
+
+                    $arraySelectAllUsuarios = $objConsultasCliente->selectAllUsuarios();
+
+                    $filas = $arraySelectAllUsuarios['filas'];
+
+                    if ($filas == 0) {
+                    ?>
+                        <option value="">No hay usuarios</option>
+                    <?php
+                    }
+
+                    if ($filas == 1) {
+                        $fUser = $arraySelectAllUsuarios['resultado'];
+
+                    ?>
+                        <option value="<?php echo $fUser["id_usuario"] ?>"><?php echo $fUser["nombre_usuario"] ?></option>
+                        <?php
+                    }
+
+                    if ($filas == 2) {
+                        $fUsers = $arraySelectAllUsuarios['resultados'];
+
+                        foreach ($fUsers as $fUser) {
+                        ?>
+                            <option value="<?php echo $fUser["id_usuario"] ?>"><?php echo $fUser["nombre_usuario"] ?></option>
+                    <?php
+                        }
+                    }
+
+                    ?>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="Fecha_pedido">Fecha</label> <br>
+                <input type="date" id="Fecha_pedido" name="Fecha_pedido" class="input" value="" required><br>
+            </div>
+
+            <div class="col-md-6">
+                <label for="total_pedido">Total</label> <br>
+                <input type="number" id="total_pedido" name="total_pedido" class="input" value="" required><br>
+            </div>
+            <div class="col-md-6">
+                <label for="metodo_pago">Metodo de Pago</label> <br>
+                <select name="metodo_pago" id="metodo_pago" class="input" required>
+                    <option value=""></option>
+                    <option value="1">PayPal</option>
+                    <option value="2">Tarjeta de Crédito</option>
+                    <option value="3">Transferencia Bancaria</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="form-button">Enviar</button>
+            </div>
+        </div>
+    </form>
+<?php
 }
 ?>
 
