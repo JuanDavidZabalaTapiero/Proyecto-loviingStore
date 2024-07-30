@@ -12,6 +12,26 @@ class ConsultasPedidos
     }
 
     // CREATE
+    public function insertPedido($cod_cliente, $fecha_pedido, $total, $cod_metodo_pago)
+    {
+        $insertPedido = "INSERT INTO tbl_pedidos(cod_cliente, fecha_pedido, total, cod_metodo_pago) VALUES (:cod_cliente, :fecha_pedido, :total, :cod_metodo_pago)";
+
+        $bindValues = [
+            ':cod_cliente' => $cod_cliente,
+            ':fecha_pedido' => $fecha_pedido,
+            ':total' => $total,
+            ':cod_metodo_pago' => $cod_metodo_pago
+        ];
+
+        $this->objPrepararConsulta->prepararConsulta($insertPedido, $bindValues);
+
+?>
+        <script>
+            alert("Pedido registrado");
+            location.href = "../../Views/Administrador/consultarPedidos";
+        </script>
+<?php
+    }
 
     // READ
     public function consultarPedidos()
@@ -51,29 +71,25 @@ class ConsultasPedidos
         JOIN 
         tbl_metodo_pago m ON p.cod_metodo_pago = m.id_metodo
         WHERE p.id_pedido = :id_pedido";
-    
+
         $bindValues = [':id_pedido' => $id_pedido];
-    
+
         $result = $this->objPrepararConsulta->prepararConsulta($consulta, $bindValues);
-    
+
         return $result->fetch();
     }
-    
-    
-
-
-    
 
     // UPDATE
-    public function actualizarPedido($nombre_usuario, $fecha_pedido, $total, $metodo_pago, $id_pedido) {
+    public function actualizarPedido($nombre_usuario, $fecha_pedido, $total, $metodo_pago, $id_pedido)
+    {
         $objConexionBd = new ConexionBd();
         $conexion = $objConexionBd->getConexion();
-    
+
         try {
             // Inicia una transacción
             $conexion->beginTransaction();
-    
-    
+
+
             // Actualiza el pedido, el usuario y el método de pago
             $sqlActualizacion = "UPDATE tbl_pedidos p
                                  JOIN tbl_usuarios u ON p.cod_cliente = u.id_usuario
@@ -83,22 +99,22 @@ class ConsultasPedidos
                                      p.total = :total,
                                      m.nombre_metodo = :nombre_metodo
                                  WHERE p.id_pedido = :id_pedido";
-    
+
             $resultActualizacion = $conexion->prepare($sqlActualizacion);
-    
+
             // Asigna valores a los parámetros de la consulta
             $resultActualizacion->bindParam(":id_pedido", $id_pedido);
             $resultActualizacion->bindParam(":nombre_usuario", $nombre_usuario);
             $resultActualizacion->bindParam(":fecha_pedido", $fecha_pedido);
             $resultActualizacion->bindParam(":total", $total);
             $resultActualizacion->bindParam(":nombre_metodo", $metodo_pago);
-               
+
             // Ejecuta la consulta de actualización
             $resultActualizacion->execute();
-    
+
             // Confirma la transacción
             $conexion->commit();
-    
+
             echo '
             <script>
                 alert("Pedido actualizado correctamente.");
@@ -116,7 +132,7 @@ class ConsultasPedidos
             ';
         }
     }
-    
+
 
     // DELETE
 }
