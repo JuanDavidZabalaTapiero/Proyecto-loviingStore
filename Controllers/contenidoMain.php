@@ -42,6 +42,12 @@ class ContenidoMain
                                             <li><a class="dropdown-item @@terms"
                                                     href="<?php echo $urls['terms-condition.php'] ?>">Términos y
                                                     Condiciones</a></li>
+
+                                            <li><a class="dropdown-item @@terms"
+                                                    href="<?php echo $urls['category2.php'] ?>">Ver Productos</a></li>
+
+                                            <li><a class="dropdown-item @@terms"
+                                                    href="<?php echo $urls['ad-list-view2.php'] ?>">Ver Productos en lista</a></li>
                                         </ul>
                                     </li>
 

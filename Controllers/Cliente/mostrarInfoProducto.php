@@ -419,3 +419,104 @@ function mostrarProductoSingleCliente($id_producto){
     </div>
 	';
 }
+
+function mostrarProductosCategoria(){
+
+    $objConsultasAdmin = new ConsultasAdmin();
+
+    $tablaProductos = $objConsultasAdmin->consultarProductos();
+
+    foreach ($tablaProductos as $f) {
+
+        echo '
+                        <div class="col-lg-4 col-md-6">
+								<!-- product card -->
+								<div class="product-item bg-light carta">
+									<div class="card">
+										<div class="thumb-content">
+											<div class="price">$ '.$f["precio_producto"].'</div>
+											<a href="../../Views/Website_externo/single.php?idProd='.$f["id_producto"].'">
+												<img class="img-fluid" src="../../Uploads/Productos/'.$f["foto1_producto"].'"
+													alt="Card image cap">
+											</a>
+										</div>
+										<div class="card-body">
+											<h4 class="card-title"><a href="../../Views/Website_externo/single.php?idProd='.$f["id_producto"].'">'.$f["nombre_producto"].'</a></h4>
+											<ul class="list-inline product-meta">
+												<li class="list-inline-item">
+													<a href="Views/Website_externo/single.php?idProd='.$f["id_producto"].'"><i
+															class="fa fa-folder-open-o"></i>'.$f["nombre_categoria"].'</a>
+												</li>
+											</ul>
+											<p class="card-text">'.$f["descripcion_producto"].'</p>
+											<div class="product-ratings">
+												<ul class="list-inline">
+													<li class="list-inline-item selected"><i class="fa fa-star"></i>
+													</li>
+													<li class="list-inline-item selected"><i class="fa fa-star"></i>
+													</li>
+													<li class="list-inline-item selected"><i class="fa fa-star"></i>
+													</li>
+													<li class="list-inline-item selected"><i class="fa fa-star"></i>
+													</li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+        ';
+        
+    }
+}
+
+function mostrarProductosLista(){
+	
+    $objConsultasAdmin = new ConsultasAdmin();
+
+    $tablaProductos = $objConsultasAdmin->consultarProductos();
+
+    foreach ($tablaProductos as $f) {
+
+        echo '
+			<div class="ad-listing-list mt-20 carta-lista">
+				<div class="row p-lg-3 p-sm-5 p-4">
+				<div class="col-lg-4 align-self-center">
+					<a href="../../Views/Website_externo/single.php?idProd='.$f["id_producto"].'">
+					<img src="../../Uploads/Productos/'.$f["foto1_producto"].'" class="img-fluid" alt="">
+					</a>
+				</div>
+				<div class="col-lg-8">
+					<div class="row">
+					<div class="col-lg-6 col-md-10">
+						<div class="ad-listing-content">
+						<div>
+							<a href="../../Views/Website_externo/single.php?idProd='.$f["id_producto"].'" class="font-weight-bold">'.$f["nombre_producto"].'</a>
+						</div>
+						<ul class="list-inline mt-2 mb-3">
+							<li class="list-inline-item"><a href="category.html"> <i class="fa fa-folder-open-o"></i>
+								'.$f["nombre_categoria"].'</a></li>
+						</ul>
+						<p class="pr-5">'.$f["descripcion_producto"].'</p>
+						</div>
+					</div>
+					<div class="col-lg-6 align-self-center">
+						<div class="product-ratings float-lg-right pb-3">
+						<ul class="list-inline">
+							<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+							<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+							<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+							<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+							<li class="list-inline-item"><i class="fa fa-star"></i></li>
+						</ul>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+        ';
+        
+    }
+}
