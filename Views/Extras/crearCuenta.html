@@ -12,24 +12,18 @@
 
 <body>
     <section id="crearCuenta">
-
         <div class="fondo"></div>
-
         <div class="contenedor">
-
             <a href="../../index.php"><img src="img/logo.png" alt="logo candado"></a>
-
             <h3>Crea tu cuenta</h3>
-
             <form action="../../Controllers/registrarUserEx.php" method="post">
-
                 <label for="nombreUsuario">Nombre de Usuario *</label><br>
 
                 <input type="text" id="nombreUsuario" class="formato" name="nombreUser"
-                    placeholder="Ingrese su nombre de usuario" ><br>
+                    placeholder="Ingrese su nombre de usuario" required><br>
 
                 <label for="genero">Género *</label>
-                <select name="generoUser" id="genero" class="formato" >
+                <select name="generoUser" id="genero" class="formato" required>
                     <option value="" disabled selected hidden>Seleccione su género</option>
                     <option value="Hombre">Hombre</option>
                     <option value="Mujer">Mujer</option>
@@ -39,10 +33,10 @@
 
                 <label for="fechaNacimiento">Fecha de Nacimiento *</label>
                 <input id="fechaNacimiento" class="formato" type="date" name='fechaNacUser'
-                    placeholder='fecha de nacimiento' ><br>
+                    placeholder='fecha de nacimiento' required><br>
 
                 <label for="tipoDocumento">Tipo de Documento *</label>
-                <select name="tipoDocUser" id="tipoDocumento" class="formato" >
+                <select name="tipoDocUser" id="tipoDocumento" class="formato" required>
                     <option value="" disabled selected hidden>Tipo de documento</option>
                     <option value="C.C">C.C</option>
                     <option value="T.I">T.I</option>
@@ -53,28 +47,27 @@
 
                 <label for="numeroIdentificacion">Número de Documento *</label>
                 <input id="numeroIdentificacion" class="formato" type="text" name="numDocUser"
-                    placeholder="ingrese su numero de identificación" >
+                    placeholder="ingrese su numero de identificación" required>
 
                 <label for="correoElectronico">Correo Electrónico *</label>
                 <input id="correoElectronico" class="formato" type="email" name="emailUser"
-                    placeholder="ingrese su correo electronico" >
+                    placeholder="ingrese su correo electronico" required>
 
                 <label for="contraseña">Contraseña *</label><br>
                 <input type="password" id="contraseña" class="formato" name="claveUser"
-                    placeholder="Ingrese su contraseña" ><br>
+                    placeholder="Ingrese su contraseña" required><br>
 
                 <label for="contraseña">Confirmación de contraseña *</label><br>
                 <input type="password" id="contraseña" class="formato" name="confirmarClaveUser"
-                    placeholder="Confirme su contraseña" ><br>
+                    placeholder="Confirme su contraseña" required><br>
 
                     <div class="md-4 mx-auto">
                         <div class="h-captcha diseño-captcha" data-sitekey="73eee0be-3188-483e-8106-cbce94d83e02"></div>
                     </div>
-                <input type="checkbox" id="check" class="check" >
+                <input type="checkbox" id="check" class="check" required>
                 <label for="check" class="checklabel">Acepto los términos y condiciones</label><br>
 
                 <button type="submit">Crear Cuenta</button><br>
-
                 <a id="cancelar" href="iniciarSesion.php">¡Ya tengo una cuenta!</a>
             </form>
         </div>
