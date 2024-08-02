@@ -69,7 +69,7 @@ function mostrarHeader()
 	<?php
 }
 
-function mostrarCategorias()
+function mostrarCategorias($url_icon_categoria = null)
 {
 
 	$objConsultasAdmin = new ConsultasAdmin();
@@ -81,7 +81,7 @@ function mostrarCategorias()
 		<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6">
 			<div class="category-block">
 				<div class="header">
-					<img src="../../Uploads/Categorias/<?php echo $categoria["icono"] ?>" width="80px">
+					<img src="<?php echo $url_icon_categoria ?>Uploads/Categorias/<?php echo $categoria["icono"] ?>" width="80px">
 					<h4><?php echo $categoria["nombre_categoria"] ?></h4>
 				</div>
 			</div>

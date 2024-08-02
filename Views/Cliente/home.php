@@ -163,7 +163,8 @@ $objContenidoCliente = new ContenidoCliente();
 					<div class="row">
 						<!-- Category list -->
 						<?php
-						mostrarCategorias();
+						$url_icon_categoria = '../../';
+						mostrarCategorias($url_icon_categoria);
 						?>
 					</div>
 				</div>

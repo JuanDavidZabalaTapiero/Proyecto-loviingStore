@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-07-2024 a las 16:51:17
+-- Tiempo de generación: 02-08-2024 a las 13:52:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -83,10 +83,10 @@ CREATE TABLE `tbl_categorias` (
 --
 
 INSERT INTO `tbl_categorias` (`id_categoria`, `nombre_categoria`, `icono`) VALUES
-(2, 'Juguetes - Mascotas', 'https://raw.githubusercontent.com/JuanDavidZabalaTapiero/ImagenesLoviingStore/main/Productos/Categorias/juguete-del-gato.webp'),
-(3, 'Cepillos - Mascotas', 'https://raw.githubusercontent.com/JuanDavidZabalaTapiero/ImagenesLoviingStore/main/Productos/Categorias/peine.webp'),
-(4, 'Juguetes', 'https://raw.githubusercontent.com/JuanDavidZabalaTapiero/ImagenesLoviingStore/main/Productos/Categorias/oso-de-peluche.webp'),
-(5, 'Cortaúñas - Mascotas', 'https://raw.githubusercontent.com/JuanDavidZabalaTapiero/ImagenesLoviingStore/main/Productos/Categorias/cortaunas.webp');
+(2, 'Juguetes - Mascotas', 'Juguetes - Mascotas.png'),
+(3, 'Cepillos - Mascotas', 'Cepillos - Mascotas.png'),
+(4, 'Juguetes', 'Juguetes.png'),
+(5, 'Cortaúñas - Mascotas', 'Cortaúñas - Mascotas.png');
 
 -- --------------------------------------------------------
 
