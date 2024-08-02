@@ -639,7 +639,7 @@ function mostrarCarritoCliente()
 function mostrarFooterCliente()
 {
 ?>
-	<footer class="footer-bottom">
+	<footer class="footer-bottom" style="width: 100%; position: absolute; bottom: 0;">
 		<!-- Container Start -->
 		<div class="container">
 			<div class="row">
