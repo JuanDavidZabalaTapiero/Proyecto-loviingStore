@@ -1,5 +1,5 @@
 <?php
-require_once ('../../Controllers/Cliente/mostrarContenido.php');
+require_once('../../Controllers/Cliente/mostrarContenido.php');
 ?>
 <!DOCTYPE html>
 
@@ -38,6 +38,8 @@ require_once ('../../Controllers/Cliente/mostrarContenido.php');
   <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -113,38 +115,9 @@ require_once ('../../Controllers/Cliente/mostrarContenido.php');
   =============================-->
 
   <!-- Footer Bottom -->
-  <footer class="footer-bottom">
-    <!-- Container Start -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 text-center text-lg-left mb-3 mb-lg-0">
-          <!-- Copyright -->
-          <div class="copyright">
-            <p>Copyright &copy;
-              <script>
-                var CurrentYear = new Date().getFullYear()
-                document.write(CurrentYear)
-              </script>. Designed & Developed by <a class="text-white" href="https://themefisher.com">Themefisher</a>
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <!-- Social Icons -->
-          <ul class="social-media-icons text-center text-lg-right">
-            <li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher"></a></li>
-            <li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher"></a></li>
-            <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher"></a></li>
-            <li><a class="fa fa-github-alt" href="https://www.github.com/themefisher"></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- Container End -->
-    <!-- To Top -->
-    <div class="scroll-top-to">
-      <i class="fa fa-angle-up"></i>
-    </div>
-  </footer>
+  <?php
+  mostrarFooterCliente();
+  ?>
 
   <!-- Essential Scripts
   =====================================-->

@@ -1,19 +1,19 @@
 <?php
 
-require_once ('Controllers/Cliente/mostrarContenido.php');
+require_once('Controllers/Cliente/mostrarContenido.php');
 
-require_once ('Controllers/Cliente/mostrarInfoProducto.php');
+require_once('Controllers/Cliente/mostrarInfoProducto.php');
 
-require_once ('Models/consultasAdmin.php');
+require_once('Models/consultasAdmin.php');
 
-require_once ('Models/consultasCliente.php');
+require_once('Models/consultasCliente.php');
 
 // CONTENIDO DEL CLIENTE
-require_once (__DIR__ . '/Controllers/Cliente/contenidoCliente.php');
+require_once(__DIR__ . '/Controllers/Cliente/contenidoCliente.php');
 $objContenidoCliente = new ContenidoCliente();
 
 // CONTENIDO PRINCIPAL
-require_once (__DIR__ . '/Controllers/contenidoMain.php');
+require_once(__DIR__ . '/Controllers/contenidoMain.php');
 $objContenidoMain = new ContenidoMain();
 
 ?>
@@ -59,6 +59,8 @@ $objContenidoMain = new ContenidoMain();
 
 	<link href="Views/Website_externo/css/style.css" rel="stylesheet">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body class="body-wrapper">
@@ -76,7 +78,7 @@ $objContenidoMain = new ContenidoMain();
 		'crearCuenta' => 'Views/Extras/crearCuenta.html'
 	];
 
-	$objContenidoMain->showHeader($urls);   
+	$objContenidoMain->showHeader($urls);
 	?>
 
 	<!--===============================
@@ -101,8 +103,7 @@ $objContenidoMain = new ContenidoMain();
 									<form>
 										<div class="form-row">
 											<div class="form-group col-xl-6 col-lg-6 col-md-6">
-												<input type="text" class="form-control my-2 my-lg-1" id="inputtext4"
-													placeholder="¿Qué quieres buscar?">
+												<input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="¿Qué quieres buscar?">
 											</div>
 											<div class="form-group col-xl-4 col-lg-4 col-md-6">
 												<select class="w-100 form-control mt-lg-1 mt-md-2">
@@ -114,8 +115,7 @@ $objContenidoMain = new ContenidoMain();
 											</div>
 
 											<div class="form-group col-xl-2 col-lg-2 col-md-12 align-self-center">
-												<button type="submit"
-													class="btn btn-buscador active w-100 ">Buscar</button>
+												<button type="submit" class="btn btn-buscador active w-100 ">Buscar</button>
 											</div>
 										</div>
 									</form>
@@ -190,38 +190,9 @@ $objContenidoMain = new ContenidoMain();
 	=============================-->
 
 	<!-- Footer Bottom -->
-	<footer class="footer-bottom">
-		<!-- Container Start -->
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 text-center text-lg-left mb-3 mb-lg-0">
-					<!-- Copyright -->
-					<div class="copyright">
-						<p>Copyright &copy;
-							<script>
-								var CurrentYear = new Date().getFullYear()
-								document.write(CurrentYear)
-							</script> - Loviing Store
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<!-- Social Icons -->
-					<ul class="social-media-icons text-center text-lg-right">
-						<li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher"></a></li>
-						<li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher"></a></li>
-						<li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher"></a></li>
-						<li><a class="fa fa-github-alt" href="https://www.github.com/themefisher"></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!-- Container End -->
-		<!-- To Top -->
-		<div class="scroll-top-to">
-			<i class="fa fa-angle-up"></i>
-		</div>
-	</footer>
+	<?php
+	$objContenidoMain->showFooter();
+	?>
 
 	<!-- Essential Scripts
 	=====================================-->

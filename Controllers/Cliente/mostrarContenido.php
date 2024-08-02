@@ -35,11 +35,9 @@ function mostrarHeader()
 
 										<li><a class="dropdown-item @@terms" href="terms-condition.php">Términos y
 												Condiciones</a></li>
-										<li><a class="dropdown-item @@terms"
-                                                    href="category2.php">Ver Productos</a></li>
+										<li><a class="dropdown-item @@terms" href="category2.php">Ver Productos</a></li>
 
-                                        <li><a class="dropdown-item @@terms"
-                                                    href="ad-list-view2.php ">Ver Productos en lista</a></li>
+										<li><a class="dropdown-item @@terms" href="ad-list-view2.php ">Ver Productos en lista</a></li>
 									</ul>
 								</li>
 
@@ -640,13 +638,7 @@ function mostrarCarritoCliente()
 // GENERAL
 function mostrarFooterCliente()
 {
-	echo '
-
-	<!--============================
-	=            Footer            =
-	=============================-->
-
-	<!-- Footer Bottom -->
+?>
 	<footer class="footer-bottom">
 		<!-- Container Start -->
 		<div class="container">
@@ -665,10 +657,7 @@ function mostrarFooterCliente()
 				<div class="col-lg-6">
 					<!-- Social Icons -->
 					<ul class="social-media-icons text-center text-lg-right">
-						<li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher"></a></li>
-						<li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher"></a></li>
-						<li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher"></a></li>
-						<li><a class="fa fa-github-alt" href="https://www.github.com/themefisher"></a></li>
+						<li><a class="fa-brands fa-instagram" href="https://www.facebook.com/themefisher"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -679,5 +668,5 @@ function mostrarFooterCliente()
 			<i class="fa fa-angle-up"></i>
 		</div>
 	</footer>
-	';
+<?php
 }
