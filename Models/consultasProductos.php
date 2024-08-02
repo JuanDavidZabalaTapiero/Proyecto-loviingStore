@@ -55,6 +55,45 @@ class ConsultasProductos
         }
     }
 
+    public function selectProductosLike($palabra)
+    {
+        // Definir la consulta SQL sin los comodines
+        $selectProductosLike = "SELECT * 
+        FROM tbl_productos p
+        INNER JOIN tbl_categorias c ON p.cod_categoria = c.id_categoria
+        WHERE nombre_producto LIKE :palabra";
+
+        // Incluir los comodines en el valor del parámetro
+        $palabra = '%' . $palabra . '%';
+
+        // Definir los valores de los parámetros
+        $bindValues = [
+            ':palabra' => $palabra
+        ];
+
+        // Preparar y ejecutar la consulta usando el método prepararConsulta
+        $result = $this->objPrepararConsulta->prepararConsulta($selectProductosLike, $bindValues);
+
+        // Verificar si se encontraron resultados
+        if ($result->rowCount() == 0) {
+            return ['filas' => 0];
+        }
+
+        // Devolver los resultados
+        if ($result->rowCount() == 1) {
+            return [
+                'resultado' => $result->fetch(),
+                'filas' => 1
+            ];
+        } else {
+            return [
+                'resultados' => $result->fetchAll(),
+                'filas' => 2
+            ];
+        }
+    }
+
+
     // UPDATE
     public function updateProducto($id_producto, $cantidad)
     {

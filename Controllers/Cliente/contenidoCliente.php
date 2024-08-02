@@ -198,7 +198,7 @@ class ContenidoCliente
             <div class="info">
                 <h2><?php echo $fProducto["nombre_producto"] ?></h2>
 
-                <h2>$ <?php echo $fProducto["precio_producto"] ?></h2>
+                <h2>$ <?php echo number_format($fProducto["precio_producto"], 0, ',', '.') ?></h2>
 
                 <span class="stock">En stock: <?php echo $fProducto["stock"] ?></span>
 
@@ -559,7 +559,7 @@ class ContenidoCliente
                                             <a href="single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $fProducto["nombre_categoria"] ?></a>
                                         </li>
                                     </ul>
-                                    <h4>$ <?php echo $fProducto["precio_producto"] ?></h4>
+                                    <h4>$ <?php echo number_format($fProducto["precio_producto"], 0, ',', '.'); ?></h4>
                                     <p class="card-text"><?php echo $fProducto["descripcion_producto"] ?></p>
                                 </div>
                             </div>
@@ -590,14 +590,14 @@ class ContenidoCliente
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="<?php echo $urlProducto ?>?idProd='<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre_producto"] ?></a>
+                                        <h4 class="card-title"><a href="<?php echo $urlProducto ?>?idProd=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre_producto"] ?></a>
                                         </h4>
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
                                                 <a href="<?php echo $urlProducto ?>?idProd=<?php echo $fProducto["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $fProducto["nombre_categoria"] ?></a>
                                             </li>
                                         </ul>
-                                        <h4>$ <?php echo $fProducto["precio_producto"] ?></h4>
+                                        <h4>$ <?php echo number_format($fProducto["precio_producto"], 0, ',', '.'); ?></h4>
                                         <p class="card-text"><?php echo $fProducto["descripcion_producto"] ?></p>
                                     </div>
                                 </div>

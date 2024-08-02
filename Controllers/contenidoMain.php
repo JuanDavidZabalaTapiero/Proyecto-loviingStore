@@ -1,7 +1,16 @@
 <?php
 
+require_once(__DIR__ . '/../Models/consultasProductos.php');
+
 class ContenidoMain
 {
+    public $objConsultasProductos;
+
+    public function __construct()
+    {
+        $this->objConsultasProductos = new ConsultasProductos();
+    }
+
     public function showHeader($urls)
     {
 ?>
@@ -101,6 +110,123 @@ class ContenidoMain
                 <i class="fa fa-angle-up"></i>
             </div>
         </footer>
+        <?php
+    }
+
+    public function showSearchedProducts($palabra, $urlProductsImg)
+    {
+        // CONSULTO LOS PRODUCTOS QUE COINCIDAN CON LO BUSCADO
+        $arraySelectProductosLike = $this->objConsultasProductos->selectProductosLike($palabra);
+
+        $filas = $arraySelectProductosLike['filas'];
+
+        if ($filas == 0) {
+        ?>
+            <section class="popular-deals section bg-gray">
+                <div class="section-title">
+                    <h2>No se encontró el producto :C</h2>
+                </div>
+            </section>
+
+        <?php
+        } elseif ($filas == 1) {
+            $fProducto = $arraySelectProductosLike['resultado'];
+
+        ?>
+            <section class="popular-deals section bg-gray">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-title">
+                                <h2>Producto/s buscado/s</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- offer 01 -->
+                        <div class="col-lg-12">
+                            <div class="trending-ads-slide">
+                                <div class="col-sm-12 col-lg-12">
+                                    <!-- product card -->
+                                    <div class="product-item bg-light">
+                                        <div class="card">
+                                            <div class="thumb-content">
+                                                <a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>">
+                                                    <img class="card-img-top img-fluid" src="<?php echo $urlProductsImg ?><?php echo $fProducto["foto1_producto"] ?>" alt="Card image cap">
+                                                </a>
+                                            </div>
+                                            <div class="card-body">
+                                                <h4 class="card-title"><a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre_producto"] ?></a>
+                                                </h4>
+                                                <ul class="list-inline product-meta">
+                                                    <li class="list-inline-item">
+                                                        <a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $fProducto["nombre_categoria"] ?></a>
+                                                    </li>
+                                                </ul>
+                                                <h4>$ <?php echo number_format($fProducto["precio_producto"], 0, ',', '.'); ?></h4>
+                                                <p class="card-text"><?php echo $fProducto["descripcion_producto"] ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <?php
+        } elseif ($filas == 2) {
+            $fProductos = $arraySelectProductosLike['resultados'];
+
+        ?>
+            <section class="popular-deals section bg-gray">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-title">
+                                <h2>En Tendencia</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- offer 01 -->
+                        <div class="col-lg-12">
+                            <div class="trending-ads-slide">
+                                <?php
+                                foreach ($fProductos as $fProducto) {
+                                ?>
+                                    <div class="col-sm-12 col-lg-12">
+                                        <!-- product card -->
+                                        <div class="product-item bg-light">
+                                            <div class="card">
+                                                <div class="thumb-content">
+                                                    <a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>">
+                                                        <img class="card-img-top img-fluid" src="<?php echo $urlProductsImg ?><?php echo $fProducto["foto1_producto"] ?>" alt="Card image cap">
+                                                    </a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h4 class="card-title"><a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre_producto"] ?></a>
+                                                    </h4>
+                                                    <ul class="list-inline product-meta">
+                                                        <li class="list-inline-item">
+                                                            <a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $fProducto["nombre_categoria"] ?></a>
+                                                        </li>
+                                                    </ul>
+                                                    <h4>$ <?php echo number_format($fProducto["precio_producto"], 0, ',', '.'); ?></h4>
+                                                    <p class="card-text"><?php echo $fProducto["descripcion_producto"] ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 <?php
+        }
     }
 }
