@@ -519,12 +519,6 @@ function cargarCardPerfilAdmin()
               <img src="../../Uploads/Usuarios/' . $f["foto_usuario"] . '" alt="Profile" class="rounded-circle">
               <h2>' . $f["nombre_usuario"] . '</h2>
               <h3>' . $f["rol_usuario"] . '</h3>
-              <div class="social-links mt-2">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-              </div>
             </div>
   ';
 }
@@ -595,11 +589,6 @@ function cargarEditarPerfilAdmin()
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Imagen de Perfil</label>
                       <div class="col-md-8 col-lg-9">
                         <img src="../../Uploads/Usuarios/' . $tablaUsuario["foto_usuario"] . '" alt="Profile">
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                          <a href="../../Controllers/Administrador/eliminarUser.php?idUser=' . $tablaUsuario["id_usuario"] . '" class="btn btn-danger btn-sm" title="Remove my profile image"><i
-                              class="bi bi-trash"></i></a>
-                        </div>
                       </div>
                     </div>
 
