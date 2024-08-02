@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-08-2024 a las 13:52:46
+-- Tiempo de generación: 02-08-2024 a las 18:09:34
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -317,7 +317,7 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `genero`, `fecha_nacimiento`, `tipo_documento`, `num_documento`, `email_usuario`, `clave_usuario`, `rol_usuario`, `estado_usuario`, `foto_usuario`, `fecha_creacion`) VALUES
-(1, 'Tarjeta de Crédito', 'Masculino', '2024-05-27', 'C.C', '123', 'juandavidzabalatapiero@gmail.com', '202cb962ac59075b964b07152d234b70', 'Cliente', 'Activo', 'goku.jpg', '2024-05-28'),
+(1, 'Juan', 'Masculino', '2024-05-27', 'C.C', '123', 'juandavidzabalatapiero@gmail.com', '202cb962ac59075b964b07152d234b70', 'Cliente', 'Activo', 'goku.jpg', '2024-05-28'),
 (2, 'Jean Carlos', 'Masculino', '2024-05-27', 'C.C', '321', 'b@b', '202cb962ac59075b964b07152d234b70', 'Administrador', 'Activo', 'humungosaurio.png', '2024-05-28'),
 (4, 'Karen', 'Femenino', '2024-05-27', 'C.C', '1234', 'kardanielabustospi@gmail.com', '334a25d552ebfd7c012ab097d745e703', 'Cliente', 'Activo', 'eco eco.jpg', '2024-05-28'),
 (5, 'Joseph', 'Masculino', '2024-06-04', 'C.C', '312', 'j@j', '950a4152c2b4aa3ad78bdd6b366cc179', 'Cliente', 'Activo', 'goat.jpg', '2024-06-05');
@@ -338,6 +338,28 @@ CREATE TABLE `tbl_ventas` (
   `cod_metodo_pago` int(11) DEFAULT NULL,
   `estado` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_ventas`
+--
+
+INSERT INTO `tbl_ventas` (`id_venta`, `cod_producto`, `cod_cliente`, `cantidad`, `fecha_venta`, `total`, `cod_metodo_pago`, `estado`) VALUES
+(1, 1, 1, 2, '2024-08-02', 49980.00, 2, 'Entregado\r\n                                       '),
+(3, 3, 1, 2, '2024-08-02', 103800.00, 2, 'Entregado'),
+(4, 2, 1, 3, '2024-08-03', 119700.00, 2, 'Pendiente');
+
+--
+-- Disparadores `tbl_ventas`
+--
+DELIMITER $$
+CREATE TRIGGER `calcular_total` BEFORE INSERT ON `tbl_ventas` FOR EACH ROW BEGIN
+	DECLARE valor_unitario INT;
+    
+    SELECT p.precio_producto INTO valor_unitario FROM tbl_productos p WHERE p.id_producto = new.cod_producto;
+	SET new.total = new.cantidad * valor_unitario;
+END
+$$
+DELIMITER ;
 
 --
 -- Índices para tablas volcadas
@@ -532,7 +554,7 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT de la tabla `tbl_ventas`
 --
 ALTER TABLE `tbl_ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
