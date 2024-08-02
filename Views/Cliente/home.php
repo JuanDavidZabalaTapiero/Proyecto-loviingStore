@@ -13,6 +13,9 @@ require_once('../../Models/consultasCliente.php');
 require_once(__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
 $objContenidoCliente = new ContenidoCliente();
 
+require_once(__DIR__ . '/../../Controllers/contenidoMain.php');
+$objContenidoMain = new ContenidoMain();
+
 ?>
 <!DOCTYPE html>
 
@@ -88,10 +91,10 @@ $objContenidoCliente = new ContenidoCliente();
 						<div class="container">
 							<div class="row justify-content-center">
 								<div class="col-lg-12 col-md-12 align-content-center">
-									<form>
+									<form method="post" action="">
 										<div class="form-row">
 											<div class="form-group col-xl-6 col-lg-6 col-md-6">
-												<input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="¿Qué quieres buscar?">
+												<input type="text" name="palabra" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="¿Qué quieres buscar?">
 											</div>
 											<div class="form-group col-xl-4 col-lg-4 col-md-6">
 												<select class="w-100 form-control mt-lg-1 mt-md-2">
@@ -117,6 +120,17 @@ $objContenidoCliente = new ContenidoCliente();
 		<!-- Container End -->
 	</section>
 
+	<?php
+	if ($_SERVER['REQUEST_METHOD'] == "POST") {
+		$palabra = $_POST["palabra"];
+
+		$urlProductsImg = "../../Uploads/Productos/";
+
+		$urlProducto = "";
+
+		$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto);
+	}
+	?>
 
 	<!--===========================================
 	=            Popular deals section            =
