@@ -100,10 +100,10 @@ $objContenidoMain = new ContenidoMain();
 						<div class="container">
 							<div class="row justify-content-center">
 								<div class="col-lg-12 col-md-12 align-content-center">
-									<form>
+									<form method="post" action="">
 										<div class="form-row">
 											<div class="form-group col-xl-6 col-lg-6 col-md-6">
-												<input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="¿Qué quieres buscar?">
+												<input type="text" name="palabra" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="¿Qué quieres buscar?">
 											</div>
 											<div class="form-group col-xl-4 col-lg-4 col-md-6">
 												<select class="w-100 form-control mt-lg-1 mt-md-2">
@@ -133,6 +133,15 @@ $objContenidoMain = new ContenidoMain();
 	<!--===========================================
 	=            Popular deals section            =
 	============================================-->
+	<?php
+	if ($_SERVER['REQUEST_METHOD'] == "POST") {
+		$palabra = $_POST["palabra"];
+
+		$urlProductsImg = "Uploads/Productos/";
+
+		$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg);
+	}
+	?>
 
 	<section class="popular-deals section bg-gray">
 		<div class="container">
