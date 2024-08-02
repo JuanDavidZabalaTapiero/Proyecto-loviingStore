@@ -120,7 +120,7 @@ require_once ('../../Controllers/Administrador/dashboardInfo.php');
                           data: [0, 0, 0, 0, 0, 0, 0],
                         }, {
                           name: 'Total',
-                          data: [0.0.0.0.0.0]
+                          data: [0,0,0,0,0,0,0,0]
                         }, {
                           name: 'Clientes',
                           data: [15, 11, 32, 18, 9, 24, 11]
