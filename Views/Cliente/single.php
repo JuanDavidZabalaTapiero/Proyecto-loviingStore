@@ -96,38 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	mostrarHeaderCliente();
 
 	?>
-
-	<section class="page-search">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<!-- Advance Search -->
-					<div class="advance-search nice-select-white">
-						<form>
-							<div class="form-row align-items-center">
-								<div class="form-group col-xl-6 col-lg-6 col-md-6">
-									<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="¿Qué quieres buscar?">
-								</div>
-								<div class="form-group col-xl-4 col-lg-4 col-md-6">
-									<select class="w-100 form-control my-2 my-lg-0">
-										<option>Categoría</option>
-										<option value="1">Top rated</option>
-										<option value="2">Lowest Price</option>
-										<option value="4">Highest Price</option>
-									</select>
-								</div>
-
-								<div class="form-group col-xl-2 col-lg-2 col-md-12">
-
-									<button type="submit" class="btn btn-primary active w-100">Buscar</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	<!--===================================
 	=            Store Section            =
 	====================================-->
@@ -149,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	<!-- Footer -->
 	<?php
-	mostrarFooterCliente();
+	mostrarFooterClienteProducto();
 	?>
 
 	<!-- Essential Scripts

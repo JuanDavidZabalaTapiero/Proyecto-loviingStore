@@ -639,6 +639,42 @@ function mostrarCarritoCliente()
 function mostrarFooterCliente()
 {
 ?>
+	<footer class="footer-bottom">
+		<!-- Container Start -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 text-center text-lg-left mb-3 mb-lg-0">
+					<!-- Copyright -->
+					<div class="copyright">
+						<p>Copyright &copy;
+							<script>
+								var CurrentYear = new Date().getFullYear()
+								document.write(CurrentYear)
+							</script> - Loviing Store
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<!-- Social Icons -->
+					<ul class="social-media-icons text-center text-lg-right">
+						<li><a class="fa-brands fa-instagram" href="https://www.facebook.com/themefisher"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Container End -->
+		<!-- To Top -->
+		<div class="scroll-top-to">
+			<i class="fa fa-angle-up"></i>
+		</div>
+	</footer>
+<?php
+}
+
+
+function mostrarFooterClienteProducto()
+{
+?>
 	<footer class="footer-bottom" style="width: 100%; position: absolute; bottom: 0;">
 		<!-- Container Start -->
 		<div class="container">

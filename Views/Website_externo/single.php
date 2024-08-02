@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	<!-- Footer Bottom -->
 	<?php
-	mostrarFooterCliente();
+	mostrarFooterClienteProducto();
 	?>
 
 	<!-- Essential Scripts
