@@ -1,5 +1,5 @@
 <?php
-// holaaaaaaa
+// holaaaaaaaaaa
 require_once('Controllers/Cliente/mostrarContenido.php');
 
 require_once('Controllers/Cliente/mostrarInfoProducto.php');
