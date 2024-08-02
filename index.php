@@ -1,19 +1,19 @@
 <?php
 // holaaaaaaaaaaaaa
-require_once('Controllers/Cliente/mostrarContenido.php');
+require_once ('Controllers/Cliente/mostrarContenido.php');
 
-require_once('Controllers/Cliente/mostrarInfoProducto.php');
+require_once ('Controllers/Cliente/mostrarInfoProducto.php');
 
-require_once('Models/consultasAdmin.php');
+require_once ('Models/consultasAdmin.php');
 
-require_once('Models/consultasCliente.php');
+require_once ('Models/consultasCliente.php');
 
 // CONTENIDO DEL CLIENTE
-require_once(__DIR__ . '/Controllers/Cliente/contenidoCliente.php');
+require_once (__DIR__ . '/Controllers/Cliente/contenidoCliente.php');
 $objContenidoCliente = new ContenidoCliente();
 
 // CONTENIDO PRINCIPAL
-require_once(__DIR__ . '/Controllers/contenidoMain.php');
+require_once (__DIR__ . '/Controllers/contenidoMain.php');
 $objContenidoMain = new ContenidoMain();
 
 ?>
@@ -59,7 +59,9 @@ $objContenidoMain = new ContenidoMain();
 
 	<link href="Views/Website_externo/css/style.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+		integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -96,33 +98,9 @@ $objContenidoMain = new ContenidoMain();
 
 					</div>
 					<!-- Advance Search -->
-					<div class="advance-search">
-						<div class="container">
-							<div class="row justify-content-center">
-								<div class="col-lg-12 col-md-12 align-content-center">
-									<form method="post" action="">
-										<div class="form-row">
-											<div class="form-group col-xl-6 col-lg-6 col-md-6">
-												<input type="text" name="palabra" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="¿Qué quieres buscar?">
-											</div>
-											<div class="form-group col-xl-4 col-lg-4 col-md-6">
-												<select class="w-100 form-control mt-lg-1 mt-md-2">
-													<option>Categorías</option>
-													<option value="1">Top rated</option>
-													<option value="2">Lowest Price</option>
-													<option value="4">Highest Price</option>
-												</select>
-											</div>
-
-											<div class="form-group col-xl-2 col-lg-2 col-md-12 align-self-center">
-												<button type="submit" class="btn btn-buscador active w-100 ">Buscar</button>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php
+					$objContenidoMain->showSearchBar();
+					?>
 				</div>
 			</div>
 		</div>
@@ -150,7 +128,7 @@ $objContenidoMain = new ContenidoMain();
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2>En Tendencia</h2>
+						<h2>Todos los Productos</h2>
 					</div>
 				</div>
 			</div>

@@ -675,7 +675,7 @@ function mostrarFooterCliente()
 function mostrarFooterClienteProducto()
 {
 ?>
-	<footer class="footer-bottom" style="width: 100%; position: absolute; bottom: 0;">
+	<footer class="footer-bottom">
 		<!-- Container Start -->
 		<div class="container">
 			<div class="row">
