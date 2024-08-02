@@ -1,5 +1,5 @@
 <?php
-
+// holaaaaaaaaaaaaa
 require_once('Controllers/Cliente/mostrarContenido.php');
 
 require_once('Controllers/Cliente/mostrarInfoProducto.php');
@@ -129,19 +129,21 @@ $objContenidoMain = new ContenidoMain();
 		<!-- Container End -->
 	</section>
 
-
-	<!--===========================================
-	=            Popular deals section            =
-	============================================-->
 	<?php
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$palabra = $_POST["palabra"];
 
 		$urlProductsImg = "Uploads/Productos/";
 
-		$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg);
+		$urlProducto = "Views/Website_externo/";
+
+		$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto);
 	}
 	?>
+
+	<!--===========================================
+	=            Popular deals section            =
+	============================================-->
 
 	<section class="popular-deals section bg-gray">
 		<div class="container">

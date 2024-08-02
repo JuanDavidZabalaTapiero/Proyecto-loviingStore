@@ -134,6 +134,23 @@ class ConsultasAdmin
         ';
     }
 
+    public function consultarClientes(){
+
+        $sql = "SELECT COUNT(*) AS totalClientes FROM tbl_usuarios WHERE rol_usuario = 'Cliente'";
+
+        $objConexionBd = new ConexionBd();
+
+        $conexion = $objConexionBd->getConexion();
+
+        $result = $conexion->prepare($sql);
+
+        $result->execute();
+
+        $f = $result->fetchALL();
+
+        return $f;
+    }
+
     public function editarPerfilAdmin($nombre_usuario, $genero, $fecha_nacimiento, $tipo_documento, $num_documento, $email_usuario){
         
         $sql = "UPDATE tbl_usuarios 
@@ -284,7 +301,7 @@ class ConsultasAdmin
         FROM tbl_productos 
         INNER JOIN tbl_categorias ON tbl_productos.cod_categoria = tbl_categorias.id_categoria
         INNER JOIN tbl_inventario ON tbl_productos.id_producto = tbl_inventario.cod_producto;
-";
+        ";
 
 
 
@@ -643,7 +660,7 @@ class ConsultasAdmin
     public function consultarVentas()
     {
 
-        $sql = "SELECT id_venta, nombre_producto, nombre_usuario, cantidad, fecha_venta, total, nombre_metodo, estado 
+        $sql = "SELECT id_venta, nombre_producto, nombre_usuario, cantidad, fecha_venta, total, nombre_metodo, estado, foto1_producto, precio_producto, (cantidad * precio_producto) AS valor_total
         FROM tbl_ventas 
         INNER JOIN tbl_productos ON cod_producto = id_producto
         INNER JOIN tbl_usuarios ON cod_cliente = id_usuario
@@ -778,7 +795,41 @@ class ConsultasAdmin
 
         return $f;
     }
-   
+
+    public function cuantificarVentas(){
+        $sql = "SELECT COUNT(*) AS ventas_en_mes FROM tbl_ventas 
+        WHERE MONTH(fecha_venta) = MONTH(CURRENT_DATE()) 
+        AND YEAR(fecha_venta) = YEAR(CURRENT_DATE())";
+
+        $objConexionBd = new ConexionBd();
+
+        $conexion = $objConexionBd->getConexion();
+
+        $result = $conexion->prepare($sql);
+
+        $result->execute();
+
+        $f = $result->fetchAll();
+
+        return $f;
+    }
+
+    public function valorVentasMes(){
+        $sql = "SELECT ROUND(SUM(total)) AS valorMensual FROM tbl_ventas WHERE MONTH(fecha_venta) = MONTH(CURRENT_DATE()) 
+        AND YEAR(fecha_venta) = YEAR(CURRENT_DATE())";
+
+        $objConexionBd = new ConexionBd();
+
+        $conexion = $objConexionBd->getConexion();
+
+        $result = $conexion->prepare($sql);
+
+        $result->execute();
+
+        $f = $result->fetchAll();
+
+        return $f;
+    }
 }
 // HOLA, SIU
 //        _

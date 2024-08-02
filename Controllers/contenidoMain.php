@@ -113,7 +113,7 @@ class ContenidoMain
         <?php
     }
 
-    public function showSearchedProducts($palabra, $urlProductsImg)
+    public function showSearchedProducts($palabra, $urlProductsImg, $urlProducto)
     {
         // CONSULTO LOS PRODUCTOS QUE COINCIDAN CON LO BUSCADO
         $arraySelectProductosLike = $this->objConsultasProductos->selectProductosLike($palabra);
@@ -151,16 +151,16 @@ class ContenidoMain
                                     <div class="product-item bg-light">
                                         <div class="card">
                                             <div class="thumb-content">
-                                                <a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>">
+                                                <a href="<?php echo $urlProducto ?>single.php?idProd=<?php echo $fProducto["id_producto"] ?>">
                                                     <img class="card-img-top img-fluid" src="<?php echo $urlProductsImg ?><?php echo $fProducto["foto1_producto"] ?>" alt="Card image cap">
                                                 </a>
                                             </div>
                                             <div class="card-body">
-                                                <h4 class="card-title"><a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre_producto"] ?></a>
+                                                <h4 class="card-title"><a href="<?php echo $urlProducto ?>single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre_producto"] ?></a>
                                                 </h4>
                                                 <ul class="list-inline product-meta">
                                                     <li class="list-inline-item">
-                                                        <a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $fProducto["nombre_categoria"] ?></a>
+                                                        <a href="<?php echo $urlProducto ?>single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $fProducto["nombre_categoria"] ?></a>
                                                     </li>
                                                 </ul>
                                                 <h4>$ <?php echo number_format($fProducto["precio_producto"], 0, ',', '.'); ?></h4>
@@ -200,16 +200,16 @@ class ContenidoMain
                                         <div class="product-item bg-light">
                                             <div class="card">
                                                 <div class="thumb-content">
-                                                    <a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>">
+                                                    <a href="<?php echo $urlProducto ?>single.php?idProd=<?php echo $fProducto["id_producto"] ?>">
                                                         <img class="card-img-top img-fluid" src="<?php echo $urlProductsImg ?><?php echo $fProducto["foto1_producto"] ?>" alt="Card image cap">
                                                     </a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <h4 class="card-title"><a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre_producto"] ?></a>
+                                                    <h4 class="card-title"><a href="<?php echo $urlProducto ?>single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre_producto"] ?></a>
                                                     </h4>
                                                     <ul class="list-inline product-meta">
                                                         <li class="list-inline-item">
-                                                            <a href="Views/Website_externo/single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $fProducto["nombre_categoria"] ?></a>
+                                                            <a href="<?php echo $urlProducto ?>single.php?idProd=<?php echo $fProducto["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $fProducto["nombre_categoria"] ?></a>
                                                         </li>
                                                     </ul>
                                                     <h4>$ <?php echo number_format($fProducto["precio_producto"], 0, ',', '.'); ?></h4>
