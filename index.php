@@ -112,13 +112,22 @@ $objContenidoMain = new ContenidoMain();
 		$form = $_POST["form"];
 
 		if ($form == "buscar_p") {
+			$cod_categoria = $_POST["categorias"];
+
 			$palabra = $_POST["palabra"];
 
 			$urlProductsImg = "Uploads/Productos/";
 
 			$urlProducto = "Views/Website_externo/";
+			
+			if ($cod_categoria == "") {
 
-			$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto);
+				$cod_categoria = null;
+
+				$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria);
+			} else {
+				$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria);
+			}
 		}
 	}
 	?>

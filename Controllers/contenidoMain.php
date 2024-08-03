@@ -197,10 +197,10 @@ class ContenidoMain
         <?php
     }
 
-    public function showSearchedProducts($palabra, $urlProductsImg, $urlProducto)
+    public function showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria = null)
     {
         // CONSULTO LOS PRODUCTOS QUE COINCIDAN CON LO BUSCADO
-        $arraySelectProductosLike = $this->objConsultasProductos->selectProductosLike($palabra);
+        $arraySelectProductosLike = $this->objConsultasProductos->selectProductosLike($palabra, $cod_categoria = null);
 
         $filas = $arraySelectProductosLike['filas'];
 

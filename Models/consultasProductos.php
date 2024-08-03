@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/prepararConsulta.php');
+require_once (__DIR__ . '/prepararConsulta.php');
 
 class ConsultasProductos
 {
@@ -55,7 +55,7 @@ class ConsultasProductos
         }
     }
 
-    public function selectProductosLike($palabra)
+    public function selectProductosLike($palabra, $categoria = null)
     {
         // Definir la consulta SQL sin los comodines
         $selectProductosLike = "SELECT * 
@@ -63,13 +63,23 @@ class ConsultasProductos
         INNER JOIN tbl_categorias c ON p.cod_categoria = c.id_categoria
         WHERE nombre_producto LIKE :palabra";
 
+        // Incluir la condición adicional si $categoria está definida
+        if ($categoria !== null) {
+            $selectProductosLike .= " AND p.cod_categoria = :cod_categoria";
+        }
+
         // Incluir los comodines en el valor del parámetro
         $palabra = '%' . $palabra . '%';
 
         // Definir los valores de los parámetros
         $bindValues = [
-            ':palabra' => $palabra
+            ':palabra' => $palabra,
         ];
+
+        // Añadir el valor de $categoria a los parámetros si está definida
+        if ($categoria !== null) {
+            $bindValues[':cod_categoria'] = $categoria;
+        }
 
         // Preparar y ejecutar la consulta usando el método prepararConsulta
         $result = $this->objPrepararConsulta->prepararConsulta($selectProductosLike, $bindValues);

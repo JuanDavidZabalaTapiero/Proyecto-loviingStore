@@ -89,35 +89,9 @@ $objContenidoMain = new ContenidoMain();
 
 					</div>
 					<!-- Advance Search -->
-					<div class="advance-search">
-						<div class="container">
-							<div class="row justify-content-center">
-								<div class="col-lg-12 col-md-12 align-content-center">
-									<form method="post" action="">
-										<div class="form-row">
-											<div class="form-group col-xl-6 col-lg-6 col-md-6">
-												<input type="text" name="palabra" class="form-control my-2 my-lg-1"
-													id="inputtext4" placeholder="¿Qué quieres buscar?">
-											</div>
-											<div class="form-group col-xl-4 col-lg-4 col-md-6">
-												<select class="w-100 form-control mt-lg-1 mt-md-2">
-													<option>Categorías</option>
-													<option value="1">Top rated</option>
-													<option value="2">Lowest Price</option>
-													<option value="4">Highest Price</option>
-												</select>
-											</div>
-
-											<div class="form-group col-xl-2 col-lg-2 col-md-12 align-self-center">
-												<button type="submit"
-													class="btn btn-buscador active w-100 ">Buscar</button>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php
+					$objContenidoMain->showSearchBar();
+					?>
 				</div>
 			</div>
 		</div>
@@ -126,13 +100,21 @@ $objContenidoMain = new ContenidoMain();
 
 	<?php
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {
-		$palabra = $_POST["palabra"];
+		$form = $_POST["form"];
 
-		$urlProductsImg = "../../Uploads/Productos/";
+		if ($form == "buscar_p") {
+			$cod_categoria = $_POST["categorias"];
 
-		$urlProducto = "";
+			if ($cod_categoria !== "") {
+				$palabra = $_POST["palabra"];
 
-		$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto);
+				$urlProductsImg = "../../Uploads/Productos/";
+
+				$urlProducto = "";
+
+				$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria);
+			}
+		}
 	}
 	?>
 
