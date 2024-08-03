@@ -88,8 +88,15 @@ require_once ('../../Controllers/Administrador/mostrarInfoUser.php');
             <div class="row g-3 formulario">
               <div class="col-md-6">
                 <label for="nombreCat">Nombre de la Categoría</label> <br>
+
                 <input type="text" id="nombreCat" placeholder="Ej: Aseo Personal" name="nombreCat" class="input"
                   required>
+              </div>
+
+              <div class="col-md-6">
+                <label for="img_cat">Img de la Categoría</label>
+                <input class="form-control input" type="file" id="img_cat" name="img_cat"
+                  accept=".png, .jpg, .jpeg, .gif, .webp" required>
               </div>
             </div>
 

@@ -225,10 +225,10 @@ class ConsultasAdmin
         return $f;
     }
 
-    public function registrarCategoria($nombreCat)
+    public function registrarCategoria($nombreCat, $icono)
     {
 
-        $sql = "INSERT INTO tbl_categorias(nombre_categoria) VALUES (:nombreCat)";
+        $sql = "INSERT INTO tbl_categorias(nombre_categoria, icono) VALUES (:nombreCat, :icono)";
 
         $objConexionBd = new ConexionBd();
 
@@ -237,6 +237,7 @@ class ConsultasAdmin
         $result = $conexion->prepare($sql);
 
         $result->bindParam(":nombreCat", $nombreCat);
+        $result->bindParam(":icono", $icono);
 
         $result->execute();
 
