@@ -109,13 +109,17 @@ $objContenidoMain = new ContenidoMain();
 
 	<?php
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {
-		$palabra = $_POST["palabra"];
+		$form = $_POST["form"];
 
-		$urlProductsImg = "Uploads/Productos/";
+		if ($form == "buscar_p") {
+			$palabra = $_POST["palabra"];
 
-		$urlProducto = "Views/Website_externo/";
+			$urlProductsImg = "Uploads/Productos/";
 
-		$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto);
+			$urlProducto = "Views/Website_externo/";
+
+			$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto);
+		}
 	}
 	?>
 

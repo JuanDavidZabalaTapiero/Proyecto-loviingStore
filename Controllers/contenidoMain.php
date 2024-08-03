@@ -148,13 +148,15 @@ class ContenidoMain
                 <div class="row justify-content-center">
                     <div class="col-lg-12 col-md-12 align-content-center">
                         <form method="post" action="">
+                            <input type="hidden" name="form" value="buscar_p">
                             <div class="form-row">
                                 <div class="form-group col-xl-6 col-lg-6 col-md-6">
                                     <input type="text" name="palabra" class="form-control my-2 my-lg-1" id="inputtext4"
                                         placeholder="¿Qué quieres buscar?">
                                 </div>
                                 <div class="form-group col-xl-4 col-lg-4 col-md-6">
-                                    <select class="w-100 form-control mt-lg-1 mt-md-2">
+                                    <select class="w-100 form-control mt-lg-1 mt-md-2" id="categorias_buscador"
+                                        name="categorias">
                                         <option>Categorías</option>
 
                                         <?php
@@ -180,7 +182,6 @@ class ContenidoMain
                                             }
                                         }
                                         ?>
-
                                     </select>
                                 </div>
 
@@ -273,7 +274,7 @@ class ContenidoMain
                     <div class="row">
                         <div class="col-md-12">
                             <div class="section-title">
-                                <h2>En Tendencia</h2>
+                                <h2>Producto/s buscado/s</h2>
                             </div>
                         </div>
                     </div>

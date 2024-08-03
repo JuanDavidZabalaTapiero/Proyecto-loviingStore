@@ -8,12 +8,12 @@
   'use strict';
 
   // navbarDropdown
-	if ($(window).width() < 992) {
-		$('.navigation .dropdown-toggle').on('click', function () {
-			$(this).siblings('.dropdown-menu').animate({
-				height: 'toggle'
-			}, 300);
-		});
+  if ($(window).width() < 992) {
+    $('.navigation .dropdown-toggle').on('click', function () {
+      $(this).siblings('.dropdown-menu').animate({
+        height: 'toggle'
+      }, 300);
+    });
   }
 
   //  Count Up
@@ -45,7 +45,7 @@
   }
   $(window).on('scroll', function () {
     counter();
-		//.Scroll to top show/hide
+    //.Scroll to top show/hide
     var scrollToTop = $('.scroll-top-to'),
       scroll = $(window).scrollTop();
     if (scroll >= 200) {
@@ -54,14 +54,14 @@
       scrollToTop.fadeOut(100);
     }
   });
-	// scroll-to-top
+  // scroll-to-top
   $('.scroll-top-to').on('click', function () {
     $('body,html').animate({
       scrollTop: 0
     }, 500);
     return false;
   });
-    
+
   // -----------------------------
   //  Video Replace
   // -----------------------------
@@ -118,9 +118,9 @@
         arrows: false
       }
     }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
     ]
   });
 
@@ -156,9 +156,9 @@
         slidesToScroll: 1
       }
     }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
     ]
   });
 
@@ -191,6 +191,5 @@
   $('.range-track').on('slide', function (slideEvt) {
     $('.value').text('$' + slideEvt.value[0] + ' - ' + '$' + slideEvt.value[1]);
   });
-
 
 })(jQuery);
