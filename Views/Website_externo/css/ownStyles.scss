@@ -88,6 +88,10 @@ body {
                 }
             }
 
+            #form_comprar {
+                margin-top: 25px;
+            }
+
             button.agregarCarrito {
                 display: block;
                 width: 350px;
@@ -113,6 +117,7 @@ body {
                 color: white;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                 cursor: pointer;
+                margin-top: 40px;
             }
 
             button.agregarCarrito:hover, button.comprarAhora:hover {

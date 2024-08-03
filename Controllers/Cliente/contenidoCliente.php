@@ -202,7 +202,7 @@ class ContenidoCliente
 
                 <span class="stock">En stock: <?php echo $fProducto["stock"] ?></span>
 
-                <form action="" method="post">
+                <form action="" method="post" id="form_comprar">
                     <input type="hidden" name="form" value="comprar">
 
                     <?php
@@ -210,6 +210,7 @@ class ContenidoCliente
                     $stock = $fProducto["stock"];
                     ?>
 
+                    <label for="cantidad_select">Cantidad: </label>
                     <select name="cantidad" id="cantidad_select">
                         <?php
 

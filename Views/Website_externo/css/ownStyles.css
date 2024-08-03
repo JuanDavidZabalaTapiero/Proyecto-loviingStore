@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: "Nunito";
 }
+
 body div.contenedor {
   max-width: 1140px;
   width: 90%;
@@ -70,6 +71,9 @@ body div.contenedor div.info div.cantidad .menos:hover, body div.contenedor div.
   background: gray;
   cursor: pointer;
 }
+body div.contenedor div.info #form_comprar {
+  margin-top: 25px;
+}
 body div.contenedor div.info button.agregarCarrito {
   display: block;
   width: 350px;
@@ -94,6 +98,7 @@ body div.contenedor div.info button.comprarAhora {
   color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
+  margin-top: 40px;
 }
 body div.contenedor div.info button.agregarCarrito:hover, body div.contenedor div.info button.comprarAhora:hover {
   background: #c8cc21;
