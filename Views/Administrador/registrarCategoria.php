@@ -93,6 +93,7 @@ require_once ('../../Controllers/Administrador/mostrarInfoUser.php');
                   required>
               </div>
 
+              <!-- IMG DE LA CATEGORÍA -->
               <div class="col-md-6">
                 <label for="img_cat">Img de la Categoría</label>
                 <input class="form-control input" type="file" id="img_cat" name="img_cat"
