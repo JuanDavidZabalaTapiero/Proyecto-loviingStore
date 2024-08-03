@@ -16,7 +16,7 @@ Loviing Store es una empresa que ofrece una amplia variedad de productos, incluy
 
 - HTML
 - CSS (Con Bootstrap y Sass)
-- JS (Con JQuery y SheetJS)
+- JS (Con JQuery, SheetJS y ApexCharts.js)
 - PHP (Con Composer)
 - MySQL
 
