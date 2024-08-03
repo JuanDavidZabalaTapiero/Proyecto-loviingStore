@@ -112,21 +112,36 @@ $objContenidoMain = new ContenidoMain();
 		$form = $_POST["form"];
 
 		if ($form == "buscar_p") {
-			$cod_categoria = $_POST["categorias"];
 
+			// INPUT PARA BUSCAR UN PRODUCTO
 			$palabra = $_POST["palabra"];
 
+			// SELECT DE CATEGORIAS
+			$cod_categoria = $_POST["categorias"];
+
+			// URLS
 			$urlProductsImg = "Uploads/Productos/";
 
 			$urlProducto = "Views/Website_externo/";
-			
-			if ($cod_categoria == "") {
 
-				$cod_categoria = null;
-
-				$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria);
+			// HAY ALGO ESCRITO
+			if ($palabra !== "") {
+				// SE ELIGIO UNA CATEGORÍA
+				if ($cod_categoria !== "no_value") {
+					$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria);
+				} else {
+					// NO SE ELIGIO UNA CATEGORÍA
+					$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto);
+				}
 			} else {
-				$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria);
+				// NO SE ESCRIBIO ALGO
+
+				// SE ELIGIO UNA CATEGORÍA
+				if ($cod_categoria !== "no_value") {
+					$objContenidoMain->showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria);
+				} else {
+
+				}
 			}
 		}
 	}

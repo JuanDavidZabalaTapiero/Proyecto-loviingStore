@@ -157,7 +157,7 @@ class ContenidoMain
                                 <div class="form-group col-xl-4 col-lg-4 col-md-6">
                                     <select class="w-100 form-control mt-lg-1 mt-md-2" id="categorias_buscador"
                                         name="categorias">
-                                        <option>Categorías</option>
+                                        <option value="no_value">Categorías</option>
 
                                         <?php
                                         if ($filas == 1) {
@@ -200,7 +200,7 @@ class ContenidoMain
     public function showSearchedProducts($palabra, $urlProductsImg, $urlProducto, $cod_categoria = null)
     {
         // CONSULTO LOS PRODUCTOS QUE COINCIDAN CON LO BUSCADO
-        $arraySelectProductosLike = $this->objConsultasProductos->selectProductosLike($palabra, $cod_categoria = null);
+        $arraySelectProductosLike = $this->objConsultasProductos->selectProductosLike($palabra, $cod_categoria);
 
         $filas = $arraySelectProductosLike['filas'];
 
