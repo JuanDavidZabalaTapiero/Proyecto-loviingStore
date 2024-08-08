@@ -1,5 +1,5 @@
 <?php
-require_once ('conexionBd.php');
+require_once('conexionBd.php');
 class ConsultasAdmin
 {
     // USUARIOS
@@ -134,7 +134,8 @@ class ConsultasAdmin
         ';
     }
 
-    public function consultarClientes(){
+    public function consultarClientes()
+    {
 
         $sql = "SELECT COUNT(*) AS totalClientes FROM tbl_usuarios WHERE rol_usuario = 'Cliente'";
 
@@ -151,8 +152,9 @@ class ConsultasAdmin
         return $f;
     }
 
-    public function editarPerfilAdmin($nombre_usuario, $genero, $fecha_nacimiento, $tipo_documento, $num_documento, $email_usuario){
-        
+    public function editarPerfilAdmin($nombre_usuario, $genero, $fecha_nacimiento, $tipo_documento, $num_documento, $email_usuario)
+    {
+
         $sql = "UPDATE tbl_usuarios 
         SET nombre_usuario = :nombre_usuario,
         genero = :genero,
@@ -161,7 +163,7 @@ class ConsultasAdmin
         num_documento = :num_documento,
         email_usuario = :email_usuario
         WHERE num_documento = :num_documento";
-        
+
         $objConexionBd = new ConexionBd();
 
         $conexion = $objConexionBd->getConexion();
@@ -183,7 +185,6 @@ class ConsultasAdmin
             location.href="../../Views/Administrador/userProfileAdmin.php"
         </script>
         ';
-
     }
 
     // CATEGORÍAS
@@ -298,10 +299,10 @@ class ConsultasAdmin
     // PRODUCTOS E INVENTARIO
     public function consultarProductos()
     {
-        $sql = "SELECT *, nombre_categoria, precio_producto, entradas, salidas, tbl_inventario.stock AS stock
-        FROM tbl_productos 
-        INNER JOIN tbl_categorias ON tbl_productos.cod_categoria = tbl_categorias.id_categoria
-        INNER JOIN tbl_inventario ON tbl_productos.id_producto = tbl_inventario.cod_producto;
+        $sql = "SELECT *, nombre_categoria, precio_producto, entradas, salidas, i.stock AS stock
+        FROM tbl_productos p
+        INNER JOIN tbl_categorias c ON p.cod_categoria = c.id_categoria
+        INNER JOIN tbl_inventario i ON p.id_producto = i.cod_producto;
         ";
 
 
@@ -358,7 +359,7 @@ class ConsultasAdmin
         $result->bindParam(":foto3_producto", $foto3_producto);
         $result->bindParam(":stock", $stock);
 
-        $result->execute(); 
+        $result->execute();
 
         $cod_producto = $conexion->lastInsertId();
 
@@ -737,7 +738,8 @@ class ConsultasAdmin
         return $f;
     }
 
-    public function eliminarVenta($id_venta){
+    public function eliminarVenta($id_venta)
+    {
 
         $sql = "DELETE FROM tbl_ventas WHERE id_venta = :id_venta";
 
@@ -797,7 +799,8 @@ class ConsultasAdmin
         return $f;
     }
 
-    public function cuantificarVentas(){
+    public function cuantificarVentas()
+    {
         $sql = "SELECT COUNT(*) AS ventas_en_mes FROM tbl_ventas 
         WHERE MONTH(fecha_venta) = MONTH(CURRENT_DATE()) 
         AND YEAR(fecha_venta) = YEAR(CURRENT_DATE())";
@@ -815,7 +818,8 @@ class ConsultasAdmin
         return $f;
     }
 
-    public function valorVentasMes(){
+    public function valorVentasMes()
+    {
         $sql = "SELECT ROUND(SUM(total)) AS valorMensual FROM tbl_ventas WHERE MONTH(fecha_venta) = MONTH(CURRENT_DATE()) 
         AND YEAR(fecha_venta) = YEAR(CURRENT_DATE())";
 

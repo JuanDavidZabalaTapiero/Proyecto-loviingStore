@@ -1,96 +1,96 @@
 <?php
 
 // SIN INICIAR SESIÓN
-function mostrarProductosInicio(){
+function mostrarProductosInicio()
+{
 
-    $objConsultasAdmin = new ConsultasAdmin();
+	$objConsultasAdmin = new ConsultasAdmin();
 
 	$objConsultasCliente = new ConsultasCliente();
 
-    $tablaProductos = $objConsultasAdmin->consultarProductos();
+	$tablaProductos = $objConsultasAdmin->consultarProductos();
 
-    foreach ($tablaProductos as $f) {
+	foreach ($tablaProductos as $f) {
 
 		$cod_producto = $f["id_producto"];
 
 		$tblRate = $objConsultasCliente->consultarRateProducto($cod_producto);
 
-        echo '
+		echo '
                         <div class="col-sm-12 col-lg-4">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<a href="Views/Website_externo/single.php?idProd='.$f["id_producto"].'">
+										<a href="Views/Website_externo/single.php?idProd=' . $f["id_producto"] . '">
 											<img class="card-img-top img-fluid"
-												src="Uploads/Productos/'.$f["foto1_producto"].'"
+												src="Uploads/Productos/' . $f["foto1_producto"] . '"
 												alt="Card image cap">
 										</a>
 									</div>
 									<div class="card-body">
-										<h4 class="card-title"><a href="Views/Website_externo/single.php?idProd='.$f["id_producto"].'">'.$f["nombre_producto"].'</a></h4>
+										<h4 class="card-title"><a href="Views/Website_externo/single.php?idProd=' . $f["id_producto"] . '">' . $f["nombre_producto"] . '</a></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
-												<a href="Views/Website_externo/single.php?idProd='.$f["id_producto"].'"><i class="fa fa-folder-open-o"></i>'.$f["nombre_categoria"].'</a>
+												<a href="Views/Website_externo/single.php?idProd=' . $f["id_producto"] . '"><i class="fa fa-folder-open-o"></i>' . $f["nombre_categoria"] . '</a>
 											</li>
 										</ul>
-										<h4>$ '.$f["precio_producto"].'</h4>
-										<p class="card-text">'.$f["descripcion_producto"].'</p>
+										<h4>$ ' . $f["precio_producto"] . '</h4>
+										<p class="card-text">' . $f["descripcion_producto"] . '</p>
 										<div class="product-ratings">
 											<ul class="list-inline">';
-											
-											$filas = $tblRate['filas'];
 
-											if ($filas == 1) {
+		$filas = $tblRate['filas'];
 
-												$resultado = $tblRate['resultado'];
+		if ($filas == 1) {
 
-												for ($i=0; $i < $resultado["estrellas"]; $i++) { 
-													echo '
+			$resultado = $tblRate['resultado'];
+
+			for ($i = 0; $i < $resultado["estrellas"]; $i++) {
+				echo '
 													<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
 													';
-												}
-	
-												$restantes = 5 - $i;
-	
-												for ($r=0; $r < $restantes; $r++){
-													echo '
+			}
+
+			$restantes = 5 - $i;
+
+			for ($r = 0; $r < $restantes; $r++) {
+				echo '
 													<li class="list-inline-item"><i class="fa fa-star"></i></li>
 													';
-												}
-	
-											} else {
+			}
+		} else {
 
-												$suma = 0;
+			$suma = 0;
 
-												$cantidad = 0;
+			$cantidad = 0;
 
-												$resultados = $tblRate['resultados'];
+			$resultados = $tblRate['resultados'];
 
-												foreach ($resultados as $rate) {
-													$suma = $suma + $rate["estrellas"];
+			foreach ($resultados as $rate) {
+				$suma = $suma + $rate["estrellas"];
 
-													$cantidad++;
-												}
+				$cantidad++;
+			}
 
-												$promedio = round($suma / $cantidad);
+			$promedio = round($suma / $cantidad);
 
-												for ($i=0; $i < $promedio; $i++) { 
-													echo '
+			for ($i = 0; $i < $promedio; $i++) {
+				echo '
 													<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
 													';
-												}
+			}
 
-												$restantes = 5 - $promedio;
+			$restantes = 5 - $promedio;
 
-												for ($r=0; $r < $restantes; $r++) { 
-													echo '
+			for ($r = 0; $r < $restantes; $r++) {
+				echo '
 													<li class="list-inline-item"><i class="fa fa-star"></i></li>
 													';
-												}
-											}
+			}
+		}
 
-												echo '
+		echo '
 											</ul>
 										</div>
 									</div>
@@ -98,11 +98,11 @@ function mostrarProductosInicio(){
 							</div>
 						</div>
         ';
-        
-    }
+	}
 }
 
-function mostrarProductoSingle($id_producto){
+function mostrarProductoSingle($id_producto)
+{
 
 	$objConsultasAdmin = new ConsultasAdmin();
 	$objConsultasCliente = new ConsultasCliente();
@@ -116,74 +116,73 @@ function mostrarProductoSingle($id_producto){
 	echo '
 	<div class="contenedor">
         <div class="img">
-            <img src="../../Uploads/Productos/'.$tablaProducto["foto1_producto"].'"
+            <img src="../../Uploads/Productos/' . $tablaProducto["foto1_producto"] . '"
                 alt="">
         </div>
 
         <div class="info">
-            <h2>'.$tablaProducto["nombre_producto"].'</h2>
+            <h2>' . $tablaProducto["nombre_producto"] . '</h2>
 
             <div class="estrellas">
 				<ul>
 			';
 
-			$filas = $tblRate['filas'];
+	$filas = $tblRate['filas'];
 
-			if ($filas == 1) {
+	if ($filas == 1) {
 
-				$resultado = $tblRate['resultado'];
+		$resultado = $tblRate['resultado'];
 
-				for ($i=0; $i < $resultado["estrellas"]; $i++) { 
-					echo '
+		for ($i = 0; $i < $resultado["estrellas"]; $i++) {
+			echo '
 					<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
 					';
-				}
+		}
 
-				$restantes = 5 - $i;
+		$restantes = 5 - $i;
 
-				for ($r=0; $r < $restantes; $r++){
-					echo '
+		for ($r = 0; $r < $restantes; $r++) {
+			echo '
 					<li class="list-inline-item"><i class="fa fa-star"></i></li>
 					';
-				}
+		}
+	} else {
 
-			} else {
+		$suma = 0;
 
-				$suma = 0;
+		$cantidad = 0;
 
-				$cantidad = 0;
+		$resultados = $tblRate['resultados'];
 
-				$resultados = $tblRate['resultados'];
+		foreach ($resultados as $rate) {
+			$suma = $suma + $rate["estrellas"];
 
-				foreach ($resultados as $rate) {
-					$suma = $suma + $rate["estrellas"];
+			$cantidad++;
+		}
 
-					$cantidad++;
-				}
+		$promedio = round($suma / $cantidad);
 
-				$promedio = round($suma / $cantidad);
-
-				for ($i=0; $i < $promedio; $i++) { 
-					echo '
+		for ($i = 0; $i < $promedio; $i++) {
+			echo '
 					<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
 					';
-				}
+		}
 
-				$restantes = 5 - $promedio;
+		$restantes = 5 - $promedio;
 
-				for ($r=0; $r < $restantes; $r++) { 
-					echo '
+		for ($r = 0; $r < $restantes; $r++) {
+			echo '
 					<li class="list-inline-item no"><i class="fa fa-star"></i></li>
 					';
-				}
-			}
+		}
+	}
 
-			echo '
+	echo '
 
 				</ul>
             </div>
 
-            <h2>$ '.$tablaProducto["precio_producto"].'</h2>
+            <h2>$ ' . $tablaProducto["precio_producto"] . '</h2>
 
             <div class="cantidad">
                 <button class="menos">-</button>
@@ -191,7 +190,7 @@ function mostrarProductoSingle($id_producto){
                 <button class="mas">+</button>
             </div>
 
-            <span class="stock">En stock: '.$tablaProducto["stock"].'</span>
+            <span class="stock">En stock: ' . $tablaProducto["stock"] . '</span>
 
 			<a href="../Extras/iniciarSesion.php">
 				<button class="agregarCarrito">Agregar al carrito 🛒</button>
@@ -204,102 +203,102 @@ function mostrarProductoSingle($id_producto){
 
         <div class="desc">
             <h2>Descripción</h2>
-            <p>'.$tablaProducto["descripcion_producto"].'</p>
+            <p>' . $tablaProducto["descripcion_producto"] . '</p>
         </div>
     </div>
 	';
 }
 
 // CLIENTE (INICIO DE SESIÓN)
-function mostrarProductosInicioCliente(){
+function mostrarProductosInicioCliente()
+{
 
-    $objConsultasAdmin = new ConsultasAdmin();
+	$objConsultasAdmin = new ConsultasAdmin();
 
 	$objConsultasCliente = new ConsultasCliente();
 
-    $tablaProductos = $objConsultasAdmin->consultarProductos();
+	$tablaProductos = $objConsultasAdmin->consultarProductos();
 
-    foreach ($tablaProductos as $f) {
+	foreach ($tablaProductos as $f) {
 
 		$cod_producto = $f["id_producto"];
 
 		$tblRate = $objConsultasCliente->consultarRateProducto($cod_producto);
 
-        echo '
+		echo '
                         <div class="col-sm-12 col-lg-4">
 							<!-- product card -->
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<a href="single.php?idProd='.$f["id_producto"].'">
+										<a href="single.php?idProd=' . $f["id_producto"] . '">
 											<img class="card-img-top img-fluid"
-												src="../../Uploads/Productos/'.$f["foto1_producto"].'"
+												src="../../Uploads/Productos/' . $f["foto1_producto"] . '"
 												alt="Card image cap">
 										</a>
 									</div>
 									<div class="card-body">
-										<h4 class="card-title"><a href="single.php?idProd='.$f["id_producto"].'">'.$f["nombre_producto"].'</a></h4>
+										<h4 class="card-title"><a href="single.php?idProd=' . $f["id_producto"] . '">' . $f["nombre_producto"] . '</a></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
-												<a href="single.php?idProd='.$f["id_producto"].'"><i class="fa fa-folder-open-o"></i>'.$f["nombre_categoria"].'</a>
+												<a href="single.php?idProd=' . $f["id_producto"] . '"><i class="fa fa-folder-open-o"></i>' . $f["nombre_categoria"] . '</a>
 											</li>
 										</ul>
-										<h4>$ '.$f["precio_producto"].'</h4>
-										<p class="card-text">'.$f["descripcion_producto"].'</p>
+										<h4>$ ' . $f["precio_producto"] . '</h4>
+										<p class="card-text">' . $f["descripcion_producto"] . '</p>
 										<div class="product-ratings">
 											<ul class="list-inline">';
-											$filas = $tblRate['filas'];
+		$filas = $tblRate['filas'];
 
-											if ($filas == 1) {
+		if ($filas == 1) {
 
-												$resultado = $tblRate['resultado'];
+			$resultado = $tblRate['resultado'];
 
-												for ($i=0; $i < $resultado["estrellas"]; $i++) { 
-													echo '
+			for ($i = 0; $i < $resultado["estrellas"]; $i++) {
+				echo '
 													<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
 													';
-												}
-	
-												$restantes = 5 - $i;
-	
-												for ($r=0; $r < $restantes; $r++){
-													echo '
+			}
+
+			$restantes = 5 - $i;
+
+			for ($r = 0; $r < $restantes; $r++) {
+				echo '
 													<li class="list-inline-item"><i class="fa fa-star"></i></li>
 													';
-												}
-	
-											} else {
+			}
+		} else {
 
-												$suma = 0;
+			$suma = 0;
 
-												$cantidad = 0;
+			$cantidad = 0;
 
-												$resultados = $tblRate['resultados'];
+			$resultados = $tblRate['resultados'];
 
-												foreach ($resultados as $rate) {
-													$suma = $suma + $rate["estrellas"];
+			foreach ($resultados as $rate) {
+				$suma = $suma + $rate["estrellas"];
 
-													$cantidad++;
-												}
+				$cantidad++;
+			}
 
-												$promedio = round($suma / $cantidad);
+			$promedio = round($suma / $cantidad);
 
-												for ($i=0; $i < $promedio; $i++) { 
-													echo '
+			for ($i = 0; $i < $promedio; $i++) {
+				echo '
 													<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
 													';
-												}
+			}
 
-												$restantes = 5 - $promedio;
+			$restantes = 5 - $promedio;
 
-												for ($r=0; $r < $restantes; $r++) { 
-													echo '
+			for ($r = 0; $r < $restantes; $r++) {
+				echo '
 													<li class="list-inline-item"><i class="fa fa-star"></i></li>
 													';
-												}
-											}
+			}
+		}
 
-												echo '
+		echo '
 											</ul>
 										</div>
 									</div>
@@ -307,11 +306,11 @@ function mostrarProductosInicioCliente(){
 							</div>
 						</div>
         ';
-        
-    }
+	}
 }
 
-function mostrarProductoSingleCliente($id_producto){
+function mostrarProductoSingleCliente($id_producto)
+{
 
 	$objConsultasAdmin = new ConsultasAdmin();
 
@@ -326,74 +325,73 @@ function mostrarProductoSingleCliente($id_producto){
 	echo '
 	<div class="contenedor">
         <div class="img">
-            <img src="../../Uploads/Productos/'.$tablaProducto["foto1_producto"].'"
+            <img src="../../Uploads/Productos/' . $tablaProducto["foto1_producto"] . '"
                 alt="">
         </div>
 
         <div class="info">
-            <h2>'.$tablaProducto["nombre_producto"].'</h2>
+            <h2>' . $tablaProducto["nombre_producto"] . '</h2>
 
             <div class="estrellas">
 				<ul>
 			';
 
-			$filas = $tblRate['filas'];
+	$filas = $tblRate['filas'];
 
-			if ($filas == 1) {
+	if ($filas == 1) {
 
-				$resultado = $tblRate['resultado'];
+		$resultado = $tblRate['resultado'];
 
-				for ($i=0; $i < $resultado["estrellas"]; $i++) { 
-					echo '
+		for ($i = 0; $i < $resultado["estrellas"]; $i++) {
+			echo '
 					<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
 					';
-				}
+		}
 
-				$restantes = 5 - $i;
+		$restantes = 5 - $i;
 
-				for ($r=0; $r < $restantes; $r++){
-					echo '
+		for ($r = 0; $r < $restantes; $r++) {
+			echo '
 					<li class="list-inline-item"><i class="fa fa-star"></i></li>
 					';
-				}
+		}
+	} else {
 
-			} else {
+		$suma = 0;
 
-				$suma = 0;
+		$cantidad = 0;
 
-				$cantidad = 0;
+		$resultados = $tblRate['resultados'];
 
-				$resultados = $tblRate['resultados'];
+		foreach ($resultados as $rate) {
+			$suma = $suma + $rate["estrellas"];
 
-				foreach ($resultados as $rate) {
-					$suma = $suma + $rate["estrellas"];
+			$cantidad++;
+		}
 
-					$cantidad++;
-				}
+		$promedio = round($suma / $cantidad);
 
-				$promedio = round($suma / $cantidad);
-
-				for ($i=0; $i < $promedio; $i++) { 
-					echo '
+		for ($i = 0; $i < $promedio; $i++) {
+			echo '
 					<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
 					';
-				}
+		}
 
-				$restantes = 5 - $promedio;
+		$restantes = 5 - $promedio;
 
-				for ($r=0; $r < $restantes; $r++) { 
-					echo '
+		for ($r = 0; $r < $restantes; $r++) {
+			echo '
 					<li class="list-inline-item no"><i class="fa fa-star"></i></li>
 					';
-				}
-			}
+		}
+	}
 
-			echo '
+	echo '
 
 				</ul>
             </div>
 
-            <h2>$ '.$tablaProducto["precio_producto"].'</h2>
+            <h2>$ ' . $tablaProducto["precio_producto"] . '</h2>
 
             <div class="cantidad">
                 <button class="menos">-</button>
@@ -401,9 +399,9 @@ function mostrarProductoSingleCliente($id_producto){
                 <button class="mas">+</button>
             </div>
 
-            <span class="stock">En stock: '.$tablaProducto["stock"].'</span>
+            <span class="stock">En stock: ' . $tablaProducto["stock"] . '</span>
 
-			<a href="../../Controllers/Cliente/agregarProductoCarrito.php?codProd='.$tablaProducto["id_producto"].'">
+			<a href="../../Controllers/Cliente/agregarProductoCarrito.php?codProd=' . $tablaProducto["id_producto"] . '">
 				<button class="agregarCarrito">Agregar al carrito 🛒</button>
 			</a>
 
@@ -414,77 +412,67 @@ function mostrarProductoSingleCliente($id_producto){
 
         <div class="desc">
             <h2>Descripción</h2>
-            <p>'.$tablaProducto["descripcion_producto"].'</p>
+            <p>' . $tablaProducto["descripcion_producto"] . '</p>
         </div>
     </div>
 	';
 }
 
-function mostrarProductosCategoria(){
+function mostrarProductosCategoria()
+{
 
-    $objConsultasAdmin = new ConsultasAdmin();
+	$objConsultasAdmin = new ConsultasAdmin();
 
-    $tablaProductos = $objConsultasAdmin->consultarProductos();
+	$tablaProductos = $objConsultasAdmin->consultarProductos();
 
-    foreach ($tablaProductos as $f) {
+	foreach ($tablaProductos as $f) {
 
-        echo '
-                        <div class="col-lg-4 col-md-6">
-								<!-- product card -->
-								<div class="product-item bg-light carta">
-									<div class="card">
-										<div class="thumb-content">
-											<div class="price">$ '.$f["precio_producto"].'</div>
-											<a href="../../Views/Website_externo/single.php?idProd='.$f["id_producto"].'">
-												<img class="img-fluid" src="../../Uploads/Productos/'.$f["foto1_producto"].'"
-													alt="Card image cap">
-											</a>
-										</div>
-										<div class="card-body">
-											<h4 class="card-title"><a href="../../Views/Website_externo/single.php?idProd='.$f["id_producto"].'">'.$f["nombre_producto"].'</a></h4>
-											<ul class="list-inline product-meta">
-												<li class="list-inline-item">
-													<a href="Views/Website_externo/single.php?idProd='.$f["id_producto"].'"><i
-															class="fa fa-folder-open-o"></i>'.$f["nombre_categoria"].'</a>
-												</li>
-											</ul>
-											<p class="card-text">'.$f["descripcion_producto"].'</p>
-											<div class="product-ratings">
-												<ul class="list-inline">
-													<li class="list-inline-item selected"><i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item selected"><i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item selected"><i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item selected"><i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item"><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-        ';
-        
-    }
+		$urlProductsImg = "../../Uploads/Productos/";
+
+?>
+		<div class="col-sm-12 col-md-6 col-lg-4">
+			<!-- product card -->
+			<div class="product-item bg-light">
+				<div class="card">
+					<div class="thumb-content">
+						<a href="single.php?idProd=<?php echo $f["id_producto"] ?>">
+							<img class="card-img-top img-fluid" src="<?php echo $urlProductsImg ?><?php echo $f["foto1_producto"] ?>" alt="Card image cap">
+						</a>
+					</div>
+					<div class="card-body">
+						<h4 class="card-title"><a href="single.php?idProd='<?php echo $f["id_producto"] ?>"><?php echo $f["nombre_producto"] ?></a>
+						</h4>
+						<ul class="list-inline product-meta">
+							<li class="list-inline-item">
+								<a href="single.php?idProd=<?php echo $f["id_producto"] ?>"><i class="fa fa-folder-open-o"></i><?php echo $f["nombre_categoria"] ?></a>
+							</li>
+						</ul>
+						<h4>$ <?php echo number_format($f["precio_producto"], 0, ',', '.'); ?></h4>
+						<p class="card-text"><?php echo $f["descripcion_producto"] ?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+<?php
+
+	}
 }
 
-function mostrarProductosLista(){
-	
-    $objConsultasAdmin = new ConsultasAdmin();
+function mostrarProductosLista()
+{
 
-    $tablaProductos = $objConsultasAdmin->consultarProductos();
+	$objConsultasAdmin = new ConsultasAdmin();
 
-    foreach ($tablaProductos as $f) {
+	$tablaProductos = $objConsultasAdmin->consultarProductos();
 
-        echo '
+	foreach ($tablaProductos as $f) {
+
+		echo '
 			<div class="ad-listing-list mt-20 carta-lista">
 				<div class="row p-lg-3 p-sm-5 p-4">
 				<div class="col-lg-4 align-self-center">
-					<a href="../../Views/Website_externo/single.php?idProd='.$f["id_producto"].'">
-					<img src="../../Uploads/Productos/'.$f["foto1_producto"].'" class="img-fluid" alt="">
+					<a href="../../Views/Website_externo/single.php?idProd=' . $f["id_producto"] . '">
+					<img src="../../Uploads/Productos/' . $f["foto1_producto"] . '" class="img-fluid" alt="">
 					</a>
 				</div>
 				<div class="col-lg-8">
@@ -492,13 +480,13 @@ function mostrarProductosLista(){
 					<div class="col-lg-6 col-md-10">
 						<div class="ad-listing-content">
 						<div>
-							<a href="../../Views/Website_externo/single.php?idProd='.$f["id_producto"].'" class="font-weight-bold">'.$f["nombre_producto"].'</a>
+							<a href="../../Views/Website_externo/single.php?idProd=' . $f["id_producto"] . '" class="font-weight-bold">' . $f["nombre_producto"] . '</a>
 						</div>
 						<ul class="list-inline mt-2 mb-3">
 							<li class="list-inline-item"><a href="category.html"> <i class="fa fa-folder-open-o"></i>
-								'.$f["nombre_categoria"].'</a></li>
+								' . $f["nombre_categoria"] . '</a></li>
 						</ul>
-						<p class="pr-5">'.$f["descripcion_producto"].'</p>
+						<p class="pr-5">' . $f["descripcion_producto"] . '</p>
 						</div>
 					</div>
 					<div class="col-lg-6 align-self-center">
@@ -517,6 +505,5 @@ function mostrarProductosLista(){
 				</div>
 			</div>
         ';
-        
-    }
+	}
 }
