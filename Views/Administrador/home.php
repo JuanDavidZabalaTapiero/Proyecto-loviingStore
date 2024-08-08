@@ -112,58 +112,21 @@ require_once ('../../Controllers/Administrador/dashboardInfo.php');
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
 
+                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                   <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Ventas',
-                          data: [0, 0, 0, 0, 0, 0, 0],
-                        }, {
-                          name: 'Total',
-                          data: [0, 0, 0, 0, 0, 0, 0]
-                        }, {
-                          name: 'Clientes',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
-                    });
+                      const labels = Utils.months({count: 7});
+                      const data = {
+                        labels: labels,
+                        datasets: [{
+                          label: 'My First Dataset',
+                          data: [65, 59, 80, 81, 56, 55, 40],
+                          fill: false,
+                          borderColor: 'rgb(75, 192, 192)',
+                          tension: 0.1
+                        }]
+                      };
                   </script>
+
                   <!-- End Line Chart -->
 
                 </div>

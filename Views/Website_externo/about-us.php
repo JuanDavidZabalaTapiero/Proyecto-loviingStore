@@ -101,7 +101,7 @@ require_once ('../../Controllers/Cliente/mostrarContenido.php');
         
         <div class="col-lg-4 col-sm-6">
           <div class="card my-3 my-lg-0">
-            <img class="card-img-top" src="images/team/perry.png" class="img-fluid w-100" alt="Card image cap">
+            <img class="card-img-top" src="images/velandia.jpg" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
               <h5 class="card-title">Jean Carlos Velandia</h5>
               <p class="card-text">Desarrollador Fullstack</p>
@@ -111,17 +111,17 @@ require_once ('../../Controllers/Cliente/mostrarContenido.php');
 
         <div class="col-lg-4 col-sm-6">
           <div class="card my-3 my-lg-0">
-            <img class="card-img-top" src="images/team/perry.png" class="img-fluid w-100" alt="Card image cap">
+            <img class="card-img-top" src="images/IMG-juan.jpg" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
               <h5 class="card-title">Juan David Zabala</h5>
-              <p class="card-text">Desarrollador frotend</p>
+              <p class="card-text">Desarrollador frontend</p>
             </div>
           </div>
         </div>
 
         <div class="col-lg-4 col-sm-6">
           <div class="card my-3 my-lg-0">
-            <img class="card-img-top" src="images/team/perry.png" class="img-fluid w-100" alt="Card image cap">
+            <img class="card-img-top" src="images/maicol.jpg" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
               <h5 class="card-title">Michael Bastidas</h5>
               <p class="card-text">Desarrollador backend</p>
@@ -131,7 +131,7 @@ require_once ('../../Controllers/Cliente/mostrarContenido.php');
 
         <div class="col-lg-4 col-sm-6">
           <div class="card my-3 my-lg-0">
-            <img class="card-img-top" src="images/team/perry.png" class="img-fluid w-100" alt="Card image cap">
+            <img class="card-img-top" src="images/joseph.jpg" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
               <h5 class="card-title">Joseph Vargas</h5>
               <p class="card-text">Desarrollador backend</p>
@@ -141,10 +141,10 @@ require_once ('../../Controllers/Cliente/mostrarContenido.php');
 
         <div class="col-lg-4 col-sm-6">
           <div class="card my-3 my-lg-0">
-            <img class="card-img-top" src="images/team/perry.png" class="img-fluid w-100" alt="Card image cap">
+            <img class="card-img-top" src="images/Daniela.jpg" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
               <h5 class="card-title">Karen Bustos</h5>
-              <p class="card-text">Desarrolladora frotend</p>
+              <p class="card-text">Desarrolladora frontend</p>
             </div>
           </div>
         </div>
