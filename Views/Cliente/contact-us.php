@@ -1,11 +1,38 @@
 <?php
 session_start();
 
-require_once ('../../Controllers/Cliente/mostrarContenido.php');
+require_once('../../Controllers/Cliente/mostrarContenido.php');
 
-require_once ('../../Models/consultasAdmin.php');
+require_once('../../Models/consultasAdmin.php');
 
-require_once ('../../Models/consultasCliente.php');
+require_once('../../Models/consultasCliente.php');
+
+require_once(__DIR__ . '/../../Controllers/contactController.php');
+$objContactController = new ContactController();
+
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+  $form = $_POST["form"];
+
+  if ($form == "form_message") {
+    $nombre_user = $_POST["nombre_user"];
+
+    $email_user = $_POST["email_user"];
+
+    $asunto = $_POST["asunto"];
+
+    $message = $_POST["message"];
+
+    $objContactController->sendMessage($nombre_user, $email_user, $asunto, $message);
+
+    // MENSAJE Y REDIRIGIR 
+?>
+    <script>
+      alert("Mensaje Enviado");
+      location.href = "home.php";
+    </script>
+<?php
+  }
+}
 ?>
 <!DOCTYPE html>
 
@@ -22,7 +49,7 @@ require_once ('../../Models/consultasCliente.php');
 
   <!-- ** Basic Page Needs ** -->
   <meta charset="utf-8">
-  <title>Classimax | Classified Marketplace Template</title>
+  <title>Contáctanos | Loviing Store</title>
 
   <!-- ** Mobile Specific Metas ** -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,26 +113,27 @@ require_once ('../../Models/consultasCliente.php');
           </div>
         </div>
         <div class="col-md-6">
-          <form action="#">
+          <form action="" method="post">
+            <input type="hidden" name="form" value="form_message">
             <fieldset class="p-4">
               <div class="form-group">
                 <div class="row">
                   <div class="col-lg-6 py-2">
-                    <input type="text" placeholder="Name *" class="form-control" required>
+                    <input type="text" placeholder="Nombre *" class="form-control" required name="nombre_user">
                   </div>
                   <div class="col-lg-6 pt-2">
-                    <input type="email" placeholder="Email *" class="form-control" required>
+                    <input type="email" placeholder="Email *" class="form-control" required name="email_user">
                   </div>
                 </div>
               </div>
-              <select name="" id="" class="form-control w-100">
-                <option value="Select">Category</option>
-                <option value="1">Laptop</option>
-                <option value="1">iPhone</option>
-                <option value="1">Monitor</option>
-                <option value="1">I need</option>
+              <select name="asunto" id="" class="form-control w-100">
+                <option>Seleccionar asunto del mensaje</option>
+                <option value="Pregunta">Pregunta</option>
+                <option value="Sugerencia">Sugerencia</option>
+                <option value="Sobre un producto">Sobre un producto</option>
+                <option value="Otro">Otro</option>
               </select>
-              <textarea name="message" id="" placeholder="Message *" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+              <textarea name="message" id="" placeholder="Mensaje *" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
               <div class="btn-grounp">
                 <button type="submit" class="btn btn-primary mt-2 float-right">SUBMIT</button>
               </div>
@@ -117,77 +145,6 @@ require_once ('../../Models/consultasCliente.php');
   </section>
   <!-- contact us end -->
 
-  <!--============================
-  =            Footer            =
-  =============================-->
-
-  <footer class="footer section section-sm">
-    <!-- Container Start -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0 mb-4 mb-lg-0">
-          <!-- About -->ue="1">
-          <div class="block about">
-            <!-- footer logo -->
-            <img src="images/logo-footer.png" alt="logo">
-            <!-- description -->
-            <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-        </div>
-        <!-- Link list -->
-        <div class="col-lg-2 offset-lg-1 col-md-3 col-6 mb-4 mb-lg-0">
-          <div class="block">
-            <h4>Site Pages</h4>
-            <ul>
-              <li><a href="dashboard-my-ads.html">My Ads</a></li>
-              <li><a href="dashboard-favourite-ads.html">Favourite Ads</a></li>
-              <li><a href="dashboard-archived-ads.html">Archived Ads</a></li>
-              <li><a href="dashboard-pending-ads.html">Pending Ads</a></li>
-              <li><a href="terms-condition.html">Terms & Conditions</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- Link list -->
-        <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0 col-6 mb-4 mb-md-0">
-          <div class="block">
-            <h4>Admin Pages</h4>
-            <ul>
-              <li><a href="category.html">Category</a></li>
-              <li><a href="single.html">Single Page</a></li>
-              <li><a href="store.html">Store Single</a></li>
-              <li><a href="single-blog.html">Single Post</a>
-              </li>
-              <li><a href="blog.html">Blog</a></li>
-
-
-
-            </ul>
-          </div>
-        </div>
-        <!-- Promotion -->
-        <div class="col-lg-4 col-md-7">
-          <!-- App promotion -->
-          <div class="block-2 app-promotion">
-            <div class="mobile d-flex  align-items-center">
-              <a href="index.html">
-                <!-- Icon -->
-                <img src="images/footer/phone-icon.png" alt="mobile-icon">
-              </a>
-              <p class="mb-0">Get the Dealsy Mobile App and Save more</p>
-            </div>
-            <div class="download-btn d-flex my-3">
-              <a href="index.html"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-              <a href="index.html" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid"
-                  alt=""></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Container End -->
-  </footer>
   <!-- Footer Bottom -->
   <?php
   mostrarFooterCliente();
