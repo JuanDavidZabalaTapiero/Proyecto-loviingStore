@@ -45,6 +45,13 @@ class Contact
             ';
 
             $mail->send();
+
+            // REDIRIGIR 
+            ?>
+            <script>
+                location.href = "../index.php";
+            </script>
+            <?php
         } catch (Exception $e) {
             echo "Mailer Error: {$mail->ErrorInfo}";
         }
