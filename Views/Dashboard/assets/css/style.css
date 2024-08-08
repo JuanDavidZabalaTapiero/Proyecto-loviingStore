@@ -170,6 +170,10 @@ h6 {
 }
 
 @media (min-width: 768px) {
+  .card-body{
+    overflow: scroll;
+  }
+
   .dropdown-menu-arrow::before {
     content: "";
     width: 13px;
@@ -267,6 +271,7 @@ h6 {
 
 .card-body {
   padding: 0 20px 20px 20px;
+  overflow: scroll;
 }
 
 .card-img-overlay {
