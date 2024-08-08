@@ -799,11 +799,13 @@ class ConsultasAdmin
         return $f;
     }
 
-    public function cuantificarVentas()
-    {
-        $sql = "SELECT COUNT(*) AS ventas_en_mes FROM tbl_ventas 
-        WHERE MONTH(fecha_venta) = MONTH(CURRENT_DATE()) 
-        AND YEAR(fecha_venta) = YEAR(CURRENT_DATE())";
+    public function cuantificarVentas() {
+
+        $sql = "SELECT MONTH(fecha_venta) AS mes, COUNT(*) AS ventas_en_mes 
+                FROM tbl_ventas 
+                WHERE YEAR(fecha_venta) = YEAR(CURRENT_DATE()) 
+                GROUP BY MONTH(fecha_venta)";
+    
 
         $objConexionBd = new ConexionBd();
 
@@ -813,9 +815,8 @@ class ConsultasAdmin
 
         $result->execute();
 
-        $f = $result->fetchAll();
-
-        return $f;
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+        
     }
 
     public function valorVentasMes()

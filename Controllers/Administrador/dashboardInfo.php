@@ -156,4 +156,68 @@ function mostrarInfoTarjetas(){
 }
 
 
+function grafico() {
+  $objConsultas = new ConsultasAdmin();
+  $cuantificarVentas = $objConsultas->cuantificarVentas();
+  $valorVentasMes = $objConsultas->valorVentasMes();
+  
+  // Inicializar los arrays para los datos del gráfico
+  $ventasMes = array_fill(0, 12, 0);  // Suponemos que hay 12 meses en un año
+  $labels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+  // Llenar los datos de ventas por mes
+  foreach ($cuantificarVentas as $venta) {
+      $mes = $venta['mes'] - 1;  // Ajustar mes a base 0 para el array
+      $ventasMes[$mes] = $venta['ventas_en_mes'];
+  }
+  
+  echo "
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const ctx = document.getElementById('graph').getContext('2d');
+          
+          // Definir los datos
+          const data = {
+              labels: " . json_encode($labels) . ",
+              datasets: [
+                  {
+                      label: 'Ventas ',
+                      data: " . json_encode($ventasMes) . ",
+                      fill: false,
+                      borderColor: 'rgb(75, 192, 192)',
+                      tension: 0.1
+                  },
+                  {
+                      label: 'Ingresos',
+                      data: [50, 60, 70, 85, 55, 65, 45, 70, 60, 80, 90, 100],
+                      fill: false,
+                      borderColor: 'rgb(153, 102, 255)',
+                      tension: 0.1
+                  },
+                  {
+                      label: 'Clientes ',
+                      data: [30, 50, 40, 60, 70, 80, 90, 100, 110, 120, 130, 140],
+                      fill: false,
+                      borderColor: 'orange',
+                      tension: 0.1
+                  }
+              ]
+          };
+          
+          // Configuración del gráfico
+          const config = {
+              type: 'line',
+              data: data,
+          };
+          
+          // Crear el gráfico
+          new Chart(ctx, config);
+      });
+  </script>
+  ";
+}
+
+
+
+
 ?>

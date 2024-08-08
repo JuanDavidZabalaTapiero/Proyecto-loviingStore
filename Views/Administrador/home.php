@@ -110,8 +110,11 @@ require_once ('../../Controllers/Administrador/dashboardInfo.php');
                   <h5 class="card-title">Reports <span>/Today</span></h5>
 
                   <!-- Line Chart -->
-                  <div id="reportsChart"></div>
+                  <script src=" https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js "></script>
 
+                  <div id="reportsChart">
+                    <canvas id="graph"></canvas>
+                  </div>
                   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                   <script>
                       const labels = Utils.months({count: 7});
@@ -129,7 +132,9 @@ require_once ('../../Controllers/Administrador/dashboardInfo.php');
 
                   <!-- End Line Chart -->
 
-                </div>
+                  <?php grafico() ?>
+
+              </div>
 
               </div>
             </div><!-- End Reports -->
