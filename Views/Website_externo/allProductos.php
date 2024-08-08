@@ -64,9 +64,9 @@ require_once('../../Models/consultasAdmin.php');
 				<div class="col-lg-12 col-md-12">
 					<div class="category-search-filter">
 						<div class="row">
-							<div class="col-md-6 text-center text-md-right mt-2 mt-md-0">
+							<div class="col-md-12 text-center text-md-right mt-2 mt-md-0">
 								<div class="view">
-									<strong>Views</strong>
+									<strong>Vista</strong>
 									<ul class="list-inline view-switcher">
 										<li class="list-inline-item">
 											<a href="allProductos.php" onclick="event.preventDefault();" class="text-info"><i class="fa fa-th-large"></i></a>
