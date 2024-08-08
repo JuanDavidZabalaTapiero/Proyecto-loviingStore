@@ -12,7 +12,7 @@ require_once ('../../Controllers/Administrador/mostrarInfoUser.php');
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Users / Profile - NiceAdmin Bootstrap Template</title>
+  <title>Perfil del Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
