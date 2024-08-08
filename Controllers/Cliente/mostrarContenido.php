@@ -35,9 +35,9 @@ function mostrarHeader()
 
 										<li><a class="dropdown-item @@terms" href="terms-condition.php">Términos y
 												Condiciones</a></li>
-										<li><a class="dropdown-item @@terms" href="category2.php">Ver Productos</a></li>
+										<li><a class="dropdown-item @@terms" href="allProductos.php">Ver Todos los Productos</a></li>
 
-										<li><a class="dropdown-item @@terms" href="ad-list-view2.php ">Ver Productos en lista</a></li>
+										<li><a class="dropdown-item @@terms" href="allProductosView2.php ">Ver Productos en lista</a></li>
 									</ul>
 								</li>
 

@@ -453,7 +453,7 @@ function mostrarProductosCategoria()
 				</div>
 			</div>
 		</div>
-<?php
+	<?php
 
 	}
 }
@@ -467,43 +467,32 @@ function mostrarProductosLista()
 
 	foreach ($tablaProductos as $f) {
 
-		echo '
-			<div class="ad-listing-list mt-20 carta-lista">
-				<div class="row p-lg-3 p-sm-5 p-4">
+	?>
+		<div class="ad-listing-list mt-20 carta-lista">
+			<div class="row p-lg-3 p-sm-5 p-4">
 				<div class="col-lg-4 align-self-center">
-					<a href="../../Views/Website_externo/single.php?idProd=' . $f["id_producto"] . '">
-					<img src="../../Uploads/Productos/' . $f["foto1_producto"] . '" class="img-fluid" alt="">
+					<a href="../../Views/Website_externo/single.php?idProd=<?php echo  $f["id_producto"] ?>">
+						<img src="../../Uploads/Productos/<?php echo  $f["foto1_producto"] ?>" class="img-fluid" alt="">
 					</a>
 				</div>
 				<div class="col-lg-8">
 					<div class="row">
-					<div class="col-lg-6 col-md-10">
-						<div class="ad-listing-content">
-						<div>
-							<a href="../../Views/Website_externo/single.php?idProd=' . $f["id_producto"] . '" class="font-weight-bold">' . $f["nombre_producto"] . '</a>
-						</div>
-						<ul class="list-inline mt-2 mb-3">
-							<li class="list-inline-item"><a href="category.html"> <i class="fa fa-folder-open-o"></i>
-								' . $f["nombre_categoria"] . '</a></li>
-						</ul>
-						<p class="pr-5">' . $f["descripcion_producto"] . '</p>
-						</div>
-					</div>
-					<div class="col-lg-6 align-self-center">
-						<div class="product-ratings float-lg-right pb-3">
-						<ul class="list-inline">
-							<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-							<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-							<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-							<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-							<li class="list-inline-item"><i class="fa fa-star"></i></li>
-						</ul>
+						<div class="col-lg-12 col-md-12">
+							<div class="ad-listing-content">
+								<div>
+									<a href="../../Views/Website_externo/single.php?idProd=<?php echo  $f["id_producto"] ?>" class="font-weight-bold"><?php echo  $f["nombre_producto"] ?></a>
+								</div>
+								<ul class="list-inline mt-2 mb-3">
+									<li class="list-inline-item"><a href="category.html"> <i class="fa fa-folder-open-o"></i>
+											<?php echo  $f["nombre_categoria"] ?></a></li>
+								</ul>
+								<p class="pr-5"><?php echo  $f["descripcion_producto"] ?></p>
+							</div>
 						</div>
 					</div>
-					</div>
-				</div>
 				</div>
 			</div>
-        ';
+		</div>
+<?php
 	}
 }

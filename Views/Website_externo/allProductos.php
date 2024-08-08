@@ -63,36 +63,55 @@ require_once('../../Models/consultasAdmin.php');
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="category-search-filter">
+						<div class="row">
+							<div class="col-md-6 text-center text-md-right mt-2 mt-md-0">
+								<div class="view">
+									<strong>Views</strong>
+									<ul class="list-inline view-switcher">
+										<li class="list-inline-item">
+											<a href="allProductos.php" onclick="event.preventDefault();" class="text-info"><i class="fa fa-th-large"></i></a>
+										</li>
+										<li class="list-inline-item">
+											<a href="allProductosView2.php"><i class="fa fa-reorder"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="product-grid-list">
 						<div class="row mt-30">
+
 							<?php
 
 							mostrarProductosCategoria();
 
 							?>
+
 						</div>
 					</div>
-				</div>
-				<div class="pagination justify-content-center">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item">
-								<a class="page-link" href="category2.php" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-								</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="category2.php">1</a></li>
-							<li class="page-item"><a class="page-link" href="category2.php">2</a></li>
-							<li class="page-item"><a class="page-link" href="category2.php">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="category2.php" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-									<span class="sr-only">Next</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
+
+					<div class="pagination justify-content-center py-4">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item">
+									<a class="page-link" href="allProductos.php" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+									</a>
+								</li>
+								<li class="page-item active"><a class="page-link" href="allProductos.php">1</a></li>
+								<li class="page-item"><a class="page-link" href="allProductos.php">2</a></li>
+								<li class="page-item"><a class="page-link" href="allProductos.php">3</a></li>
+								<li class="page-item">
+									<a class="page-link" href="allProductos.php" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">Next</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
 				</div>
 			</div>
 		</div>
