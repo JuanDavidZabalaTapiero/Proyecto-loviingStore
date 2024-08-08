@@ -75,6 +75,7 @@ $objContenidoMain = new ContenidoMain();
 		'contact-us.php' => 'Views/Website_externo/contact-us.php',
 		'terms-condition.php' => 'Views/Website_externo/terms-condition.php',
 		'allProductos.php' => 'Views/Website_externo/allProductos.php',
+		'allProductosView2.php' => 'Views/Website_externo/allProductosView2.php',
 		'ad-list-view2.php' => 'Views/Website_externo/ad-list-view2.php',
 		'iniciarSesion.php' => 'Views/Extras/iniciarSesion.php',
 		'crearCuenta' => 'Views/Extras/crearCuenta.html'

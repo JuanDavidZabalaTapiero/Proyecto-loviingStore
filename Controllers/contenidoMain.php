@@ -62,7 +62,7 @@ class ContenidoMain
                                                     Productos</a></li>
 
                                             <li><a class="dropdown-item @@terms"
-                                                    href="<?php echo $urls['ad-list-view2.php'] ?>">Ver Productos en lista</a>
+                                                    href="<?php echo $urls['allProductosView2.php'] ?>">Ver Productos en lista</a>
                                             </li>
                                         </ul>
                                     </li>

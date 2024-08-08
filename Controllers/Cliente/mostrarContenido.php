@@ -147,10 +147,10 @@ function mostrarHeaderCliente()
                                                 Condiciones</a></li>
 												
 										<li><a class="dropdown-item @@terms"
-                                                    href="category2.php">Ver Productos</a></li>
+                                                    href="allProductos.php">Ver Productos</a></li>
 
                                         <li><a class="dropdown-item @@terms"
-                                                    href="ad-list-view2.php ">Ver Productos en lista</a></li>
+                                                    href="allProductosView2.php ">Ver Productos en lista</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -1,59 +1,17 @@
 <?php
-session_start();
 
-$id_cliente = $_SESSION["idUser"];
+session_start();
 
 require_once('../../Controllers/Cliente/mostrarContenido.php');
 
+require_once('../../Controllers/Cliente/mostrarInfoProducto.php');
+
 require_once('../../Models/consultasAdmin.php');
 
-require_once('../../Models/consultasCliente.php');
+require_once(__DIR__ . '/../../Models/consultasCliente.php');
 
-require_once(__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
-$objContenidoCliente = new ContenidoCliente();
-
-// COMPRAR CARRITO CONTROLLER
-require_once(__DIR__ . '/../../Controllers/Cliente/comprarCarritoController.php');
-$objComprarCarritoController = new ComprarCarritoController();
-
-// UPDATE CANTIDAD DEL ITEM EN EL CARRITO CONTROLLER
-require_once(__DIR__ . '/../../Controllers/Cliente/updateCantidadItemController.php');
-$objUpdateCantidadItemController = new UpdateCantidadItemController();
-
-// DELTE ITEM DEL CARRITO CONTROLLER
-require_once(__DIR__ . '/../../Controllers/Cliente/deleteItemCarritoController.php');
-$objDeleteItemCarritoController = new DeleteItemCarritoController();
-
-// CREAR PREFERENCIA MERCADO PAGO
-require_once(__DIR__ . '/../../Controllers/Cliente/makePreference.php');
-$objCreatePreferenceMercadoPago = new CreatePreferenceMercadoPago();
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  $form = $_POST["form"];
-
-  if ($form == "comprar_carrito") {
-    // $objComprarCarritoController->comprarCarrito($id_cliente);
-
-    // header('location: red.php');
-
-    $objCreatePreferenceMercadoPago->makePreferenceCarrito($id_cliente);
-  }
-
-  if ($form == "cantidad_carrito") {
-    $id_producto = $_POST["id_producto"];
-
-    $cantidad = $_POST["cantidad"];
-
-    $objUpdateCantidadItemController->updateCantidadItem($id_cliente, $id_producto, $cantidad);
-  }
-
-  if ($form == "delete_item") {
-    $id_producto = $_POST["id_producto"];
-
-    $objDeleteItemCarritoController->deleteItemCarrito($id_cliente, $id_producto);
-  }
-}
 ?>
+
 <!DOCTYPE html>
 
 <!--
@@ -69,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   <!-- ** Basic Page Needs ** -->
   <meta charset="utf-8">
-  <title>Carrito | Loviing Store</title>
+  <title>Loviing Store | E-commerce</title>
 
   <!-- ** Mobile Specific Metas ** -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,8 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <!-- favicon -->
   <link href="../Website_externo/images/favicon.png" rel="shortcut icon">
 
-  <!-- 
-  Essential stylesheets
+  <!-- Essential stylesheets
   =====================================-->
   <link href="../Website_externo/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link href="../Website_externo/plugins/bootstrap/bootstrap-slider.css" rel="stylesheet">
@@ -93,9 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   <link href="../Website_externo/css/style.css" rel="stylesheet">
 
-  <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
@@ -105,36 +59,67 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <?php
   mostrarHeaderCliente();
   ?>
-  <!--==================================
-  =            User Profile            =
-  ===================================-->
-  <section class="dashboard section">
 
-    <!-- Container Start -->
+  <section class="section-sm">
     <div class="container">
-      <!-- Row Start -->
-      <div class="d-flex">
-
-        <div class="w-100">
-          <!-- Recently Favorited -->
-          <div class="widget dashboard-container">
-            <h1 class="text-center">Mi carrito</h1>
-            <?php
-            $objContenidoCliente->showCarrito($id_cliente);
-            ?>
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="category-search-filter">
+            <div class="row">
+              <div class="col-md-12 text-center text-md-right mt-2 mt-md-0">
+                <div class="view">
+                  <strong>Vista</strong>
+                  <ul class="list-inline view-switcher">
+                    <li class="list-inline-item">
+                      <a href="allProductos.php"><i class="fa fa-th-large"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="allProductosView2.php" class="text-info"><i class="fa fa-reorder"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
 
+          <!-- ad listing list  -->
+          <?php
+
+          mostrarProductosLista();
+
+          ?>
+
+          <!-- pagination -->
+          <div class="pagination justify-content-center py-4">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="allProductosView2.php" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="allProductosView2.php">1</a></li>
+                <li class="page-item"><a class="page-link" href="allProductosView2.php">2</a></li>
+                <li class="page-item"><a class="page-link" href="allProductosView2.php">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="allProductosView2.php" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <!-- pagination -->
         </div>
       </div>
-      <!-- Row End -->
     </div>
-    <!-- Container End -->
   </section>
 
   <!--============================
   =            Footer            =
   =============================-->
-
   <!-- Footer Bottom -->
   <?php
   mostrarFooterCliente();

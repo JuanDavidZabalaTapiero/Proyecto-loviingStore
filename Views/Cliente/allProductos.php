@@ -1,54 +1,17 @@
 <?php
+
 session_start();
 
 require_once('../../Controllers/Cliente/mostrarContenido.php');
 
+require_once('../../Controllers/Cliente/mostrarInfoProducto.php');
+
 require_once('../../Models/consultasAdmin.php');
 
-require_once('../../Models/consultasCliente.php');
-
-// EDITAR INFO DEL CLIENTE
-require_once(__DIR__ . '/../../Controllers/Cliente/editarInfoCliente.php');
-$objEditarInfoCliente = new EditarInfoCliente();
-
-// VERIFICO SI SE ENVÍO UN FORM
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	// Obtén el valor del campo oculto 'form'
-	$form = $_POST["form"];
-
-	$num_documento = $_POST["num_documento"];
-
-	// Verifica el tipo de formulario
-	if ($form == 'personal-info-client') {
-		// Procesa datos del formulario "personal-info-client"
-		$nombre_cliente = $_POST["nombre_cliente"];
-		$genero_cliente = $_POST["genero_cliente"];
-		$fecha_nacimiento_cliente = $_POST["fecha_nacimiento_cliente"];
-		$tipo_doc_cliente = $_POST["tipo_doc_cliente"];
-
-		// Maneja el archivo subido (si hay)
-		if (isset($_FILES['img_perfil_cliente']) && $_FILES['img_perfil_cliente']['error'] == UPLOAD_ERR_OK) {
-			$fileTmpPath = $_FILES['img_perfil_cliente']['tmp_name'];
-			$fileName = $_FILES['img_perfil_cliente']['name'];
-			$uploadDir = __DIR__ . '/../../Uploads/Usuarios/';
-			$uploadFilePath = $uploadDir . $fileName;
-			if (move_uploaded_file($fileTmpPath, $uploadFilePath)) {
-				$img_perfil_cliente = $fileName;
-			} else {
-				$img_perfil_cliente = null;
-			}
-		} else {
-			$img_perfil_cliente = null;
-		}
-
-		// Llama a la función para actualizar la información
-		$objEditarInfoCliente->editarInfoPersonal($num_documento, $nombre_cliente, $genero_cliente, $fecha_nacimiento_cliente, $tipo_doc_cliente, $img_perfil_cliente);
-	}
-}
-
-
+require_once( __DIR__ . '/../../Models/consultasCliente.php');
 
 ?>
+
 <!DOCTYPE html>
 
 <!--
@@ -64,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	<!-- ** Basic Page Needs ** -->
 	<meta charset="utf-8">
-	<title>Perfil del Cliente | Loviing Store</title>
+	<title>Loviing Store | E-commerce</title>
 
 	<!-- ** Mobile Specific Metas ** -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -77,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<link href="../Website_externo/images/favicon.png" rel="shortcut icon">
 
 	<!-- Essential stylesheets
-	  =====================================-->
+  	=====================================-->
 	<link href="../Website_externo/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
 	<link href="../Website_externo/plugins/bootstrap/bootstrap-slider.css" rel="stylesheet">
 	<link href="../Website_externo/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -92,24 +55,78 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body class="body-wrapper">
+
 	<?php
 	mostrarHeaderCliente();
 	?>
-	<!--==================================
-	=            User Profile            =
-	===================================-->
 
-	<?php
-	mostrarPerfilCliente();
-	?>
+	<section class="section-sm">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="category-search-filter">
+						<div class="row">
+							<div class="col-md-12 text-center text-md-right mt-2 mt-md-0">
+								<div class="view">
+									<strong>Vista</strong>
+									<ul class="list-inline view-switcher">
+										<li class="list-inline-item">
+											<a href="allProductos.php" onclick="event.preventDefault();" class="text-info"><i class="fa fa-th-large"></i></a>
+										</li>
+										<li class="list-inline-item">
+											<a href="allProductosView2.php"><i class="fa fa-reorder"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="product-grid-list">
+						<div class="row mt-30">
 
+							<?php
+
+							mostrarProductosCategoria();
+
+							?>
+
+						</div>
+					</div>
+
+					<div class="pagination justify-content-center py-4">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item">
+									<a class="page-link" href="allProductos.php" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+									</a>
+								</li>
+								<li class="page-item active"><a class="page-link" href="allProductos.php">1</a></li>
+								<li class="page-item"><a class="page-link" href="allProductos.php">2</a></li>
+								<li class="page-item"><a class="page-link" href="allProductos.php">3</a></li>
+								<li class="page-item">
+									<a class="page-link" href="allProductos.php" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">Next</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
 	<!--============================
 	=            Footer            =
 	=============================-->
-
 	<!-- Footer Bottom -->
 	<?php
+
 	mostrarFooterCliente();
+
 	?>
 
 	<!-- Essential Scripts
