@@ -1,5 +1,6 @@
 <?php
 // holaaaaaaaaaaaaa
+// Hola este es mi primer commit oficial
 require_once ('Controllers/Cliente/mostrarContenido.php');
 
 require_once ('Controllers/Cliente/mostrarInfoProducto.php');
